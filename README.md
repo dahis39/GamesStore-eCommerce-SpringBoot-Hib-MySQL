@@ -12,4 +12,4 @@ A Functional Ebay payment button.
 Validation and Errors handling.
 authentication and authorization.
 
-In Progress...
+Status: In Progress. local development with H2 database.

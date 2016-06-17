@@ -45,29 +45,29 @@ public class ProductServiceRepoImpl implements ProductService {
 
     @Override
     public void generateProduct() {
-        productRepository.save(productGenerator("Distant Worlds","Original",new BigDecimal(40),"Code Force","Matrix Games"));
-        productRepository.save(productGenerator("Distant Worlds Universe","BIGBIGBIG",new BigDecimal(20),"Code Force","Matrix Games"));
+        Developer developer = new Developer();
+        developer.setName("Code Force");
+        Publisher publisher =  new Publisher();
+        publisher.setName("Matrix Games");
+        productRepository.save(productGenerator("Distant Worlds","Original",new BigDecimal(40),developer,publisher));
+        productRepository.save(productGenerator("Distant Worlds Universe","BIGBIGBIG",new BigDecimal(20),developer,publisher));
     }
 
-    private Product productGenerator(String name, String description, BigDecimal price, String developerName, String publisherName){
+    private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher){
         Product newProduct = new Product();
         newProduct.setName(name);
         newProduct.setDescription(description);
         newProduct.setPrice(price);
 
-        Developer newDeveloper = new Developer();
-        newDeveloper.setName(developerName);
-        newDeveloper.addProduct(newProduct);
+        developer.addProduct(newProduct);
 
-        Publisher newPublisher = new Publisher();
-        newPublisher.setName(publisherName);
-        newPublisher.addProduct(newProduct);
+        publisher.addProduct(newProduct);
 
-        newProduct.setDeveloper(newDeveloper);
-        newProduct.setPublisher(newPublisher);
+        newProduct.setDeveloper(developer);
+        newProduct.setPublisher(publisher);
 
-        System.out.println(newPublisher.getProducts().size());
-        System.out.println(newDeveloper.getProducts().size());
+        System.out.println(publisher.getProducts().size());
+        System.out.println(developer.getProducts().size());
 
         return newProduct;
     }

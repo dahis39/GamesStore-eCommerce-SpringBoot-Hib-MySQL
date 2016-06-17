@@ -1,10 +1,7 @@
 package com.tom.test.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by tom on 6/9/2016.
@@ -16,6 +13,7 @@ public class Developer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(unique = true)
     private String name;
 
     private String description;
@@ -28,9 +26,8 @@ public class Developer {
     private Date dateCreated;
     private Date lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "DEVELOPER_ID")
-    private Set<Product> products;
+    @OneToMany(mappedBy = "developer")
+    private Set<Product> products = new HashSet<>();
 
     public Set<Product> getProducts() {
         return products;

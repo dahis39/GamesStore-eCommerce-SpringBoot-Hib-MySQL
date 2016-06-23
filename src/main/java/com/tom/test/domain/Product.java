@@ -14,7 +14,7 @@ public class Product extends CommonGoodDetails {
     private Developer developer;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PUBLISHER_NAME")
+    @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 
     public Developer getDeveloper() {

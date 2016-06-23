@@ -2,8 +2,10 @@ package com.tom.test.controllers;
 
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
+import com.tom.test.domain.Publisher;
 import com.tom.test.services.DeveloperService;
 import com.tom.test.services.ProductService;
+import com.tom.test.services.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ public class ProductController {
     @Autowired
     private DeveloperService developerService;
 
+    @Autowired
+    private PublisherService publisherService;
+
     @RequestMapping({"/list","/"})
     public String listAll(Model model){
         model.addAttribute("products",productService.listAll());
@@ -36,18 +41,23 @@ public class ProductController {
     @RequestMapping("/new")
     public String newProduct(Model model){
         model.addAttribute("product",new Product());
+        model.addAttribute("developers",developerService.listAll());
+        model.addAttribute("publishers",publisherService.listAll());
         return "product/productform";
     }
 
     @RequestMapping("/edit/{id}")
     public String saveOrUpdateProduct(@PathVariable Integer id, Model model){
         model.addAttribute("product",productService.getById(id));
+        model.addAttribute("developers",developerService.listAll());
+        model.addAttribute("publishers",publisherService.listAll());
         return "product/productform";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String saveProduct(Product domainObject){
-
+        domainObject.setDeveloper(developerService.getById(domainObject.getDeveloper().getId()));
+        domainObject.setPublisher(publisherService.getById(domainObject.getPublisher().getId()));
         Product savedProduct = productService.saveOrUpdate(domainObject);
         return "redirect:/product/show/" + savedProduct.getId();
     }

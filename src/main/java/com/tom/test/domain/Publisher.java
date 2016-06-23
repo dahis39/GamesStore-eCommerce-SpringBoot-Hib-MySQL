@@ -1,40 +1,26 @@
 package com.tom.test.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by tom on 6/9/2016.
  */
 @Entity
-public class Publisher{
+public class Publisher extends AbstartDomainClass{
 
-
-    @Id
-    @JoinColumn(nullable = false)
     private String name;
-
     private String description;
-
     private String imageUrl;
 
-    @Version
-    private Integer version;
+    @OneToMany(mappedBy = "publisher")
+    private Set<Product> products = new HashSet<>();
 
-    private Date dateCreated;
-    private Date lastUpdated;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PUBLISHER_NAME")
-    private List<Product> products = new ArrayList<>();
-
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 
@@ -60,31 +46,6 @@ public class Publisher{
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
-
-    @PreUpdate
-    @PrePersist
-    public void updateTimeStamps(){
-        lastUpdated = new Date();
-        if (dateCreated == null)
-            dateCreated = new Date();
     }
 
     public void addProduct(Product product){

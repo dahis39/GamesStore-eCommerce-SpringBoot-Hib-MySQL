@@ -20,41 +20,53 @@
 
     <h2>Developer Details</h2>
     <div>
-        <form class="form-horizontal" th:object="${developer}" th:action="@{/developer}" method="post">
-            <input type="hidden" th:field="*{id}"/>
-            <input type="hidden" th:field="*{version}"/>
+        <form class="form-horizontal" th:object="${developerForm}" th:action="@{/developer}" method="post">
+            <input type="hidden" th:field="*{developerId}"/>
+            <input type="hidden" th:field="*{developerVersion}"/>
             <div class="form-group">
                 <label class="col-sm-2 control-laber">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{name}"/>
+                    <input type="text" class="form-control" th:field="*{developerName}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Description:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{description}"/>
+                    <input type="text" class="form-control" th:field="*{developerDescription}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Image Url:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{imageUrl}"/>
+                    <input type="text" class="form-control" th:field="*{developerImageUrl}"/>
                 </div>
             </div>
             <table class="table table-striped">
                 <tr>
                     <th>Product Name</th>
-                    <th>Product Description</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image URL</th>
                     <th>
                         <button type="submit" name="addProduct" >Add Product</button>
                     </th>
                 </tr>
-                <tr th:each="product,row : *{products}">
+                <tr th:each="product,i : *{developerProducts}">
+                    <input type="hidden" th:field="*{developerProducts[__${i.index}__].id}"/>
+                    <input type="hidden" th:field="*{developerProducts[__${i.index}__].version}"/>
+                    <input type="hidden" th:field="*{developerProducts[__${i.index}__].developer}"/>
+                    <input type="hidden" th:field="*{developerProducts[__${i.index}__].publisher}"/>
                     <td>
-                        <input type="text" th:field="*{products[__${row.index}__].name}"/>
+                        <input type="text" th:field="*{developerProducts[__${i.index}__].name}"/>
                     </td>
                     <td>
-                        <input type="text" th:field="*{products[__${row.index}__].description}"/>
+                        <input type="text" th:field="*{developerProducts[__${i.index}__].description}"/>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{developerProducts[__${i.index}__].price}"/>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{developerProducts[__${i.index}__].imageUrl}"/>
                     </td>
                 </tr>
             </table>

@@ -1,5 +1,7 @@
 package com.tom.test.services.reposervices;
 
+import com.tom.test.commands.DeveloperForm;
+import com.tom.test.converters.DeveloperFormToDeveloper;
 import com.tom.test.domain.Developer;
 import com.tom.test.repositories.DeveloperRepository;
 import com.tom.test.services.DeveloperService;
@@ -17,6 +19,9 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
 
     @Autowired
     private DeveloperRepository developerRepository;
+
+    @Autowired
+    private DeveloperFormToDeveloper developerFormToDeveloper;
 
     @Override
     public List<Developer> listAll() {
@@ -38,5 +43,13 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
     @Override
     public void delete(Integer id) {
         developerRepository.delete(id);
+    }
+
+    @Override
+    public Developer saveOrUpdateDeveloperForm(DeveloperForm developerForm) {
+        System.out.println("Before converting method");
+        Developer developer = developerFormToDeveloper.convert(developerForm);
+        System.out.println("Converted");
+        return developerRepository.save(developer);
     }
 }

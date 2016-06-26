@@ -1,5 +1,6 @@
 package com.tom.test.controllers;
 
+import com.tom.test.commands.DeveloperForm;
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
 import com.tom.test.services.DeveloperService;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 /**
  * Created by tom on 6/14/2016.
@@ -37,23 +40,25 @@ public class DeveloperController {
 
     @RequestMapping("/new")
     public String newDeveloper(Model model){
-        model.addAttribute("developer",new Developer());
+        model.addAttribute("developerForm",new DeveloperForm());
         return "developer/developerform";
     }
 
     @RequestMapping( params={"addProduct"})
-    public String addProduct(Developer developer){
-        developer.addProduct(new Product());
+    public String addProduct(DeveloperForm developerForm){
+        developerForm.getDeveloperProducts().add(new Product());
         return "developer/developerform";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String save(Developer developer){
-        for(Product product:developer.getProducts()){
-            product.setDeveloper(developer);
-            productService.saveOrUpdate(product);
-        }
-        Developer savedDeveloper = developerService.saveOrUpdate(developer);
+    public String save(DeveloperForm developerForm){
+        Developer savedDeveloper = developerService.saveOrUpdateDeveloperForm(developerForm);
         return "redirect:/developer/show/" + savedDeveloper.getId();
+    }
+
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id,Model model){
+        model.addAttribute("developer",developerService.getById(id));
+        return "developer/developerform";
     }
 }

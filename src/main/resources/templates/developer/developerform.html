@@ -68,6 +68,15 @@
                     <td>
                         <input type="text" th:field="*{developerProducts[__${i.index}__].imageUrl}"/>
                     </td>
+                    <td>
+                        <div th:if="${not #lists.isEmpty(publishers)}">
+                            <select th:field="*{developerProducts[__${i.index}__].publisher.id}">
+                                <option th:each="publisher:${publishers}"
+                                        th:value="${publisher.id}"
+                                        th:text="${publisher.name}">List</option>
+                            </select>
+                        </div>
+                    </td>
                 </tr>
             </table>
             <div class="row">

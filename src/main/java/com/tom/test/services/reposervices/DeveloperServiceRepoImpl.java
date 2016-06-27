@@ -51,9 +51,7 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
 
     @Override
     public Developer saveOrUpdateDeveloperForm(DeveloperForm developerForm) {
-        System.out.println("Before converting method");
         Developer developer = developerFormToDeveloper.convert(developerForm);
-        System.out.println("Converted");
         return developerRepository.save(developer);
     }
 

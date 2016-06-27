@@ -3,6 +3,8 @@ package com.tom.test.converters;
 import com.tom.test.commands.DeveloperForm;
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
+import com.tom.test.services.PublisherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,10 @@ import java.util.List;
  */
 @Component
 public class DeveloperFormToDeveloper implements Converter<DeveloperForm,Developer> {
+
+    @Autowired
+    private PublisherService publisherService;
+
     @Override
     public Developer convert(DeveloperForm developerForm) {
         Developer developer = new Developer();
@@ -35,6 +41,7 @@ public class DeveloperFormToDeveloper implements Converter<DeveloperForm,Develop
 
         for (Product product:productList){
             product.setDeveloper(developer);
+            product.setPublisher(publisherService.getById(product.getPublisher().getId()));
         }
 
         return developer;

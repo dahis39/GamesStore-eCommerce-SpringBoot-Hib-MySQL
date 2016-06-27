@@ -3,11 +3,14 @@ package com.tom.test.controllers;
 import com.tom.test.commands.DeveloperForm;
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
+import com.tom.test.domain.Publisher;
 import com.tom.test.services.DeveloperService;
 import com.tom.test.services.ProductService;
+import com.tom.test.services.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +28,11 @@ public class DeveloperController {
     DeveloperService developerService;
     @Autowired
     ProductService productService;
+    @Autowired
+    PublisherService publisherService;
+
+    @ModelAttribute("publishers")
+    public List<?> populatePublisherList(){return publisherService.listAll();}
 
     @RequestMapping({"/","/list"})
     public String list(Model model){

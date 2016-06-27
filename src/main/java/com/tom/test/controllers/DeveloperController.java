@@ -45,7 +45,7 @@ public class DeveloperController {
     }
 
     @RequestMapping( params={"addProduct"})
-    public String addProduct(DeveloperForm developerForm){
+    public String addProduct(final DeveloperForm developerForm){
         developerForm.getDeveloperProducts().add(new Product());
         return "developer/developerform";
     }

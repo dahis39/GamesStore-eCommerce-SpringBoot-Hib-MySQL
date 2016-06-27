@@ -1,6 +1,8 @@
 package com.tom.test.commands;
 
 import com.tom.test.domain.Product;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ public class DeveloperForm {
     private String developerDescription;
     private String developerImageUrl;
 
-    private List<Product> developerProducts;
+    private List<Product> developerProducts = new ArrayList<>();
 
     public Integer getDeveloperId() {
         return developerId;

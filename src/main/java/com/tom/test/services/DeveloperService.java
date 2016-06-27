@@ -8,4 +8,5 @@ import com.tom.test.domain.Developer;
  */
 public interface DeveloperService extends CRUDservice<Developer> {
     Developer saveOrUpdateDeveloperForm(DeveloperForm developerForm);
+    DeveloperForm getDeveloperFormById(Integer id);
 }

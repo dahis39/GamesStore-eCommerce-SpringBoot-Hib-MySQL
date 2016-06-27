@@ -2,6 +2,7 @@ package com.tom.test.services.reposervices;
 
 import com.tom.test.commands.DeveloperForm;
 import com.tom.test.converters.DeveloperFormToDeveloper;
+import com.tom.test.converters.DeveloperToDeveloperForm;
 import com.tom.test.domain.Developer;
 import com.tom.test.repositories.DeveloperRepository;
 import com.tom.test.services.DeveloperService;
@@ -22,6 +23,9 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
 
     @Autowired
     private DeveloperFormToDeveloper developerFormToDeveloper;
+
+    @Autowired
+    private DeveloperToDeveloperForm developerToDeveloperForm;
 
     @Override
     public List<Developer> listAll() {
@@ -51,5 +55,10 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
         Developer developer = developerFormToDeveloper.convert(developerForm);
         System.out.println("Converted");
         return developerRepository.save(developer);
+    }
+
+    @Override
+    public DeveloperForm getDeveloperFormById(Integer id) {
+        return developerToDeveloperForm.convert(developerRepository.findOne(id));
     }
 }

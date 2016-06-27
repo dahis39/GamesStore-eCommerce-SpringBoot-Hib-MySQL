@@ -58,7 +58,7 @@ public class DeveloperController {
 
     @RequestMapping("/edit/{id}")
     public String edit(@PathVariable Integer id,Model model){
-        model.addAttribute("developer",developerService.getById(id));
+        model.addAttribute("developerForm",developerService.getDeveloperFormById(id));
         return "developer/developerform";
     }
 }

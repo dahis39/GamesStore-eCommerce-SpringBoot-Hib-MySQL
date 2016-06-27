@@ -16,7 +16,6 @@ import java.util.List;
 public class DeveloperFormToDeveloper implements Converter<DeveloperForm,Developer> {
     @Override
     public Developer convert(DeveloperForm developerForm) {
-        System.out.println("We hitted the convertor");
         Developer developer = new Developer();
 
         developer.setId(developerForm.getDeveloperId());
@@ -38,7 +37,6 @@ public class DeveloperFormToDeveloper implements Converter<DeveloperForm,Develop
             product.setDeveloper(developer);
         }
 
-        System.out.println("Before returnning converted developer");
         return developer;
     }
 }

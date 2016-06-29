@@ -47,9 +47,11 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Image URL</th>
+                    <th>Publisher</th>
                     <th>
                         <button type="submit" name="addProduct" >Add Product</button>
                     </th>
+                    <th/>
                 </tr>
                 <tr th:each="product,i : *{developerProducts}">
                     <input type="hidden" th:field="*{developerProducts[__${i.index}__].id}"/>
@@ -76,6 +78,9 @@
                                         th:text="${publisher.name}">List</option>
                             </select>
                         </div>
+                    </td>
+                    <td>
+                        <button type="submit" name="removeProduct" th:value="${i.index}" >Remove</button>
                     </td>
                 </tr>
             </table>

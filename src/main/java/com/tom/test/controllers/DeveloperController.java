@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -58,8 +59,16 @@ public class DeveloperController {
         return "developer/developerform";
     }
 
+    @RequestMapping(params = {"removeProduct"})
+    public String removeProduct(final DeveloperForm developerForm, final HttpServletRequest req){
+        final Integer productId = Integer.valueOf(req.getParameter("removeProduct"));
+        developerForm.getDeveloperProducts().remove(productId.intValue());
+        productService.delete(productId.intValue()+1);
+        return "developer/developerform";
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public String save(DeveloperForm developerForm){
+    public String save(final DeveloperForm developerForm){
         Developer savedDeveloper = developerService.saveOrUpdateDeveloperForm(developerForm);
         return "redirect:/developer/show/" + savedDeveloper.getId();
     }
@@ -68,5 +77,11 @@ public class DeveloperController {
     public String edit(@PathVariable Integer id,Model model){
         model.addAttribute("developerForm",developerService.getDeveloperFormById(id));
         return "developer/developerform";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id){
+        developerService.delete(id);
+        return "redirect:/developer/list";
     }
 }

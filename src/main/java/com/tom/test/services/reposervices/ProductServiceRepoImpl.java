@@ -66,9 +66,6 @@ public class ProductServiceRepoImpl implements ProductService {
         newProduct.setDeveloper(developer);
         newProduct.setPublisher(publisher);
 
-        System.out.println(publisher.getProducts().size());
-        System.out.println(developer.getProducts().size());
-
         return newProduct;
     }
 }

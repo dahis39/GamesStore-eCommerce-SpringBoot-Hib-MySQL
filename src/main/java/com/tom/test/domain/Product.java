@@ -9,11 +9,11 @@ import java.util.Set;
 @Entity
 public class Product extends CommonGoodDetails {
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "DEVELOPER_ID")
     private Developer developer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 

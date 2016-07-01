@@ -1,6 +1,8 @@
 package com.tom.test.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,6 +19,10 @@ public class Product extends CommonGoodDetails {
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable
+    private List<Bundle> bundles = new ArrayList<>();
+
     public Developer getDeveloper() {
         return developer;
     }
@@ -31,6 +37,14 @@ public class Product extends CommonGoodDetails {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public List<Bundle> getBundles() {
+        return bundles;
+    }
+
+    public void setBundles(List<Bundle> bundles) {
+        this.bundles = bundles;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Publisher extends AbstartDomainClass{
     private String description;
     private String imageUrl;
 
-    @OneToMany(mappedBy = "publisher")
+    @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
     private Set<Product> products = new HashSet<>();
 
     public Set<Product> getProducts() {

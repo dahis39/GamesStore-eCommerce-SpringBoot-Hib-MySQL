@@ -45,12 +45,29 @@ public class ProductServiceRepoImpl implements ProductService {
 
     @Override
     public void generateProduct() {
-        Developer developer = new Developer();
-        developer.setName("Code Force");
-        Publisher publisher =  new Publisher();
-        publisher.setName("Matrix Games");
-        productRepository.save(productGenerator("Distant Worlds","Original",new BigDecimal(40),developer,publisher));
-        productRepository.save(productGenerator("Distant Worlds Universe","BIGBIGBIG",new BigDecimal(20),developer,publisher));
+        Developer codeForce = new Developer();
+        codeForce.setName("Code Force");
+        Developer valveDev = new Developer();
+        valveDev.setName("Valve Corporation");
+        Developer taleWorlds = new Developer();
+        taleWorlds.setName("TaleWorlds Entertainment");
+        Developer paradoxDev = new Developer();
+        paradoxDev.setName("Paradox Development Studio");
+
+        Publisher matrixGames =  new Publisher();
+        matrixGames.setName("Matrix Games");
+        Publisher valvePub = new Publisher();
+        valvePub.setName("Valve Corporation");
+        Publisher paradoxPub = new Publisher();
+        paradoxPub.setName("Paradox Interactive");
+
+        productRepository.save(productGenerator("Distant Worlds","Space 4X",new BigDecimal(10),codeForce,matrixGames));
+        productRepository.save(productGenerator("Distant Worlds Universe","Space 4X",new BigDecimal(50),codeForce,matrixGames));
+        productRepository.save(productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub));
+        productRepository.save(productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub));
+        productRepository.save(productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub));
+        productRepository.save(productGenerator("Europa Universalis IV","strategy",new BigDecimal(25),paradoxDev,paradoxPub));
+        productRepository.save(productGenerator("Stellaris","Space 4X",new BigDecimal(40),paradoxDev,paradoxPub));
     }
 
     private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher){

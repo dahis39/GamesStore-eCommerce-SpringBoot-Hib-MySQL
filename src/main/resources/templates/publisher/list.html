@@ -36,13 +36,13 @@
                 <td th:text="${publisher.dateCreated}"></td>
                 <td><a th:href="${'/publisher/show/' + publisher.id}">View</a> </td>
                 <td><a th:href="${'/publisher/edit/' + publisher.id}">Edit</a> </td>
-                <td><a th:href="${'/publisher/delete/' + publisher.id}">Delete</a> </td>
+                <td><a class="btn btn-danger btn-sm" th:href="${'/publisher/delete/' + publisher.id}">Delete</a> </td>
             </tr>
         </table>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a href="/publisher/new">Create New Publisher</a>
+            <a class="btn btn-primary" href="/publisher/new">Create New Publisher</a>
         </div>
     </div>
 </div>

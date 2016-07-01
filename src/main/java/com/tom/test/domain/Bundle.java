@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Bundle extends CommonGoodDetails{
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "PRODUCT_ID")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable
     private List<Product> products = new ArrayList<>();
 
     public List<Product> getProducts() {

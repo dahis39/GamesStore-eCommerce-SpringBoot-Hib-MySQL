@@ -47,14 +47,16 @@
                     <input type="text" class="form-control" th:field="*{imageUrl}"/>
                 </div>
             </div>
-            <div th:if="${not #lists.isEmpty(developers)}">
+            <div class="form-group" th:if="${not #lists.isEmpty(developers)}">
+                <label class="col-sm-2 control-label">Choose Developer:</label>
                 <select th:field="*{developer.id}">
                     <option th:each="developer:${developers}"
                             th:value="${developer.id}"
                             th:text="${developer.name}">List</option>
                 </select>
             </div>
-            <div th:if="${not #lists.isEmpty(publishers)}">
+            <div class="form-group" th:if="${not #lists.isEmpty(publishers)}">
+                <label class="col-sm-2 control-label">Choose Publisher:</label>
                 <select th:field="*{publisher.id}">
                     <option th:each="publisher:${publishers}"
                             th:value="${publisher.id}"

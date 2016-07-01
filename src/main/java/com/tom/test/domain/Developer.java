@@ -13,7 +13,7 @@ public class Developer extends AbstartDomainClass{
     private String description;
     private String imageUrl;
 
-    @OneToMany(mappedBy = "developer",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "developer",cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
 
     public List<Product> getProducts() {

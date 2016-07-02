@@ -2,6 +2,7 @@ package com.tom.test.controllers;
 
 import com.tom.test.domain.Bundle;
 import com.tom.test.services.BundleService;
+import com.tom.test.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,11 @@ public class BundleController {
 
     @Autowired
     private BundleService bundleService;
+    @Autowired
+    private ProductService productService;
+
+    @ModelAttribute("fullProductList")
+    public List<?> populateProductList(){return productService.listAll();}
 
     @RequestMapping({"/list","/"})
     public String listAll(Model model){

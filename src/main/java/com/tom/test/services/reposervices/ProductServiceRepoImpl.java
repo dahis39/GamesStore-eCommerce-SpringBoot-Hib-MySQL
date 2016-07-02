@@ -1,5 +1,6 @@
 package com.tom.test.services.reposervices;
 
+import com.tom.test.domain.Bundle;
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
 import com.tom.test.domain.Publisher;
@@ -53,6 +54,10 @@ public class ProductServiceRepoImpl implements ProductService {
         taleWorlds.setName("TaleWorlds Entertainment");
         Developer paradoxDev = new Developer();
         paradoxDev.setName("Paradox Development Studio");
+        Developer obsidian = new Developer();
+        obsidian.setName("Obsidian Entertainment");
+        Developer bethesdaDev = new Developer();
+        bethesdaDev.setName("Bethesda Game Studios");
 
         Publisher matrixGames =  new Publisher();
         matrixGames.setName("Matrix Games");
@@ -60,14 +65,22 @@ public class ProductServiceRepoImpl implements ProductService {
         valvePub.setName("Valve Corporation");
         Publisher paradoxPub = new Publisher();
         paradoxPub.setName("Paradox Interactive");
+        Publisher bethesdaPub = new Publisher();
+        bethesdaPub.setName("Bethesda Softworks");
+
+        Bundle theOne = new Bundle();
+        theOne.setName("Popular Multiplayers");
 
         productRepository.save(productGenerator("Distant Worlds","Space 4X",new BigDecimal(10),codeForce,matrixGames));
         productRepository.save(productGenerator("Distant Worlds Universe","Space 4X",new BigDecimal(50),codeForce,matrixGames));
-        productRepository.save(productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub));
-        productRepository.save(productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub));
-        productRepository.save(productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub));
+        productRepository.save(productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub,theOne));
+        productRepository.save(productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub,theOne));
+        productRepository.save(productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub,theOne));
         productRepository.save(productGenerator("Europa Universalis IV","strategy",new BigDecimal(25),paradoxDev,paradoxPub));
         productRepository.save(productGenerator("Stellaris","Space 4X",new BigDecimal(40),paradoxDev,paradoxPub));
+        productRepository.save(productGenerator("Pillars of Eternity","RPG",new BigDecimal(30),obsidian,paradoxPub));
+        productRepository.save(productGenerator("Fallout: New Vegas","ARPG",new BigDecimal(20),obsidian,bethesdaPub));
+        productRepository.save(productGenerator("The Elder Scrolls V: Skyrim","ARPG",new BigDecimal(30),bethesdaDev,bethesdaPub));
     }
 
     private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher){
@@ -82,6 +95,25 @@ public class ProductServiceRepoImpl implements ProductService {
 
         newProduct.setDeveloper(developer);
         newProduct.setPublisher(publisher);
+
+        return newProduct;
+    }
+
+    private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher, Bundle bundle){
+        Product newProduct = new Product();
+        newProduct.setName(name);
+        newProduct.setDescription(description);
+        newProduct.setPrice(price);
+
+        developer.addProduct(newProduct);
+
+        publisher.addProduct(newProduct);
+
+        newProduct.setDeveloper(developer);
+        newProduct.setPublisher(publisher);
+
+        newProduct.addBundle(bundle);
+        bundle.addProduct(newProduct);
 
         return newProduct;
     }

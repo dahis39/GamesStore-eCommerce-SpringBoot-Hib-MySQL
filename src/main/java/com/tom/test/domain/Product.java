@@ -47,6 +47,10 @@ public class Product extends CommonGoodDetails {
         this.bundles = bundles;
     }
 
+    public void addBundle(Bundle bundle){
+        this.bundles.add(bundle);
+    }
+
     @Override
     public String toString() {
         return this.getName();

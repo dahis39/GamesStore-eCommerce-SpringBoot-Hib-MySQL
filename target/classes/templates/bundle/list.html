@@ -25,7 +25,6 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>description</th>
-                <th>User registration date</th>
                 <th>List</th>
                 <th>View</th>
                 <th>Edit</th>
@@ -36,7 +35,6 @@
                 <td th:text="${bundle.name}"></td>
                 <td th:text="${bundle.price}"></td>
                 <td th:text="${bundle.description}"></td>
-                <td th:text="${bundle.dateCreated}"></td>
                 <td>
                     <ul th:each="product:${bundle.products}">
                         <li th:text="${product.name}"></li>
@@ -44,13 +42,13 @@
                 </td>
                 <td><a th:href="${'/bundle/show/' + bundle.id}">View</a> </td>
                 <td><a th:href="${'/bundle/edit/' + bundle.id}">Edit</a> </td>
-                <td><a th:href="${'/bundle/delete/' + bundle.id}">Delete</a> </td>
+                <td><a class="btn btn-danger btn-sm" th:href="${'/bundle/delete/' + bundle.id}">Delete</a> </td>
             </tr>
         </table>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a class="btn btn-primary" href="/bundle/new">Create New Bundle</a>
+            <a class="btn btn-info" href="/bundle/new">Create New Bundle</a>
         </div>
     </div>
 </div>

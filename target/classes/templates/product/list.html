@@ -26,7 +26,6 @@
                 <th>Price</th>
                 <th>description</th>
                 <th>developer</th>
-                <th>User registration date</th>
                 <th>List</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -37,7 +36,6 @@
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.developer.name}"></td>
-                <td th:text="${product.dateCreated}"></td>
                 <td><a th:href="${'/product/show/' + product.id}">View</a> </td>
                 <td><a th:href="${'/product/edit/' + product.id}">Edit</a> </td>
                 <td><a th:href="${'/product/delete/' + product.id}">Delete</a> </td>
@@ -46,7 +44,7 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a class="btn btn-primary" href="/product/new">Create New Product</a>
+            <a class="btn btn-info" href="/product/new">Create New Product</a>
         </div>
         <div class="col-sm-3">
             <a class="btn btn-primary" href="/product/generate">Generate product samples</a>

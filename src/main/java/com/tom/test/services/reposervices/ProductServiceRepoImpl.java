@@ -68,19 +68,22 @@ public class ProductServiceRepoImpl implements ProductService {
         Publisher bethesdaPub = new Publisher();
         bethesdaPub.setName("Bethesda Softworks");
 
-        Bundle theOne = new Bundle();
-        theOne.setName("Popular Multiplayers");
+        Bundle popluarMulti = new Bundle();
+        popluarMulti.setName("Popular Multiplayers");
+
+        Bundle rpgs = new Bundle();
+        rpgs.setName("Role Playing Games");
 
         productRepository.save(productGenerator("Distant Worlds","Space 4X",new BigDecimal(10),codeForce,matrixGames));
         productRepository.save(productGenerator("Distant Worlds Universe","Space 4X",new BigDecimal(50),codeForce,matrixGames));
-        productRepository.save(productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub,theOne));
-        productRepository.save(productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub,theOne));
-        productRepository.save(productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub,theOne));
+        productRepository.save(bundleBinding(popluarMulti, productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub)));
+        productRepository.save(bundleBinding(popluarMulti, productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub)));
+        productRepository.save(bundleBinding(rpgs, bundleBinding(popluarMulti, productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub))));
         productRepository.save(productGenerator("Europa Universalis IV","strategy",new BigDecimal(25),paradoxDev,paradoxPub));
         productRepository.save(productGenerator("Stellaris","Space 4X",new BigDecimal(40),paradoxDev,paradoxPub));
-        productRepository.save(productGenerator("Pillars of Eternity","RPG",new BigDecimal(30),obsidian,paradoxPub));
-        productRepository.save(productGenerator("Fallout: New Vegas","ARPG",new BigDecimal(20),obsidian,bethesdaPub));
-        productRepository.save(productGenerator("The Elder Scrolls V: Skyrim","ARPG",new BigDecimal(30),bethesdaDev,bethesdaPub));
+        productRepository.save(bundleBinding(rpgs, productGenerator("Pillars of Eternity","RPG",new BigDecimal(30),obsidian,paradoxPub)));
+        productRepository.save(bundleBinding(rpgs, productGenerator("Fallout: New Vegas","ARPG",new BigDecimal(20),obsidian,bethesdaPub)));
+        productRepository.save(bundleBinding(rpgs, productGenerator("The Elder Scrolls V: Skyrim","ARPG",new BigDecimal(30),bethesdaDev,bethesdaPub)));
     }
 
     private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher){
@@ -99,22 +102,9 @@ public class ProductServiceRepoImpl implements ProductService {
         return newProduct;
     }
 
-    private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher, Bundle bundle){
-        Product newProduct = new Product();
-        newProduct.setName(name);
-        newProduct.setDescription(description);
-        newProduct.setPrice(price);
-
-        developer.addProduct(newProduct);
-
-        publisher.addProduct(newProduct);
-
-        newProduct.setDeveloper(developer);
-        newProduct.setPublisher(publisher);
-
-        newProduct.addBundle(bundle);
-        bundle.addProduct(newProduct);
-
-        return newProduct;
+    private Product bundleBinding(Bundle bundle, Product product){
+        product.addBundle(bundle);
+        bundle.addProduct(product);
+        return product;
     }
 }

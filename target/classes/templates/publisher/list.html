@@ -24,7 +24,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>description</th>
-                <th>registration date</th>
                 <th>List</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -33,7 +32,6 @@
                 <td th:text="${publisher.id}"></td>
                 <td th:text="${publisher.name}"></td>
                 <td th:text="${publisher.description}"></td>
-                <td th:text="${publisher.dateCreated}"></td>
                 <td><a th:href="${'/publisher/show/' + publisher.id}">View</a> </td>
                 <td><a th:href="${'/publisher/edit/' + publisher.id}">Edit</a> </td>
                 <td><a class="btn btn-danger btn-sm" th:href="${'/publisher/delete/' + publisher.id}">Delete</a> </td>
@@ -42,7 +40,7 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a class="btn btn-primary" href="/publisher/new">Create New Publisher</a>
+            <a class="btn btn-info" href="/publisher/new">Create New Publisher</a>
         </div>
     </div>
 </div>

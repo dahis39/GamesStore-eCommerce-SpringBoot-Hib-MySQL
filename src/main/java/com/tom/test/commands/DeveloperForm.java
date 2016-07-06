@@ -14,7 +14,6 @@ public class DeveloperForm {
     private String developerName;
     private String developerDescription;
     private String developerImageUrl;
-
     private List<Product> developerProducts = new ArrayList<>();
 
     public Integer getDeveloperId() {

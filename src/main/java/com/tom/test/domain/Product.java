@@ -19,8 +19,7 @@ public class Product extends CommonGoodDetails {
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products")
     private List<Bundle> bundles = new ArrayList<>();
 
     public Developer getDeveloper() {

@@ -1,5 +1,6 @@
 package com.tom.test.services.reposervices;
 
+import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.User;
 import com.tom.test.repositories.UserRepository;
 import com.tom.test.services.UserService;
@@ -19,8 +20,8 @@ public class UserServiceRepoImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<?> listAll() {
-        List<User> users = new ArrayList<>();
+    public List<AbstartDomainClass> listAll() {
+        List<AbstartDomainClass> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add);
         return users;
     }

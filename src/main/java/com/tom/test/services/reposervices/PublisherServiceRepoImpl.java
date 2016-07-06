@@ -1,5 +1,6 @@
 package com.tom.test.services.reposervices;
 
+import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.Product;
 import com.tom.test.domain.Publisher;
 import com.tom.test.repositories.PublisherRepository;
@@ -20,8 +21,8 @@ public class PublisherServiceRepoImpl implements PublisherService {
     private PublisherRepository publisherRepository;
 
     @Override
-    public List<?> listAll() {
-        ArrayList<Publisher> publishers = new ArrayList<>();
+    public List<AbstartDomainClass> listAll() {
+        ArrayList<AbstartDomainClass> publishers = new ArrayList<>();
         publisherRepository.findAll().forEach(publishers::add);
         return publishers;
     }
@@ -38,6 +39,7 @@ public class PublisherServiceRepoImpl implements PublisherService {
 
     @Override
     public void delete(Integer id) {
+        publisherRepository.findOne(id).getProducts().forEach(product -> product.setPublisher(publisherRepository.findOne(1)));
         publisherRepository.delete(id);
     }
 }

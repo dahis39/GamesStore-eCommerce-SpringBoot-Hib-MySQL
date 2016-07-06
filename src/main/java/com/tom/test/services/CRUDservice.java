@@ -1,5 +1,6 @@
 package com.tom.test.services;
 
+import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.DomainObject;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by tom on 6/8/2016.
  */
 public interface CRUDservice<T> {
-    List<?> listAll();
+    List<AbstartDomainClass> listAll();
 
     T getById(Integer id);
 

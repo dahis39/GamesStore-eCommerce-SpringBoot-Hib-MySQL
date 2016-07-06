@@ -1,6 +1,8 @@
 package com.tom.test.controllers;
 
 import com.tom.test.commands.DeveloperForm;
+import com.tom.test.converters.DeveloperFormToDeveloper;
+import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
 import com.tom.test.domain.Publisher;
@@ -32,8 +34,13 @@ public class DeveloperController {
     @Autowired
     PublisherService publisherService;
 
+    @Autowired
+    DeveloperFormToDeveloper developerFormToDeveloper;
+    @Autowired
+
+
     @ModelAttribute("publishers")
-    public List<?> populatePublisherList(){return publisherService.listAll();}
+    public List<AbstartDomainClass> populatePublisherList(){return publisherService.listAll();}
 
     @RequestMapping({"/","/list"})
     public String list(Model model){
@@ -62,8 +69,8 @@ public class DeveloperController {
     @RequestMapping(params = {"removeProduct"})
     public String removeProduct(final DeveloperForm developerForm, final HttpServletRequest req){
         final Integer productId = Integer.valueOf(req.getParameter("removeProduct"));
+        productService.delete(developerForm.getDeveloperProducts().get(productId.intValue()).getId());
         developerForm.getDeveloperProducts().remove(productId.intValue());
-        productService.delete(productId.intValue()+1);
         return "developer/developerform";
     }
 

@@ -38,7 +38,7 @@
                 <td th:text="${product.developer.name}"></td>
                 <td><a th:href="${'/product/show/' + product.id}">View</a> </td>
                 <td><a th:href="${'/product/edit/' + product.id}">Edit</a> </td>
-                <td><a th:href="${'/product/delete/' + product.id}">Delete</a> </td>
+                <td><a class="btn btn-warning btn-sm" th:href="${'/product/delete/' + product.id}">Delete</a> </td>
             </tr>
         </table>
     </div>
@@ -47,7 +47,7 @@
             <a class="btn btn-info" href="/product/new">Create New Product</a>
         </div>
         <div class="col-sm-3">
-            <a class="btn btn-primary" href="/product/generate">Generate product samples</a>
+            <a class="btn btn-primary" href="/generatedummydata">Generate product samples</a>
         </div>
     </div>
 </div>

@@ -3,6 +3,7 @@ package com.tom.test.services.reposervices;
 import com.tom.test.commands.DeveloperForm;
 import com.tom.test.converters.DeveloperFormToDeveloper;
 import com.tom.test.converters.DeveloperToDeveloperForm;
+import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.Developer;
 import com.tom.test.repositories.DeveloperRepository;
 import com.tom.test.services.DeveloperService;
@@ -28,8 +29,8 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
     private DeveloperToDeveloperForm developerToDeveloperForm;
 
     @Override
-    public List<Developer> listAll() {
-        ArrayList<Developer> developers = new ArrayList<>();
+    public List<AbstartDomainClass> listAll() {
+        ArrayList<AbstartDomainClass> developers = new ArrayList<>();
         developerRepository.findAll().forEach(developers::add);
         return developers;
     }
@@ -46,6 +47,7 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
 
     @Override
     public void delete(Integer id) {
+        developerRepository.findOne(id).getProducts().forEach(product -> product.setDeveloper(developerRepository.findOne(1)));
         developerRepository.delete(id);
     }
 

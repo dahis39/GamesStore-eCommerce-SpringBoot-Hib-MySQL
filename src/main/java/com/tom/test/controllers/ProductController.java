@@ -73,10 +73,4 @@ public class ProductController {
         productService.delete(id);
         return "redirect:/product/list";
     }
-
-    @RequestMapping("/generate")
-    public String generateProducts(){
-        productService.generateProduct();
-        return "redirect:/product/list";
-    }
 }

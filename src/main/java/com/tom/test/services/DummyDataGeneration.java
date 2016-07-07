@@ -98,7 +98,6 @@ public class DummyDataGeneration {
 
     private Product bundleBinding(Bundle bundle, Product product){
         product.addBundle(bundle);
-        bundle.addProduct(product);
         return product;
     }
 }

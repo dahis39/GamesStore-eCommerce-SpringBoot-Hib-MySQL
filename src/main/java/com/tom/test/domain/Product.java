@@ -2,6 +2,7 @@ package com.tom.test.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,8 +20,11 @@ public class Product extends CommonGoodDetails {
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products")
-    private List<Bundle> bundles = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "bundle_product",
+        joinColumns = {@JoinColumn(name = "product_id")},
+        inverseJoinColumns = @JoinColumn(name = "bundle_id"))
+    private Set<Bundle> bundles = new HashSet<>();
 
     public Developer getDeveloper() {
         return developer;
@@ -38,11 +42,11 @@ public class Product extends CommonGoodDetails {
         this.publisher = publisher;
     }
 
-    public List<Bundle> getBundles() {
+    public Set<Bundle> getBundles() {
         return bundles;
     }
 
-    public void setBundles(List<Bundle> bundles) {
+    public void setBundles(Set<Bundle> bundles) {
         this.bundles = bundles;
     }
 

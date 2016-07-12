@@ -13,9 +13,11 @@ import java.util.Set;
 public class Bundle extends CommonGoodDetails{
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "bundle_product",
-        joinColumns = {@JoinColumn(name = "bundle_id")},
-        inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(
+            name = "BUNDLE_PRODUCT",
+            joinColumns = @JoinColumn(name = "BUNDLE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
+    )
     private Set<Product> products = new HashSet<>();
 
     public Set<Product> getProducts() {
@@ -27,6 +29,13 @@ public class Bundle extends CommonGoodDetails{
     }
 
     public void addProduct(Product product){
-        this.products.add(product);
+        if (product == null)
+            throw new NullPointerException("Can't add null product.");
+        getProducts().add(product);
+    }
+    public void deleteProduct(Product product){
+        if (product == null)
+            throw new NullPointerException("Can't add null product.");
+        getProducts().remove(product);
     }
 }

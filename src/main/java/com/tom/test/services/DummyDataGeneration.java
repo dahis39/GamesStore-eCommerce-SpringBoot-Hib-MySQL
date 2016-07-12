@@ -53,6 +53,7 @@ public class DummyDataGeneration {
         Bundle rpgs = new Bundle();
         rpgs.setName("Role Playing Games");
 
+
         Developer nullDev = new Developer();
         nullDev.setName("Default Developer");
         nullDev.setId(1);
@@ -63,21 +64,24 @@ public class DummyDataGeneration {
         nullPub.setId(1);
         publisherService.saveOrUpdate(nullPub);
 
-//        Bundle nullBundle = new Bundle();
-//        nullBundle.setName("Default Bundle");
-//        nullBundle.setId(1);
-//        bundleService.saveOrUpdate(nullBundle);
 
         productService.saveOrUpdate(productGenerator("Distant Worlds","Space 4X",new BigDecimal(10),codeForce,matrixGames));
         productService.saveOrUpdate(productGenerator("Distant Worlds Universe","Space 4X",new BigDecimal(50),codeForce,matrixGames));
-        productService.saveOrUpdate(bundleBinding(popluarMulti, productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub)));
-        productService.saveOrUpdate(bundleBinding(popluarMulti, productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub)));
-        productService.saveOrUpdate(bundleBinding(rpgs, bundleBinding(popluarMulti, productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub))));
+        bundleBinding(popluarMulti, productGenerator("Counter-Strike","FPS",new BigDecimal(10),valveDev,valvePub));
+        bundleBinding(popluarMulti, productGenerator("Dota 2","RTS",new BigDecimal(0),valveDev,valvePub));
+
+        Product newProduct = productGenerator("Mount & Blade","ARPG",new BigDecimal(10),taleWorlds,paradoxPub);
+        bundleBinding(rpgs, newProduct);
+        bundleBinding(popluarMulti, newProduct);
+
         productService.saveOrUpdate(productGenerator("Europa Universalis IV","strategy",new BigDecimal(25),paradoxDev,paradoxPub));
         productService.saveOrUpdate(productGenerator("Stellaris","Space 4X",new BigDecimal(40),paradoxDev,paradoxPub));
-        productService.saveOrUpdate(bundleBinding(rpgs, productGenerator("Pillars of Eternity","RPG",new BigDecimal(30),obsidian,paradoxPub)));
-        productService.saveOrUpdate(bundleBinding(rpgs, productGenerator("Fallout: New Vegas","ARPG",new BigDecimal(20),obsidian,bethesdaPub)));
-        productService.saveOrUpdate(bundleBinding(rpgs, productGenerator("The Elder Scrolls V: Skyrim","ARPG",new BigDecimal(30),bethesdaDev,bethesdaPub)));
+        bundleBinding(rpgs, productGenerator("Pillars of Eternity","RPG",new BigDecimal(30),obsidian,paradoxPub));
+        bundleBinding(rpgs, productGenerator("Fallout: New Vegas","ARPG",new BigDecimal(20),obsidian,bethesdaPub));
+        bundleBinding(rpgs, productGenerator("The Elder Scrolls V: Skyrim","ARPG",new BigDecimal(30),bethesdaDev,bethesdaPub));
+
+        bundleService.saveOrUpdate(popluarMulti);
+        bundleService.saveOrUpdate(rpgs);
     }
 
     private Product productGenerator(String name, String description, BigDecimal price, Developer developer, Publisher publisher){
@@ -96,8 +100,9 @@ public class DummyDataGeneration {
         return newProduct;
     }
 
-    private Product bundleBinding(Bundle bundle, Product product){
+    private void bundleBinding(Bundle bundle, Product product){
+
+        bundle.addProduct(product);
         product.addBundle(bundle);
-        return product;
     }
 }

@@ -2,10 +2,20 @@ package com.tom.test.services.reposervices;
 
 import com.tom.test.domain.*;
 import com.tom.test.repositories.ProductRepository;
+import com.tom.test.services.BundleService;
 import com.tom.test.services.ProductService;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.jpa.HibernateEntityManagerFactory;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +28,8 @@ public class ProductServiceRepoImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private BundleService bundleService;
 
     @Override
     public List<AbstartDomainClass> listAll() {
@@ -38,7 +50,11 @@ public class ProductServiceRepoImpl implements ProductService {
 
     @Override
     public void delete(Integer id) {
+        Product product = productRepository.findOne(id);
+        product.getBundles().forEach(bundle -> {
+            bundle.deleteProduct(product);
+            bundleService.saveOrUpdate(bundle);
+        });
         productRepository.delete(id);
     }
-
 }

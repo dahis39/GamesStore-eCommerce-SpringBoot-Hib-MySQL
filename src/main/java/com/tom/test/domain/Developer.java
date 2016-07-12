@@ -47,7 +47,13 @@ public class Developer extends AbstartDomainClass{
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
     public void addProduct(Product product){
-        this.products.add(product);
+        if (product == null)
+            throw new NullPointerException("Can't add null product.");
+        if (product.getDeveloper() != null)
+            throw new IllegalStateException("Product is already assigned to a Developer.");
+        getProducts().add(product);
+        product.setDeveloper(this);
     }
 }

@@ -20,11 +20,8 @@ public class Product extends CommonGoodDetails {
     @JoinColumn(name = "PUBLISHER_ID")
     private Publisher publisher;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "bundle_product",
-        joinColumns = {@JoinColumn(name = "product_id")},
-        inverseJoinColumns = @JoinColumn(name = "bundle_id"))
-    private Set<Bundle> bundles = new HashSet<>();
+    @ManyToMany(mappedBy = "products")
+    private Set<Bundle> bundles = new HashSet<Bundle>();
 
     public Developer getDeveloper() {
         return developer;
@@ -51,7 +48,9 @@ public class Product extends CommonGoodDetails {
     }
 
     public void addBundle(Bundle bundle){
-        this.bundles.add(bundle);
+        if (bundle == null)
+            throw new NullPointerException("Can't add null bundle.");
+        getBundles().add(bundle);
     }
 
     @Override

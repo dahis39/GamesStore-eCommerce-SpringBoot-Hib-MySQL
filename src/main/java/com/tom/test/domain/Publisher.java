@@ -49,6 +49,11 @@ public class Publisher extends AbstartDomainClass{
     }
 
     public void addProduct(Product product){
-        this.products.add(product);
+        if (product == null)
+            throw new NullPointerException("Can't add null product.");
+        if (product.getPublisher() != null)
+            throw new IllegalStateException("Product is already assigned to a Poblisher.");
+        getProducts().add(product);
+        product.setPublisher(this);
     }
 }

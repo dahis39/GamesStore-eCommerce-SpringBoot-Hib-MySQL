@@ -1,5 +1,9 @@
-
+@media (min-width: 768px){
+    .twoRow .secondRow {
+        margin: 0 0 0 40%;
+    }
+}
 .twoRow .secondRow {
     clear: left;
-    margin: 0 40% 0 40%;
 }
+

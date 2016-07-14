@@ -4,35 +4,47 @@
     <title>Spring Core Online Test - List Products</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
-    <link href="http://jsdelivr.net/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen"/>
-
-    <script src="http://jsdelivr.net/webjars/jquery/2.2.2/jquery.min.js"
-            th:href="@{/webjars/jquery/2.2.2/jquery.min.js}"></script>
+    <link href="../../static/bootstrap/bootstrap.min.css"
+          th:href="@{bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
 
     <link href="../../static/css/spring-core.css"
           th:href="@{css/spring-core.css}"
           rel="stylesheet" media="screen" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse">
-
-        <div class="container">
-            <a href="#" class="navbar-brand navbar-center">Humber Bundle</a>
-
-            <div>
-                <ul class="nav navbar-nav  navbar-center">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Projects</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Sign Up for News</a></li>
-                </ul>
-            </div>
+<div class="navbar navbar-inverse twoRow">
+    <div class="container">
+        <!-- Header -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Humble Bundle
+            </a>
         </div>
 
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Support</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bold"></span> Blog</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Accout</a></li>
+            </ul>
+        </div>
+
+        <!-- Navbar Links -->
+        <div>
+            <ul class="nav navbar-nav secondRow">
+                <li class="active"><a href="#"> Game Bundle </a></li>
+                <li><a href="#"> Game Store </a></li>
+            </ul>
+        </div>
     </div>
+</div>
+
 
 
 

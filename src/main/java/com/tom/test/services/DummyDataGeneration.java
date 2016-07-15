@@ -68,8 +68,8 @@ public class DummyDataGeneration {
 
         productService.saveOrUpdate(productGenerator("Distant Worlds","Space 4X",new BigDecimal(10),"http://www.codeforce.co.nz/favicon.ico",codeForce,matrixGames));
         productService.saveOrUpdate(productGenerator("Distant Worlds Universe","Space 4X",new BigDecimal(50), "http://www.etcwiki.org/images/thumb/d/da/Distant_worlds_universe_large_box.jpg/300px-Distant_worlds_universe_large_box.jpg",codeForce,matrixGames));
-        bundleBinding(popluarMulti, productGenerator("Counter-Strike","FPS",new BigDecimal(10), "http://www.iconarchive.com/download/i51098/hopstarter/software/Half-Life-Counter-Strike.ico",valveDev,valvePub));
-        bundleBinding(popluarMulti, productGenerator("Dota 2","RTS",new BigDecimal(0), "http://media.steampowered.com/steamcommunity/public/images/apps/570/c0d15684e6c186289b50dfe083f5c562c57e8fb6.ico",valveDev,valvePub));
+        bundleBinding(popluarMulti, productGenerator("Counter-Strike","FPS",new BigDecimal(10), "http://orig04.deviantart.net/b9d0/f/2015/179/e/2/counter_strike_global_offensive_icon_by_ru_devlin-d8z2vpe.png",valveDev,valvePub));
+        bundleBinding(popluarMulti, productGenerator("Dota 2","RTS",new BigDecimal(0), "http://orig06.deviantart.net/f3d1/f/2012/192/0/9/dota_2_icon_by_snaapsnaap-d56t8wg.png",valveDev,valvePub));
 
         Product newProduct = productGenerator("Mount & Blade","ARPG",new BigDecimal(10), "http://www.iconarchive.com/download/i539/3xhumed/mega-games-pack-25/Mount-Blade-1.ico",taleWorlds,paradoxPub);
         bundleBinding(rpgs, newProduct);

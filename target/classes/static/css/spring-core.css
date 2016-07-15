@@ -1,8 +1,14 @@
 body {
     background-color: #222;
 }
-p{
-    font-size: small;
+h2 {
+    color: #d43f3a;
+    font-family: 'Lobster', cursive;
+}
+h4 {
+    color: #9298a3;
+}
+h6 {
     color: #f7f7f7;
 }
 

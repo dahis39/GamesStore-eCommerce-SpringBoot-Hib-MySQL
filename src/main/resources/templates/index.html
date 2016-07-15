@@ -4,6 +4,8 @@
     <title>Spring Core Online Test - List Products</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
+
     <link href="../../static/bootstrap/bootstrap.min.css"
           th:href="@{bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
@@ -52,12 +54,46 @@
     </div>
 </div>
 <div class="jumbotron mainBody">
+    
     <div class="container">
         <div class="row">
-            <div class="col-md-2"  th:each="product : ${products}">
-                <div class="thumnail">
-                    <img th:src="@{${product.imageUrl}}"/>
-                    <p th:text="${product.name}"></p>
+            <section class="col-md-offset-1 col-md-6">
+                <img src="https://humblebundle-a.akamaihd.net/misc/files/hashed/a7204f784bac1c366b4736a0e90c7f6dfa956d55.png"/>
+            </section>
+            <section class="col-md-offset-1 col-md-4">
+                <a class="btn btn-lg btn-success" style="margin-top: 40px" href="#" role="button">Pay What You Want!</a>
+            </section>
+        </div>
+        <div class="row" style="margin-bottom: 40px">
+            <section class="col-md-offset-2 col-md-8">
+                <ul class="list-inline">
+                    <li><h4><span class="glyphicon glyphicon-heart"></span><abbr title="Get games collectively value up to $40."> $40 worth of awesome stuff</abbr></h4></li>
+                    <li><h4><span class="glyphicon glyphicon-tag"></span><abbr title="Name your price and increase your comtribution to upgrade your bundle."> Pay what you want</abbr></h4></li>
+                    <li><h4><span class="glyphicon glyphicon-wrench"></span><abbr title="Pay $1 or more for access to content on Steam"> Redeem on steam</abbr></h4></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="container" style="margin-bottom: 20px">
+        <div class="row">
+            <section class="col-md-offset-3 col-md-6">
+                <h2 class="text-capitalize" th:text="${bundle.name}"></h2>
+            </section>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="row">
+                    <div class="col-md-3"  th:each="product : ${products}">
+                        <div class="thumnail">
+                            <img th:src="@{${product.imageUrl}}" height="140" width="120" />
+                            <h6 class="text-center" th:text="${product.name}"></h6>
+                            <h4 class="text-center"><span class="glyphicon glyphicon-wrench"></span></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

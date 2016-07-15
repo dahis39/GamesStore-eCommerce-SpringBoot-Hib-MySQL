@@ -18,9 +18,9 @@
 
 </head>
 <body>
+<!-- Header -->
 <div class="navbar navbar-inverse twoRow">
     <div class="container">
-        <!-- Header -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle"
                     data-toggle="collapse"
@@ -33,7 +33,7 @@
                 Humble Bundle
             </a>
         </div>
-
+        <!-- First row, collapsable -->
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Support</a></li>
@@ -42,12 +42,24 @@
             </ul>
         </div>
 
-        <!-- Navbar Links -->
+        <!-- Second row -->
         <div>
             <ul class="nav navbar-nav secondRow">
                 <li class="active"><a href="#"> Game Bundle </a></li>
                 <li><a href="#"> Game Store </a></li>
             </ul>
+        </div>
+    </div>
+</div>
+<div class="jumbotron mainBody">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"  th:each="product : ${products}">
+                <div class="thumnail">
+                    <img th:src="@{${product.imageUrl}}"/>
+                    <p th:text="${product.name}"></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -57,3 +69,10 @@
 
 </body>
 </html>
+
+<style th:inline="text">
+    .mainBody{
+    background: url([[${bundle.backgroundUrl}]])
+    no-repeat center center fixed;
+    }
+</style>

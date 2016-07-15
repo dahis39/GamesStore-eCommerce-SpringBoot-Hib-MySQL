@@ -1,3 +1,15 @@
+body {
+    background-color: #222;
+}
+p{
+    font-size: small;
+    color: #f7f7f7;
+}
+
+.navbar-inverse{
+    margin-bottom: 0px;
+}
+
 @media (min-width: 768px){
     .twoRow .secondRow {
         margin: 0 0 0 40%;
@@ -7,3 +19,7 @@
     clear: left;
 }
 
+.mainBody {
+    background-color: black;
+    height: 1080px;
+}

@@ -88,9 +88,9 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <div class="row">
-                    <div class="col-md-3"  th:each="product : ${products}">
+                    <div class="col-md-3"  th:each="product,i : ${products}">
                         <div class="thumnail">
-                            <a href="#videoCarousel" data-toggle="collapse">
+                            <a href="#" class="carousel-show-button"  data-target="#videoCarousel" th:attr="data-slide-to=${i.index}">
                                 <img th:src="@{${product.imageUrl}}" height="140" width="120"/>
                                 <h6 class="text-center" th:text="${product.name}"></h6>
                                 <h4 class="text-center"><span class="glyphicon glyphicon-wrench"></span></h4>
@@ -106,7 +106,7 @@
         <div id="videoCarousel" class="collapse carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#videoCarousel" th:each="product,i : ${products}"
-                    th:attr="data-slide-to=${i.index+1}"></li>
+                    th:attr="data-slide-to=${i.index}"></li>
             </ol>
 
             <div class="carousel-inner" role="listbox">
@@ -116,7 +116,7 @@
                     <h4 th:text="${product.name}"></h4>
                     <p th:text="${product.description}"></p>
                     <br/>
-                    <a href="#videoCarousel" data-toggle="collapse"><span class="glyphicon glyphicon-remove close-button"></span></a>
+                    <a href="#" class="carousel-hide-button"><span class="glyphicon glyphicon-remove close-button"></span></a>
                 </div>
             </div>
 

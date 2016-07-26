@@ -90,9 +90,11 @@
                 <div class="row">
                     <div class="col-md-3"  th:each="product : ${products}">
                         <div class="thumnail">
-                            <img th:src="@{${product.imageUrl}}" height="140" width="120" />
-                            <h6 class="text-center" th:text="${product.name}"></h6>
-                            <h4 class="text-center"><span class="glyphicon glyphicon-wrench"></span></h4>
+                            <a href="#videoCarousel" data-toggle="collapse">
+                                <img th:src="@{${product.imageUrl}}" height="140" width="120"/>
+                                <h6 class="text-center" th:text="${product.name}"></h6>
+                                <h4 class="text-center"><span class="glyphicon glyphicon-wrench"></span></h4>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -100,33 +102,38 @@
         </div>
     </div>
 
-    <a href="#videoCarousel" class="btn btn-default" data-toggle="collapse">Toggle Foo</a>
+    <div class="videoCarousel-wrapper">
+        <div id="videoCarousel" class="collapse carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#videoCarousel" th:each="product,i : ${products}"
+                    th:attr="data-slide-to=${i.index+1}"></li>
+            </ol>
 
-    <div id="videoCarousel" class="collapse carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#videoCarousel" th:each="product,i : ${products}" th:attr="data-slide-to=${i.index+1}"></li>
-        </ol>
-
-        <div class="carousel-inner" role="listbox">
-            <div class="item" th:each="product : ${products}">
-                <img th:src="@{${product.imageUrl}}"/>
+            <div class="carousel-inner" role="listbox">
+                <div class="item" th:each="product : ${products}">
+                    <br/>
+                    <iframe width="430" height="350" th:src="@{${product.youtubeUrl}}" frameborder="0"/>
+                    <h4 th:text="${product.name}"></h4>
+                    <p th:text="${product.description}"></p>
+                    <br/>
+                    <a href="#videoCarousel" data-toggle="collapse"><span class="glyphicon glyphicon-remove close-button"></span></a>
+                </div>
             </div>
+
+            <a class="left carousel-control" href="#videoCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#videoCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
         </div>
-
-        <a class="left carousel-control" href="#videoCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#videoCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-
     </div>
+
+
 </div>
-
-
-
 
 </body>
 </html>

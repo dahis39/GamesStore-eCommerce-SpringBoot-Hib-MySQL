@@ -12,6 +12,8 @@ import java.util.Set;
 @Entity
 public class Product extends CommonGoodDetails {
 
+    private String youtubeUrl;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "DEVELOPER_ID")
     private Developer developer;
@@ -51,6 +53,14 @@ public class Product extends CommonGoodDetails {
         if (bundle == null)
             throw new NullPointerException("Can't add null bundle.");
         getBundles().add(bundle);
+    }
+
+    public String getYoutubeUrl() {
+        return youtubeUrl;
+    }
+
+    public void setYoutubeUrl(String youtubeUrl) {
+        this.youtubeUrl = youtubeUrl;
     }
 
     @Override

@@ -29,3 +29,27 @@ h6 {
     background-color: black;
     height: 1080px;
 }
+
+.videoCarousel-wrapper {
+    width: 100%;
+    position: relative;
+    background-color: black;
+}
+
+.carousel-inner h4, p, iframe {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.carousel-indicators {
+    display: none;
+}
+
+.close-button {
+    color: red;
+    display:table;
+    margin:0 auto;
+    text-align: center;
+}
+

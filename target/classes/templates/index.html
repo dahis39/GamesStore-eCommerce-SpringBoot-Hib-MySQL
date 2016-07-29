@@ -152,12 +152,12 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row bundle-description">
+    <div class="row bundle-description bg-white-color">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h3 th:text="${bundle.name}"></h3>
-                    <a class="btn btn-default pull-right" data-toggle="collapse" data-target="#bundle-description-test">More..</a>
+                    <p>Description: ... <a class="btn btn-default pull-right" data-toggle="collapse" data-target="#bundle-description-test">More..</a></p>
                     <div id="bundle-description-test" class="collapse">
                         <div th:if="${bundle.description} == null">
                             <p>Humble and 2K, take two. 2K Games is back at Humble Bundle with another bundle of killer games. Born for battle? You won’t need to save your shards to activate these deals!</p>
@@ -176,6 +176,46 @@
         </div>
     </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row bg-white-color">
+        <div class="container-fluid">
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="first-row header-bg-color bordered">
+                    <p th:text="'Purchase the '+ ${bundle.name}"></p>
+                </div>
+
+                <div class="second-row bordered">
+                    <h3>Pay What You Want! </h3>
+                    <form class="pull-right" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick"/>
+                        <input type="hidden" name="hosted_button_id" value="EYRZMP2TUXZ6Q"/>
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                               border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
+                             height="1"/>
+                    </form>
+                </div>
+
+                <div class="third-row bordered header-bg-color">
+                    <p>You're getting this bundle for <strong>smon_lucia@Hotmail.com</strong>. Not you? <a href="#">Log out</a> </p>
+                </div>
+
+                <div class="forth-row bordered header-bg-color">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value=""/>This bundle is a gift; send me a gift link.</label>
+                    </div>
+                </div>
+
+                <div class="fifth-row">
+                    <p>All major credit cards accepted. Payments via bank account are also supported by PayPal and Amazon Payments. Bitcoin payments have been disabled for the Humble 2K Bundle 2. Payment processing fees will be deducted proportionally from the payment amounts you indicate on your slider(s). Fees typically average 5 to 6% across all transactions, but may vary depending on a number of factors, including your location, purchase price, and payment method. We deduct VAT, where applicable, in the same manner. Payments to charitable organizations are made via the PayPal Giving Fund. For details on how this works, <a href="#"> click here.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>

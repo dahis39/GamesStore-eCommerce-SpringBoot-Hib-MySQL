@@ -59,14 +59,40 @@ h6 {
 }
 
 .bundle-description {
-    background-color: #e4e7ed;
-    padding: 25px;
-}
 
+    padding: 18px;
+}
 .bundle-description p {
     text-align: left;
     padding: 7px;
 }
 
+.first-row, .second-row, .third-row, .forth-row, .fifth-row {
+    padding: 7px;
+}
+.first-row p {
+    text-align: left;
+    padding: 10px 0 10px 0;
+}
 
+.second-row {
+    padding: 20px 0 27px 0;
+}
+.second-row img, h3, input, form{
+    display: inline;
+}
+.fifth-row p {
+    text-align: left;
+}
+
+
+.bordered {
+    border: 1px solid #b7becc;
+}
+.bg-white-color {
+    background-color: #e4e7ed;
+}
+.header-bg-color {
+    background-color: #d5d9e1;
+}
 

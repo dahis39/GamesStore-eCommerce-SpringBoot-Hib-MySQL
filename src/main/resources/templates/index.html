@@ -6,11 +6,11 @@
 
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
 
-    <link href="../../static/bootstrap/bootstrap.min.css"
+    <link href="../static/bootstrap/bootstrap.min.css"
           th:href="@{bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
 
-    <link href="../../static/css/spring-core.css"
+    <link href="../static/css/spring-core.css"
           th:href="@{css/spring-core.css}"
           rel="stylesheet" media="screen" />
 
@@ -18,7 +18,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script src="../../static/js/index.js" th:src="@{js/index.js}"></script>
+    <script src="../static/js/index.js" th:src="@{js/index.js}"></script>
 </head>
 <body>
 <!-- Header -->
@@ -65,7 +65,7 @@
                 <a class="btn btn-lg btn-success" style="margin-top: 40px" href="#" role="button">Pay What You Want!</a>
             </section>
         </div>
-        <div class="row" style="margin-bottom: 40px">
+        <div class="row" style="margin: 40px">
             <section class="col-md-offset-2 col-md-8">
                 <ul class="list-inline">
                     <li><h4><span class="glyphicon glyphicon-heart"></span><abbr title="Get games collectively value up to $40."> $40 worth of awesome stuff</abbr></h4></li>
@@ -76,9 +76,9 @@
         </div>
     </div>
 
-    <div class="container" style="margin-bottom: 20px">
+    <div class="container" style="margin: 20px">
         <div class="row">
-            <section class="col-md-offset-3 col-md-6">
+            <section class="col-md-offset-4 col-md-4">
                 <h2 class="text-capitalize" th:text="${bundle.name}"></h2>
             </section>
         </div>
@@ -90,7 +90,7 @@
                 <div class="row">
                     <div class="col-md-3"  th:each="product,i : ${products}">
                         <div class="thumnail">
-                            <a href="#" class="carousel-show-button"  data-target="#videoCarousel" th:attr="data-slide-to=${i.index}">
+                            <a href="#" id="carousel-show-button"  data-target="#videoCarousel" th:attr="data-slide-to=${i.index}">
                                 <img th:src="@{${product.imageUrl}}" height="140" width="120"/>
                                 <h6 class="text-center" th:text="${product.name}"></h6>
                                 <h4 class="text-center"><span class="glyphicon glyphicon-wrench"></span></h4>
@@ -102,8 +102,8 @@
         </div>
     </div>
 
-    <div class="videoCarousel-wrapper">
-        <div id="videoCarousel" class="collapse carousel slide" data-ride="carousel">
+    <div class="videoCarousel-wrapper" style="margin: 60px">
+        <div id="videoCarousel" class="collapse carousel slide" data-ride="carousel" data-interval="false">
             <ol class="carousel-indicators">
                 <li data-target="#videoCarousel" th:each="product,i : ${products}"
                     th:attr="data-slide-to=${i.index}"></li>
@@ -116,7 +116,7 @@
                     <h4 th:text="${product.name}"></h4>
                     <p th:text="${product.description}"></p>
                     <br/>
-                    <a href="#" class="carousel-hide-button"><span class="glyphicon glyphicon-remove close-button"></span></a>
+                    <a href="#" id="carousel-hide-button"><span class="glyphicon glyphicon-remove close-button"></span></a>
                 </div>
             </div>
 
@@ -132,7 +132,49 @@
         </div>
     </div>
 
+    <div class="container subscribt">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-6">
+                    <h4>Get notified of upcoming promotions:</h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for..."/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">Subscribt</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="container-fluid">
+    <div class="row bundle-description">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3 th:text="${bundle.name}"></h3>
+                    <a class="btn btn-default pull-right" data-toggle="collapse" data-target="#bundle-description-test">More..</a>
+                    <div id="bundle-description-test" class="collapse">
+                        <div th:if="${bundle.description} == null">
+                            <p>Humble and 2K, take two. 2K Games is back at Humble Bundle with another bundle of killer games. Born for battle? You won’t need to save your shards to activate these deals!</p>
+                            <p>Pay $1 or more for The Darkness II, Spec Ops: The Line, and Duke Nukem Forever. Plus, get a coupon for 10% off Humble Monthly for new subscribers.</p>
+                            <p>Pay more than the average price and you’ll also receive Sid Meier's Civilization V, NBA 2K16, Mafia II Director's Cut, the Battleborn Starter Skin Pack, Freedom Force, Freedom Force vs. The Third Reich, The Bureau: XCOM Declassified, and Railroad Tycoon 3. Plus, get a Humble Store Coupon for 40% off XCOM 2.</p>
+                            <p>Pay $15 or more for all of that AND Battleborn, Battleborn Platinum Currency, and Borderlands: The Pre-Sequel!</p>
+                            <p>Pay $1 or more. Normally, the total cost for these games is as much as $360. Here at Humble Bundle, though, you choose the price of $1 or more!</p>
+                            <p>Redeem on Steam. All of the games in this bundle are available on Steam for Windows, and some for Mac and Linux too. Please check out the full system requirements here prior to purchasing.</p>
+                        </div>
+                        <div th:if="${bundle.description} != null">
+                            <p th:text="${bundle.description}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

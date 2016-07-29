@@ -27,7 +27,8 @@ h6 {
 
 .mainBody {
     background-color: black;
-    height: 1080px;
+    /*height: 1080px;*/
+    margin-bottom: 0;
 }
 
 .videoCarousel-wrapper {
@@ -52,4 +53,20 @@ h6 {
     margin:0 auto;
     text-align: center;
 }
+
+.subscribt h4 {
+    color: whitesmoke;
+}
+
+.bundle-description {
+    background-color: #e4e7ed;
+    padding: 18px;
+}
+
+.bundle-description p {
+    text-align: left;
+    padding: 7px;
+}
+
+
 

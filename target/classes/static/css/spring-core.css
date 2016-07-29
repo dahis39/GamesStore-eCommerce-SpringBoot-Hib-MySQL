@@ -82,9 +82,23 @@ h6 {
     display: inline;
 }
 .fifth-row p {
-    text-align: left;
+    text-align: justify;
 }
 
+footer {
+    background: #333;
+    color: #eee;
+    font-size: 11px;
+    padding: 20px;
+}
+footer a {
+    color: #eee;
+    font-size: 11px;
+}
+ul.unstyle {
+    list-style: none;
+    padding: 0;
+}
 
 .bordered {
     border: 1px solid #b7becc;

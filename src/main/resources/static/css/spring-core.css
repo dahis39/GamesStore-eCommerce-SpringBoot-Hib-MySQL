@@ -80,6 +80,7 @@ h6 {
 }
 .second-row img, h3, input, form{
     display: inline;
+    padding-left: 10px;
 }
 .fifth-row p {
     text-align: justify;
@@ -108,5 +109,8 @@ ul.unstyle {
 }
 .header-bg-color {
     background-color: #d5d9e1;
+}
+.red-color {
+    color: red;
 }
 

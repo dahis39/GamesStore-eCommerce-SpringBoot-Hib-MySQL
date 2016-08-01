@@ -60,14 +60,14 @@ h6 {
 
 .bundle-description {
 
-    padding: 18px;
+    padding: 18px -5px;
 }
 .bundle-description p {
     text-align: left;
     padding: 7px;
 }
 
-.first-row, .second-row, .third-row, .forth-row, .fifth-row {
+.first-row, .second-row, .third-row, .forth-row {
     padding: 7px;
 }
 .first-row p {
@@ -81,6 +81,10 @@ h6 {
 .second-row img, h3, input, form{
     display: inline;
     padding-left: 10px;
+}
+.third-row p{
+    text-align: left;
+    margin: 10px 0;
 }
 .fifth-row p {
     text-align: justify;

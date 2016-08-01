@@ -5,6 +5,7 @@ import com.tom.test.services.DummyDataGeneration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -19,7 +20,12 @@ public class IndexController {
     @Autowired
     DummyDataGeneration dummyDataGeneration;
 
-    @RequestMapping({"/","index","home"})
+    @ModelAttribute("page")
+    public String module() {
+        return "index";
+    }
+
+    @RequestMapping({"/","index","home","/#"})
     public String home(Model model){
         model.addAttribute("bundle", bundleService.getById(1));
         model.addAttribute("products",bundleService.getById(1).getProducts());

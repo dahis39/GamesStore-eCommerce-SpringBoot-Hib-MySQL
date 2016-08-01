@@ -114,7 +114,10 @@ ul.unstyle {
 .header-bg-color {
     background-color: #d5d9e1;
 }
-.red-color {
-    color: red;
+.admin-link, .admin-link:visited, .admin-link:active {
+    color: #B31B1B !important;
+}
+.admin-link:hover {
+    color: red !important;
 }
 

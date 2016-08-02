@@ -17,25 +17,15 @@ public class IndexController {
     @Autowired
     BundleService bundleService;
 
-    @Autowired
-    DummyDataGeneration dummyDataGeneration;
-
     @ModelAttribute("page")
     public String module() {
         return "index";
     }
 
-    @RequestMapping({"/","index","home","/#"})
+    @RequestMapping({"/","index","home"})
     public String home(Model model){
         model.addAttribute("bundle", bundleService.getById(1));
         model.addAttribute("products",bundleService.getById(1).getProducts());
         return "index";
-    }
-
-    @RequestMapping("/generatedummydata")
-    public String generateDummyData(){
-
-        dummyDataGeneration.generateProduct();
-        return "redirect:/product/list";
     }
 }

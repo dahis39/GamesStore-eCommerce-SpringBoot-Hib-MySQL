@@ -57,12 +57,12 @@
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <div class="row">
-                    <div class="col-md-3"  th:each="product,i : ${products}">
+                    <div class="col-md-3 col-sm-6"  th:each="product,i : ${products}">
                         <div class="thumnail">
                             <a class="carousel-show-button" href="#" data-target="#videoCarousel" th:attr="data-slide-to=${i.index}">
                                 <img th:src="@{${product.imageUrl}}" height="140" width="120"/>
-                                <h6 class="text-center" th:text="${product.name}"></h6>
-                                <h4 class="text-center"><span class="glyphicon glyphicon-wrench"></span></h4>
+                                <h6 th:text="${product.name}"></h6>
+                                <h4><span class="glyphicon glyphicon-wrench"></span></h4>
                             </a>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <div class="videoCarousel-wrapper" style="margin: 60px">
+    <div class="videoCarousel-wrapper" style="margin: 60px 0;">
         <div id="videoCarousel" class="collapse carousel slide" data-ride="carousel" data-interval="false">
             <ol class="carousel-indicators">
                 <li data-target="#videoCarousel" th:each="product,i : ${products}"

@@ -1,3 +1,4 @@
+/*primary pages*/
 body {
     background-color: #222;
 }
@@ -12,28 +13,21 @@ h6 {
     color: #f7f7f7;
 }
 
-.navbar-inverse{
-    margin-bottom: 0px;
+.bg-white-color {
+    padding: 15px 0;
+    width: 100%;
+    background-color: #e4e7ed;
 }
-
-@media (min-width: 768px){
-    .twoRow .secondRow {
-        margin: 0 0 0 40%;
-    }
-}
-.twoRow .secondRow {
-    clear: left;
-}
-
+/*index page*/
 .mainBody {
     background-color: black;
-    /*height: 1080px;*/
     margin-bottom: 0;
 }
-
+.thumnail {
+    text-align: center;
+}
 .videoCarousel-wrapper {
     width: 100%;
-    position: relative;
     background-color: black;
 }
 
@@ -59,7 +53,6 @@ h6 {
 }
 
 .bundle-description {
-
     padding: 18px 0;
 }
 .bundle-description p {
@@ -90,6 +83,36 @@ h6 {
     text-align: justify;
 }
 
+.bordered {
+    border: 1px solid #b7becc;
+}
+/*admin page*/
+.panel {
+    margin: 20px 0;
+}
+.panel-body {
+    height: 150px;
+}
+.well {
+    height: 80px;
+    position: relative;
+    bottom: -50px;
+}
+
+/*Header and Footer*/
+.navbar-inverse{
+    margin-bottom: 0px;
+}
+
+@media (min-width: 768px){
+    .twoRow .secondRow {
+        margin: 0 0 0 40%;
+    }
+}
+.twoRow .secondRow {
+    clear: left;
+}
+
 footer {
     background: #333;
     color: #eee;
@@ -105,12 +128,6 @@ ul.unstyle {
     padding: 0;
 }
 
-.bordered {
-    border: 1px solid #b7becc;
-}
-.bg-white-color {
-    background-color: #e4e7ed;
-}
 .header-bg-color {
     background-color: #d5d9e1;
 }

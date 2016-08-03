@@ -34,8 +34,8 @@ public class BundleFormToBundle implements Converter<BundleForm,Bundle> {
             bundleForm.getBundlePruductIds().forEach(id -> {
                 Product product = productService.getById(id);
                 bundle.getProducts().add(product);
-                product.addBundle(bundle);
-            });
+            product.addBundle(bundle);
+        });
         }
         return bundle;
     }

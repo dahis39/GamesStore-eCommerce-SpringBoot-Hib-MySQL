@@ -1,15 +1,15 @@
 /*primary pages*/
-body {
+.bg-black {
     background-color: #222;
 }
-h2 {
+.lobster-font {
     color: #d43f3a;
     font-family: 'Lobster', cursive;
 }
-h4 {
+.color-grey {
     color: #9298a3;
 }
-h6 {
+.color-white {
     color: #f7f7f7;
 }
 

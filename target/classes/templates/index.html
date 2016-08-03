@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Core Online Test - List Products</title>
+    <title>Humble Bundle Bundle Page</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
@@ -20,9 +20,9 @@
 
     <script src="../static/js/index.js" th:src="@{js/index.js}"></script>
 </head>
-<body>
+<body class="bg-black">
 
-<div th:replace="fragments/header :: header">&nbsp;</div>
+<div th:replace="fragments/header :: header"></div>
 
 <div class="jumbotron mainBody">
     <div class="container">
@@ -37,9 +37,9 @@
         <div class="row" style="margin: 40px">
             <section class="col-md-offset-2 col-md-8">
                 <ul class="list-inline">
-                    <li><h4><span class="glyphicon glyphicon-heart"></span><abbr title="Get games collectively value up to $40."> $40 worth of awesome stuff</abbr></h4></li>
-                    <li><h4><span class="glyphicon glyphicon-tag"></span><abbr title="Name your price and increase your comtribution to upgrade your bundle."> Pay what you want</abbr></h4></li>
-                    <li><h4><span class="glyphicon glyphicon-wrench"></span><abbr title="Pay $1 or more for access to content on Steam"> Redeem on steam</abbr></h4></li>
+                    <li><h4 class="color-grey"><span class="glyphicon glyphicon-heart"></span><abbr title="Get games collectively value up to $40."> $40 worth of awesome stuff</abbr></h4></li>
+                    <li><h4 class="color-grey"><span class="glyphicon glyphicon-tag"></span><abbr title="Name your price and increase your comtribution to upgrade your bundle."> Pay what you want</abbr></h4></li>
+                    <li><h4 class="color-grey"><span class="glyphicon glyphicon-wrench"></span><abbr title="Pay $1 or more for access to content on Steam"> Redeem on steam</abbr></h4></li>
                 </ul>
             </section>
         </div>
@@ -48,7 +48,7 @@
     <div class="container" style="margin: 20px">
         <div class="row">
             <section class="col-md-offset-4 col-md-4">
-                <h2 class="text-capitalize" th:text="${bundle.name}"></h2>
+                <h2 class="text-capitalize lobster-font" th:text="${bundle.name}"></h2>
             </section>
         </div>
     </div>
@@ -61,8 +61,8 @@
                         <div class="thumnail">
                             <a class="carousel-show-button" href="#" data-target="#videoCarousel" th:attr="data-slide-to=${i.index}">
                                 <img th:src="@{${product.imageUrl}}" height="140" width="120"/>
-                                <h6 th:text="${product.name}"></h6>
-                                <h4><span class="glyphicon glyphicon-wrench"></span></h4>
+                                <h6 class="color-white" th:text="${product.name}"></h6>
+                                <h4 class="color-grey"><span class="glyphicon glyphicon-wrench"></span></h4>
                             </a>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                 <div class="item" th:each="product : ${products}">
                     <br/>
                     <iframe width="430" height="350" th:src="@{${product.youtubeUrl}}" frameborder="0"/>
-                    <h4 th:text="${product.name}"></h4>
+                    <h4 class="color-grey" th:text="${product.name}"></h4>
                     <p th:text="${product.description}"></p>
                     <br/>
                     <a class="carousel-hide-button" href="#"><span class="glyphicon glyphicon-remove close-button"></span></a>
@@ -105,7 +105,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="col-md-6">
-                    <h4>Get notified of upcoming promotions:</h4>
+                    <h4 class="color-grey">Get notified of upcoming promotions:</h4>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group">

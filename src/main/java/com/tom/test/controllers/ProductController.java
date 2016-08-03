@@ -1,5 +1,6 @@
 package com.tom.test.controllers;
 
+import com.tom.test.commands.ProductForm;
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Product;
 import com.tom.test.domain.Publisher;
@@ -40,7 +41,7 @@ public class ProductController {
 
     @RequestMapping("/new")
     public String newProduct(Model model){
-        model.addAttribute("product",new Product());
+        model.addAttribute("productForm",new ProductForm());
         model.addAttribute("developers",developerService.listAll());
         model.addAttribute("publishers",publisherService.listAll());
         return "product/productform";
@@ -48,17 +49,17 @@ public class ProductController {
 
     @RequestMapping("/edit/{id}")
     public String saveOrUpdateProduct(@PathVariable Integer id, Model model){
-        model.addAttribute("product",productService.getById(id));
+        model.addAttribute("productForm",productService.findProductFormById(id));
         model.addAttribute("developers",developerService.listAll());
         model.addAttribute("publishers",publisherService.listAll());
         return "product/productform";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String saveProduct(Product domainObject){
-        domainObject.setDeveloper(developerService.getById(domainObject.getDeveloper().getId()));
-        domainObject.setPublisher(publisherService.getById(domainObject.getPublisher().getId()));
-        Product savedProduct = productService.saveOrUpdate(domainObject);
+    public String saveProduct(ProductForm domainObject){
+        domainObject.setProductDeveloper(developerService.getById(domainObject.getProductDeveloper().getId()));
+        domainObject.setProductPublisher(publisherService.getById(domainObject.getProductPublisher().getId()));
+        Product savedProduct = productService.saveOrUpdateProductForm(domainObject);
         return "redirect:/product/show/" + savedProduct.getId();
     }
 

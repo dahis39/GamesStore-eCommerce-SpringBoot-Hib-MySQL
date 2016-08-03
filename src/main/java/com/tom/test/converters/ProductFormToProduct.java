@@ -20,7 +20,7 @@ public class ProductFormToProduct implements Converter<ProductForm ,Product>{
         product.setDescription(productForm.getProductDescription());
         product.setPrice(productForm.getProductPrice());
         product.setImageUrl(productForm.getProductImageUrl());
-        product.setYoutubeUrl(productForm.getProductYoutubeUrl().replaceAll("watch?v=","embed/"));
+        product.setYoutubeUrl(productForm.getProductYoutubeUrl().replace("watch?v=", "embed/"));
         product.setDeveloper(productForm.getProductDeveloper());
         product.setPublisher(productForm.getProductPublisher());
 

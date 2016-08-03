@@ -1,5 +1,8 @@
 package com.tom.test.services.reposervices;
 
+import com.tom.test.commands.ProductForm;
+import com.tom.test.converters.ProductFormToProduct;
+import com.tom.test.converters.ProductToProductForm;
 import com.tom.test.domain.*;
 import com.tom.test.repositories.ProductRepository;
 import com.tom.test.services.BundleService;
@@ -31,6 +34,11 @@ public class ProductServiceRepoImpl implements ProductService {
     @Autowired
     private BundleService bundleService;
 
+    @Autowired
+    private ProductFormToProduct productFormToProduct;
+    @Autowired
+    private ProductToProductForm productToProductForm;
+
     @Override
     public List<AbstartDomainClass> listAll() {
         List<AbstartDomainClass> products = new ArrayList<>();
@@ -56,5 +64,15 @@ public class ProductServiceRepoImpl implements ProductService {
             bundleService.saveOrUpdate(bundle);
         });
         productRepository.delete(id);
+    }
+
+    @Override
+    public Product saveOrUpdateProductForm(ProductForm productForm) {
+        return productRepository.save(productFormToProduct.convert(productForm));
+    }
+
+    @Override
+    public ProductForm findProductFormById(Integer id) {
+        return productToProductForm.convert(productRepository.findOne(id));
     }
 }

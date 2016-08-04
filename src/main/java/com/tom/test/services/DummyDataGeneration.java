@@ -24,6 +24,8 @@ public class DummyDataGeneration {
     @Autowired
     BundleService bundleService;
 
+    private static boolean initiated = false;
+
     public void generateProduct() {
         Developer codeForce = new Developer();
         codeForce.setName("Code Force");
@@ -83,6 +85,8 @@ public class DummyDataGeneration {
 
         bundleService.saveOrUpdate(popluarMulti);
         bundleService.saveOrUpdate(rpgs);
+
+        initiated = true;
     }
 
     private Product productGenerator(String name, String description, BigDecimal price, String imageUrl,String youtubeUrl, Developer developer, Publisher publisher){
@@ -107,5 +111,9 @@ public class DummyDataGeneration {
 
         bundle.addProduct(product);
         product.addBundle(bundle);
+    }
+
+    public boolean getInitaitedStatus(){
+        return initiated;
     }
 }

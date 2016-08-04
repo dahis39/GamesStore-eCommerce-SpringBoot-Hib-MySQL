@@ -40,7 +40,7 @@ public class DeveloperController {
 
 
     @ModelAttribute("publishers")
-    public List<AbstartDomainClass> populatePublisherList(){return publisherService.listAll();}
+    public List<Publisher> populatePublisherList(){return (List<Publisher>) publisherService.listAll();}
 
     @RequestMapping({"/","/list"})
     public String list(Model model){

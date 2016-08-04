@@ -1,7 +1,8 @@
 package com.tom.test.domain;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tom on 6/8/2016.
@@ -10,11 +11,21 @@ import javax.persistence.Entity;
 public class User extends AbstartDomainClass {
     private String userName;
     private String email;
+    @Transient
     private String password;
     private String encryptedPassword;
 
     @Embedded
-    private Customer customer;
+    private Address billingAddress;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable
+    // ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "user_id"),
+    //     inverseJoinColumns = @joinColumn(name = "role_id"))
+    private List<Role> roles = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
 
     public String getUserName() {
         return userName;
@@ -40,19 +51,55 @@ public class User extends AbstartDomainClass {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role){
+        if(!this.roles.contains(role)){
+            this.roles.add(role);
+        }
+
+        if(!role.getUsers().contains(this)){
+            role.getUsers().add(this);
+        }
+    }
+
+    public void removeRole(Role role){
+        this.roles.remove(role);
+        role.getUsers().remove(this);
+    }
+
+    public void removeAllRoles(){
+        roles.forEach(role -> role.getUsers().remove(this));
+        this.roles = null;
     }
 }

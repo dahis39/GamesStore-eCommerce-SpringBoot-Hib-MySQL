@@ -9,7 +9,7 @@ import java.util.List;
  * Created by tom on 6/8/2016.
  */
 public interface CRUDservice<T> {
-    List<AbstartDomainClass> listAll();
+    List<?> listAll();
 
     T getById(Integer id);
 

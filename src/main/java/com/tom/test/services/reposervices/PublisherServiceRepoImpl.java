@@ -21,8 +21,8 @@ public class PublisherServiceRepoImpl implements PublisherService {
     private PublisherRepository publisherRepository;
 
     @Override
-    public List<AbstartDomainClass> listAll() {
-        ArrayList<AbstartDomainClass> publishers = new ArrayList<>();
+    public List<?> listAll() {
+        ArrayList<Publisher> publishers = new ArrayList<>();
         publisherRepository.findAll().forEach(publishers::add);
         return publishers;
     }

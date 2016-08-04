@@ -34,7 +34,7 @@ public class AdminCnontroller {
     @RequestMapping("/generatedummydata")
     public String generateDummyData(){
         if (!dummyDataGeneration.getInitaitedStatus())
-            dummyDataGeneration.generateProduct();
+            dummyDataGeneration.generate();
         return "redirect:/admin";
     }
 }

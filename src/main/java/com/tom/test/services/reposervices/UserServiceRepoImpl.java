@@ -2,6 +2,7 @@ package com.tom.test.services.reposervices;
 
 import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.User;
+import com.tom.test.repositories.RoleRepository;
 import com.tom.test.repositories.UserRepository;
 import com.tom.test.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ public class UserServiceRepoImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
-    public List<AbstartDomainClass> listAll() {
-        List<AbstartDomainClass> users = new ArrayList<>();
+    public List<?> listAll() {
+        List<User> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add);
         return users;
     }
@@ -38,6 +41,9 @@ public class UserServiceRepoImpl implements UserService {
 
     @Override
     public void delete(Integer id) {
+        User temp = userRepository.findOne(id);
+        temp.removeAllRoles();
+        userRepository.save(temp);
         userRepository.delete(id);
     }
 }

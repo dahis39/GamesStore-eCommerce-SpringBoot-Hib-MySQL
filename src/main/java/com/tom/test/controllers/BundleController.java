@@ -39,9 +39,9 @@ public class BundleController {
     private BundleToBundleForm bundleToBundleForm;
 
     @ModelAttribute("sortedByDateProductList")
-    public List<AbstartDomainClass> populateProductList(){
-        List<AbstartDomainClass> productList = productService.listAll();
-        return listSortingService.SortListByDateCreated(productList);
+    public List<?> populateProductList(){
+        List<AbstartDomainClass> productList = (List<AbstartDomainClass>) productService.listAll();
+        return  listSortingService.SortListByDateCreated(productList);
     }
 
     @RequestMapping({"/list","/"})

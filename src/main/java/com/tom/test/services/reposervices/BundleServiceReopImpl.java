@@ -21,8 +21,8 @@ public class BundleServiceReopImpl implements BundleService {
     private BundleRepository bundleRepository;
 
     @Override
-    public List<AbstartDomainClass> listAll() {
-        List<AbstartDomainClass> bundles = new ArrayList<>();
+    public List<?> listAll() {
+        List<Bundle> bundles = new ArrayList<>();
         bundleRepository.findAll().forEach(bundles::add);
         return bundles;
     }

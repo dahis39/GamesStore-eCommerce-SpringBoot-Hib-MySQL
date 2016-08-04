@@ -29,8 +29,8 @@ public class DeveloperServiceRepoImpl implements DeveloperService {
     private DeveloperToDeveloperForm developerToDeveloperForm;
 
     @Override
-    public List<AbstartDomainClass> listAll() {
-        ArrayList<AbstartDomainClass> developers = new ArrayList<>();
+    public List<?> listAll() {
+        ArrayList<Developer> developers = new ArrayList<>();
         developerRepository.findAll().forEach(developers::add);
         return developers;
     }

@@ -1,13 +1,11 @@
 package com.tom.test.services;
 
-import com.tom.test.domain.Bundle;
-import com.tom.test.domain.Developer;
-import com.tom.test.domain.Product;
-import com.tom.test.domain.Publisher;
+import com.tom.test.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by tom on 7/6/2016.
@@ -23,10 +21,89 @@ public class DummyDataGeneration {
     PublisherService publisherService;
     @Autowired
     BundleService bundleService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    RoleService roleService;
 
     private static boolean initiated = false;
 
-    public void generateProduct() {
+    public void generate(){
+        generateProductsAndBundles();
+        generateRoles();
+        generateUsers();
+        assignRolesToUsers();
+//        generateCarts();
+
+        initiated = true;
+    }
+
+    private void generateCarts() {
+        List<User> users = (List<User>) userService.listAll();
+        List<Product> products = (List<Product>) productService.listAll();
+
+        users.forEach(user -> {
+            user.setCart(new Cart());
+            CartDetail cartDetail = new CartDetail();
+            cartDetail.setProduct(products.get(0));
+            cartDetail.setQuantity(2);
+            user.getCart().addCartDetail(cartDetail);
+            userService.saveOrUpdate(user);
+        });
+    }
+
+    private void generateRoles(){
+        Role customer = new Role();
+        customer.setRole("CUSTOMER");
+        roleService.saveOrUpdate(customer);
+
+        Role admin = new Role();
+        admin.setRole("ADMIN");
+        roleService.saveOrUpdate(admin);
+    }
+
+    private void generateUsers(){
+        User user1 = new User();
+        user1.setUserName("customer1");
+        user1.setEmail("customer1@gmail.com");
+        user1.setPassword("123");
+        userService.saveOrUpdate(user1);
+
+        User user2 = new User();
+        user2.setUserName("customer2");
+        user2.setEmail("customer2@gmail.com");
+        user2.setPassword("123");
+        userService.saveOrUpdate(user2);
+
+        User user3 = new User();
+        user3.setUserName("admin");
+        user3.setEmail("admin1@gmail.com");
+        user3.setPassword("password");
+        userService.saveOrUpdate(user3);
+    }
+
+    private void assignRolesToUsers(){
+        List<User> users = (List<User>)userService.listAll();
+        List<Role> roles = (List<Role>)roleService.listAll();
+
+        roles.forEach(role -> {
+            if (role.getRole().equals("CUSTOMER")){
+                users.forEach(user -> {
+                    user.addRole(role);
+                    userService.saveOrUpdate(user);
+                });
+            } else if (role.getRole().equals("ADMIN")){
+                users.forEach(user -> {
+                    if (user.getUserName().equals("admin")){
+                        user.addRole(role);
+                        userService.saveOrUpdate(user);
+                    }
+                });
+            }
+        });
+    }
+
+    private void generateProductsAndBundles() {
         Developer codeForce = new Developer();
         codeForce.setName("Code Force");
         Developer valveDev = new Developer();
@@ -85,8 +162,6 @@ public class DummyDataGeneration {
 
         bundleService.saveOrUpdate(popluarMulti);
         bundleService.saveOrUpdate(rpgs);
-
-        initiated = true;
     }
 
     private Product productGenerator(String name, String description, BigDecimal price, String imageUrl,String youtubeUrl, Developer developer, Publisher publisher){

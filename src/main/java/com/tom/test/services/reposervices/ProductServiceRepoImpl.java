@@ -40,8 +40,8 @@ public class ProductServiceRepoImpl implements ProductService {
     private ProductToProductForm productToProductForm;
 
     @Override
-    public List<AbstartDomainClass> listAll() {
-        List<AbstartDomainClass> products = new ArrayList<>();
+    public List<?> listAll() {
+        List<Product> products = new ArrayList<>();
         productRepository.findAll().forEach(products::add);
         return products;
     }

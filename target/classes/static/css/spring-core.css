@@ -21,6 +21,9 @@
 .display-inline {
     display: inline;
 }
+.header-bg-color {
+    background-color: #d5d9e1;
+}
 
 /*index page*/
 .mainBody {
@@ -103,6 +106,22 @@
     bottom: -50px;
 }
 
+/*store page*/
+.product-container-outer {
+    height: 150px;
+}
+.product-container-padding {
+    height: 140px;
+    padding: 5px;
+}
+.product-container-inner {
+    height: 140px;
+}
+.move-to-bottom-right {
+    position: relative;
+    left: 160px;
+    top: 35px;
+}
 
 /*Header and Footer*/
 .navbar-inverse{
@@ -131,10 +150,6 @@ footer a {
 ul.unstyle {
     list-style: none;
     padding: 0;
-}
-
-.header-bg-color {
-    background-color: #d5d9e1;
 }
 .admin-link, .admin-link:visited, .admin-link:active {
     color: #B31B1B !important;

@@ -20,8 +20,39 @@
 
     <script src="../static/js/index.js" th:src="@{js/index.js}"></script>
 </head>
-<body class=>
+<body>
 <div th:replace="fragments/header :: header"></div>
+
+<div class="bg-white-color">
+    <div class="container-fluid">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="https://humblebundle-a.akamaihd.net/misc/files/hashed/1931cbbd2fa950d8ab7b098c1d3b92f8db7acd29.png" />
+                    <h5><strong>$4,769,000</strong> contributed to charity</h5>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 product-container-outer" th:each="product : ${products}">
+                    <div class="product-container-padding">
+                        <div class="header-bg-color product-container-inner" style="height: 140px">
+                            <img class="pull-left" th:src="@{${product.imageUrl}}" height="140" width="120"/>
+                            <h3 th:text="${product.name}"></h3>
+                            <h4 th:text="${product.description}"></h4>
+                            <div class="move-to-bottom-right">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a href="" class="btn btn-danger btn-sm" th:text="${product.price} + ' BUY NOW'"></a>
+                                    <a href="" class="btn btn-default btn-sm">Add to Wish List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

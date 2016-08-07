@@ -7,23 +7,23 @@
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
 
     <link href="../static/bootstrap/bootstrap.min.css"
-          th:href="@{bootstrap/bootstrap.min.css}"
+          th:href="@{/bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
 
     <link href="../static/css/spring-core.css"
-          th:href="@{css/spring-core.css}"
+          th:href="@{/css/spring-core.css}"
           rel="stylesheet" media="screen" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script src="../static/js/index.js" th:src="@{js/index.js}"></script>
+    <script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-<div class="bg-white-color">
+<div class="bg-white-color relative">
     <div class="container-fluid">
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
@@ -43,7 +43,10 @@
                             <div class="move-to-bottom-right">
                                 <div class="btn-group" role="group" aria-label="...">
                                     <a href="" class="btn btn-danger btn-sm" th:text="${product.price} + ' BUY NOW'"></a>
-                                    <a href="" class="btn btn-default btn-sm">Add to Wish List</a>
+                                    <form th:action="@{/store}" method="post">
+                                        <button class="btn btn-default btn-sm" type="submit" name="addToCart" th:value="${product.id}" >Add To Cart</button>
+                                    </form>
+                                    <a href="" class="btn btn-warning btn-sm">Wish List</a>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +55,12 @@
             </div>
         </div>
     </div>
+    <div class="top-right-cart">
+        <a href="" class="btn btn-default" th:text="${cart.cartDetails.size()}"></a>
+    </div>
 </div>
+
+<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 </html>

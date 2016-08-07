@@ -36,8 +36,6 @@ public class DeveloperController {
 
     @Autowired
     DeveloperFormToDeveloper developerFormToDeveloper;
-    @Autowired
-
 
     @ModelAttribute("publishers")
     public List<Publisher> populatePublisherList(){return (List<Publisher>) publisherService.listAll();}
@@ -69,7 +67,6 @@ public class DeveloperController {
     @RequestMapping(params = {"removeProduct"})
     public String removeProduct(final DeveloperForm developerForm, final HttpServletRequest req){
         final Integer productId = Integer.valueOf(req.getParameter("removeProduct"));
-        productService.delete(developerForm.getDeveloperProducts().get(productId.intValue()).getId());
         developerForm.getDeveloperProducts().remove(productId.intValue());
         return "developer/developerform";
     }

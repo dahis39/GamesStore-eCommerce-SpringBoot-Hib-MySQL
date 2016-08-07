@@ -24,6 +24,9 @@
 .header-bg-color {
     background-color: #d5d9e1;
 }
+.relative {
+    position: relative;
+}
 
 /*index page*/
 .mainBody {
@@ -119,8 +122,13 @@
 }
 .move-to-bottom-right {
     position: relative;
-    left: 160px;
+    left: 120px;
     top: 35px;
+}
+.top-right-cart {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /*Header and Footer*/
@@ -157,4 +165,3 @@ ul.unstyle {
 .admin-link:hover {
     color: red !important;
 }
-

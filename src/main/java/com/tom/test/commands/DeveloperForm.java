@@ -1,7 +1,9 @@
 package com.tom.test.commands;
 
 import com.tom.test.domain.Product;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class DeveloperForm {
     private Integer developerId;
     private Integer developerVersion;
+    @NotEmpty
     private String developerName;
     private String developerDescription;
     private String developerImageUrl;

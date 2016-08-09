@@ -1,6 +1,10 @@
 package com.tom.test.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**

@@ -12,11 +12,13 @@ import com.tom.test.services.sortList.ListSortingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -69,7 +71,10 @@ public class BundleController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String saveOrUpdateBundle(BundleForm domainObject){
+    public String saveOrUpdateBundle(@Valid BundleForm domainObject, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "bundle/bundleform";
+        }
         System.out.println(domainObject.getBundlePruductIds());
         Bundle savedBundle = bundleService.saveOrUpdate(bundleFormToBundle.convert(domainObject));
         return "redirect:/bundle/show/" + savedBundle.getId();

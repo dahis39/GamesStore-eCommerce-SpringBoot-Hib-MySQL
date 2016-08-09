@@ -26,12 +26,24 @@
     <h2>Developer Details</h2>
     <div>
         <form class="form-horizontal" th:object="${developerForm}" th:action="@{/developer}" method="post">
+
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <h4>Please Correct values in error below:</h4>
+            </div>
+
             <input type="hidden" th:field="*{developerId}"/>
             <input type="hidden" th:field="*{developerVersion}"/>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Name:</label>
+
+            <div class="form-group" th:class="${#fields.hasErrors('developerName')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-laber">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{developerName}"/>
+                    <input type="text" class="form-control" th:field="*{developerName}" th:onerror="has-error" />
+
+                    <span class="help-block">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('developerName')}" th:text="${err}"></li>
+                        </ul>
+                    </span>
                 </div>
             </div>
             <div class="form-group">
@@ -46,6 +58,7 @@
                     <input type="text" class="form-control" th:field="*{developerImageUrl}"/>
                 </div>
             </div>
+
             <div class="container-fluid">
                 <button class="btn btn-success pull-right" type="submit" name="addProduct" >Add Product</button>
             </div>
@@ -56,6 +69,7 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>Image URL</th>
+                        <th>Youtube Url</th>
                         <th>Publisher</th>
                         <th></th>
                     </tr>
@@ -64,6 +78,7 @@
                         <input type="hidden" th:field="*{developerProducts[__${i.index}__].version}"/>
                         <input type="hidden" th:field="*{developerProducts[__${i.index}__].developer}"/>
                         <input type="hidden" th:field="*{developerProducts[__${i.index}__].publisher}"/>
+
                         <td>
                             <input type="text" th:field="*{developerProducts[__${i.index}__].name}"/>
                         </td>
@@ -75,6 +90,9 @@
                         </td>
                         <td>
                             <input type="text" th:field="*{developerProducts[__${i.index}__].imageUrl}"/>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{developerProducts[__${i.index}__].youtubeUrl}"/>
                         </td>
                         <td>
                             <select th:field="*{developerProducts[__${i.index}__].publisher.id}">

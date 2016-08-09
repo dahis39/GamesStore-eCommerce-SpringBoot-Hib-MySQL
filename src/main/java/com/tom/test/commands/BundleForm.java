@@ -1,7 +1,10 @@
 package com.tom.test.commands;
 
 import com.tom.test.domain.Product;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +15,13 @@ import java.util.List;
 public class BundleForm {
     private Integer bundleId;
     private Integer bundleVersion;
+    @NotEmpty
     private String bundleName;
     private String bundleDescription;
+    @NotEmpty
     private String bundleImageUrl;
+    @NotNull
+    @DecimalMin("0.00")
     private BigDecimal bundlePrice;
     private List<Integer> bundlePruductIds = new ArrayList<>();
 

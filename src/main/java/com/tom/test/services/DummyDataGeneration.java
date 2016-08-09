@@ -128,10 +128,11 @@ public class DummyDataGeneration {
 
         Bundle popluarMulti = new Bundle();
         popluarMulti.setName("Popular Multiplayers");
-        popluarMulti.setBackgroundUrl("http://i.imgur.com/aitnt7i.png");
+        popluarMulti.setImageUrl("http://i.imgur.com/aitnt7i.png");
 
         Bundle rpgs = new Bundle();
         rpgs.setName("Role Playing Games");
+        rpgs.setImageUrl("http://www.wallpapersxl.com/get/2532890");
 
 
         Developer nullDev = new Developer();

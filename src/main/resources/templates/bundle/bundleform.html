@@ -26,18 +26,33 @@
     <h2>Bundle Details</h2>
     <div>
         <form class="form-horizontal" th:object="${bundleForm}" th:action="@{/bundle}" method="post">
+
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <h4>Please Correct values in error below:</h4>
+            </div>
+
             <input type="hidden" th:field="*{bundleId}"/>
             <input type="hidden" th:field="*{bundleVersion}"/>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Name:</label>
+            <div class="form-group" th:class="${#fields.hasErrors('bundleName')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-laber">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{bundleName}"/>
+                    <input type="text" class="form-control" th:field="*{bundleName}" th:onerror="has-error" />
+                    <span class="help-block">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('bundleName')}" th:text="${err}"></li>
+                        </ul>
+                    </span>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Price:</label>
+            <div class="form-group" th:class="${#fields.hasErrors('bundlePrice')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-laber">Price:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{bundlePrice}"/>
+                    <input type="text" class="form-control" th:field="*{bundlePrice}" th:onerror="has-error" />
+                    <span class="help-block">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('bundlePrice')}" th:text="${err}"></li>
+                        </ul>
+                    </span>
                 </div>
             </div>
             <div class="form-group">
@@ -46,10 +61,15 @@
                     <input type="text" class="form-control" th:field="*{bundleDescription}"/>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Image Url:</label>
+            <div class="form-group" th:class="${#fields.hasErrors('bundleImageUrl')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-laber">Background Image Url:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{bundleImageUrl}"/>
+                    <input type="text" class="form-control" th:field="*{bundleImageUrl}" th:onerror="has-error" />
+                    <span class="help-block">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('bundleImageUrl')}" th:text="${err}"></li>
+                        </ul>
+                    </span>
                 </div>
             </div>
 

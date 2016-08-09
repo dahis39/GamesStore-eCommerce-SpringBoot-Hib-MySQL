@@ -1,6 +1,9 @@
 package com.tom.test.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +12,11 @@ import java.util.List;
  */
 @Entity
 public class User extends AbstartDomainClass {
+    @NotEmpty
     private String userName;
     private String email;
     @Transient
+    @NotEmpty
     private String password;
     private String encryptedPassword;
 

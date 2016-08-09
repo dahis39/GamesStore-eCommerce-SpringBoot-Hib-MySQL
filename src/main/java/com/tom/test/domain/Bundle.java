@@ -12,8 +12,6 @@ import java.util.Set;
 @Entity
 public class Bundle extends CommonGoodDetails{
 
-    private String backgroundUrl;
-
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "BUNDLE_PRODUCT",
@@ -28,14 +26,6 @@ public class Bundle extends CommonGoodDetails{
 
     public void setProducts(Set<Product> products) {
         this.products = products;
-    }
-
-    public String getBackgroundUrl() {
-        return backgroundUrl;
-    }
-
-    public void setBackgroundUrl(String backgroundUrl) {
-        this.backgroundUrl = backgroundUrl;
     }
 
     public void addProduct(Product product){

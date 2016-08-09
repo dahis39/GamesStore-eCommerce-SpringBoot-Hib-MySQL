@@ -2,7 +2,10 @@ package com.tom.test.commands;
 
 import com.tom.test.domain.Developer;
 import com.tom.test.domain.Publisher;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -11,10 +14,15 @@ import java.math.BigDecimal;
 public class ProductForm {
     private Integer productId;
     private Integer productVersion;
+    @NotEmpty
     private String productName;
     private String productDescription;
+    @NotEmpty
     private String productImageUrl;
+    @NotEmpty
     private String productYoutubeUrl;
+    @NotNull
+    @DecimalMin("0.00")
     private BigDecimal productPrice;
     private Developer productDeveloper;
     private Publisher productPublisher;

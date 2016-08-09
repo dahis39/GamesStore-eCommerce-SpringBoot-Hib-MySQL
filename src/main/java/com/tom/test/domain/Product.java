@@ -1,6 +1,7 @@
 package com.tom.test.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Entity
 public class Product extends CommonGoodDetails {
 
+    @NotNull
     private String youtubeUrl;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

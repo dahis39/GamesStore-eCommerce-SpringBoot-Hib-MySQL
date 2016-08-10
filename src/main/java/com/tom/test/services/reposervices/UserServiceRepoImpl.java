@@ -1,5 +1,8 @@
 package com.tom.test.services.reposervices;
 
+import com.tom.test.commands.UserForm;
+import com.tom.test.converters.UserFormToUser;
+import com.tom.test.converters.UserToUserForm;
 import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.User;
 import com.tom.test.repositories.RoleRepository;
@@ -20,7 +23,9 @@ public class UserServiceRepoImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RoleRepository roleRepository;
+    private UserFormToUser userFormToUser;
+    @Autowired
+    private UserToUserForm userToUserForm;
 
     @Override
     public List<?> listAll() {
@@ -35,8 +40,18 @@ public class UserServiceRepoImpl implements UserService {
     }
 
     @Override
+    public UserForm findUserFormById(Integer id) {
+        return userToUserForm.convert(userRepository.findOne(id));
+    }
+
+    @Override
     public User saveOrUpdate(User domainObject) {
         return userRepository.save(domainObject);
+    }
+
+    @Override
+    public User saveOrUpdateUserForm(UserForm userForm) {
+        return userRepository.save(userFormToUser.convert(userForm));
     }
 
     @Override

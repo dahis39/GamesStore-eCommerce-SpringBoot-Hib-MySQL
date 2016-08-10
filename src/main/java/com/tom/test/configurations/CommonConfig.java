@@ -1,5 +1,7 @@
 package com.tom.test.configurations;
 
+import org.jasypt.util.binary.StrongBinaryEncryptor;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -22,5 +24,11 @@ public class CommonConfig extends WebMvcAutoConfiguration{
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
+    }
+
+    @Bean
+    public StrongPasswordEncryptor strongEncryptor(){
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        return encryptor;
     }
 }

@@ -1,5 +1,7 @@
 package com.tom.test.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -9,6 +11,7 @@ import java.util.*;
 @Entity
 public class Publisher extends AbstartDomainClass{
 
+    @NotEmpty
     private String name;
     private String description;
     private String imageUrl;

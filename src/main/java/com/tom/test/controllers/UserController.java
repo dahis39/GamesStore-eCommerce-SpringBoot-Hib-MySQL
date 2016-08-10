@@ -1,5 +1,6 @@
 package com.tom.test.controllers;
 
+import com.tom.test.commands.UserForm;
 import com.tom.test.domain.User;
 import com.tom.test.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,16 @@ public class UserController {
 
     @RequestMapping("/new")
     public String createUser(Model model){
-        model.addAttribute("user",new User());
+        model.addAttribute("userForm",new UserForm());
         return "user/userform";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String saveOrUpdateUser(@Valid User user, BindingResult bindingResult){
+    public String saveOrUpdateUser(@Valid UserForm userForm, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return  "user/userform";
         }
-        User savedUser = userService.saveOrUpdate(user);
+        User savedUser = userService.saveOrUpdateUserForm(userForm);
         return "redirect:/user/show/" + savedUser.getId();
     }
 
@@ -50,7 +51,7 @@ public class UserController {
 
     @RequestMapping("/edit/{id}")
     public String editUser(@PathVariable Integer id,Model model){
-        model.addAttribute("user",userService.getById(id));
+        model.addAttribute("userForm",userService.findUserFormById(id));
         return "user/userform";
     }
 

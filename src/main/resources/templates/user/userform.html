@@ -25,14 +25,15 @@
 
     <h2>User Details</h2>
     <div>
-        <form class="form-horizontal" th:object="${user}" th:action="@{/user}" method="post">
+        <form class="form-horizontal" th:object="${userForm}" th:action="@{/user}" method="post">
 
             <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
                 <h4>Please Correct values in error below:</h4>
             </div>
 
-            <input type="hidden" th:field="*{id}"/>
-            <input type="hidden" th:field="*{version}"/>
+            <input type="hidden" th:field="*{userId}"/>
+            <input type="hidden" th:field="*{userVersion}"/>
+            <input type="hidden" th:field="*{roles}"/>
 
 
             <div class="form-group" th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
@@ -47,14 +48,14 @@
                     </span>
                 </div>
             </div>
-            <div class="form-group" th:class="${#fields.hasErrors('password')} ? 'form-group has-error' : 'form-group'">
+            <div class="form-group" th:class="${#fields.hasErrors('userPassword')} ? 'form-group has-error' : 'form-group'">
                 <label class="col-sm-2 control-laber">Password:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{password}" th:onerror="has-error" />
+                    <input type="text" class="form-control" th:field="*{userPassword}" th:onerror="has-error" />
 
                     <span class="help-block">
                         <ul>
-                            <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
+                            <li th:each="err : ${#fields.errors('userPassword')}" th:text="${err}"></li>
                         </ul>
                     </span>
                 </div>
@@ -62,37 +63,37 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Email:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{email}"/>
+                    <input type="text" class="form-control" th:field="*{userEmail}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Address Line 1:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{billingAddress.addressLine1}"/>
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.addressLine1}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Address Line 2:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{billingAddress.addressLine2}"/>
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.addressLine2}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">City:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{billingAddress.city}"/>
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.city}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">State:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{billingAddress.state}"/>
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.state}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">ZipCode:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{billingAddress.zipCode}"/>
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.zipCode}"/>
                 </div>
             </div>
             <div class="row">

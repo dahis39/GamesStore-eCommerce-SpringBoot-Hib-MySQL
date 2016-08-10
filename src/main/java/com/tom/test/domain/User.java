@@ -12,13 +12,9 @@ import java.util.List;
  */
 @Entity
 public class User extends AbstartDomainClass {
-    @NotEmpty
     private String userName;
     private String email;
-    @Transient
-    @NotEmpty
     private String password;
-    private String encryptedPassword;
 
     @Embedded
     private Address billingAddress;
@@ -46,14 +42,6 @@ public class User extends AbstartDomainClass {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEncryptedPassword() {
-        return encryptedPassword;
-    }
-
-    public void setEncryptedPassword(String encryptedPassword) {
-        this.encryptedPassword = encryptedPassword;
     }
 
     public String getEmail() {

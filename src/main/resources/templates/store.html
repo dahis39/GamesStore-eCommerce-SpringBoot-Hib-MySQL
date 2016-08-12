@@ -26,6 +26,11 @@
 <div class="bg-white-color relative">
     <div class="container-fluid">
         <div class="col-md-8 col-md-offset-2">
+            <div th:unless="${initaited}">
+                <div class="row">
+                    <a class="btn btn-sm btn-danger" href="#" th:href="@{/generatedummydata?comeFrom=store}">Dummy Data Generation</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                     <img src="https://humblebundle-a.akamaihd.net/misc/files/hashed/1931cbbd2fa950d8ab7b098c1d3b92f8db7acd29.png" />

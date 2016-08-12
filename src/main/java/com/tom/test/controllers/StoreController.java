@@ -2,6 +2,7 @@ package com.tom.test.controllers;
 
 import com.tom.test.domain.Cart;
 import com.tom.test.domain.CartDetail;
+import com.tom.test.services.DummyDataGeneration;
 import com.tom.test.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
@@ -24,6 +25,8 @@ public class StoreController {
 
     @Autowired
     ProductService productService;
+    @Autowired
+    DummyDataGeneration dummyDataGeneration;
 
     @ModelAttribute("page")
     public String module() {
@@ -45,6 +48,8 @@ public class StoreController {
 
     @RequestMapping("/store")
     public String store(Model model){
+        boolean dataStatus = dummyDataGeneration.getInitaitedStatus();
+        model.addAttribute("initaited",dataStatus);
         model.addAttribute("products",productService.listAll());
         if (!model.containsAttribute("cart")){
             model.addAttribute("cart",new Cart());

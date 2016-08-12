@@ -65,6 +65,11 @@
             <version>1.9.2</version>
             <scope>compile</scope>
         </dependency>
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-springsecurity3</artifactId>
+			<version>1.9.0</version>
+		</dependency>
 
 	</dependencies>
 	

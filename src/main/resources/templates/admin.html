@@ -102,7 +102,7 @@
                     <div class="panel-body">
                         <div class="btn-group-vertical" role="group" aria-label="...">
                             <div th:unless="${initaited}">
-                                <a class="btn btn-sm btn-danger" href="#" th:href="@{/generatedummydata}">Dummy Data Generation</a>
+                                <a class="btn btn-sm btn-danger" href="#" th:href="@{/generatedummydata?comeFrom=admin}">Dummy Data Generation</a>
                             </div>
                             <a class="btn btn-sm btn-info" href="#" th:href="@{/publisher/list}" target="_blank">Find Un-assigned Dev/Pub
                                 Products</a>

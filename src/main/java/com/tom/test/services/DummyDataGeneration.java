@@ -1,6 +1,8 @@
 package com.tom.test.services;
 
 import com.tom.test.domain.*;
+import com.tom.test.services.security.EncryptionService;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,8 @@ public class DummyDataGeneration {
     UserService userService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    EncryptionService encryptionService;
 
     private static boolean initiated = false;
 
@@ -66,19 +70,19 @@ public class DummyDataGeneration {
         User user1 = new User();
         user1.setUserName("customer1");
         user1.setEmail("customer1@gmail.com");
-        user1.setPassword("123");
+        user1.setPassword(encryptionService.encryptString("123"));
         userService.saveOrUpdate(user1);
 
         User user2 = new User();
         user2.setUserName("customer2");
         user2.setEmail("customer2@gmail.com");
-        user2.setPassword("123");
+        user2.setPassword(encryptionService.encryptString("123"));
         userService.saveOrUpdate(user2);
 
         User user3 = new User();
         user3.setUserName("admin");
         user3.setEmail("admin1@gmail.com");
-        user3.setPassword("password");
+        user3.setPassword(encryptionService.encryptString("password"));
         userService.saveOrUpdate(user3);
     }
 

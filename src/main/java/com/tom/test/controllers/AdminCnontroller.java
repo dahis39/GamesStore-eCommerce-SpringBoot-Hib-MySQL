@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by tom on 8/1/2016.
@@ -31,10 +32,16 @@ public class AdminCnontroller {
         return "admin";
     }
 
-    @RequestMapping("/generatedummydata")
-    public String generateDummyData(){
+    @RequestMapping(value = "/generatedummydata", params = "comeFrom")
+    public String generateDummyData(@RequestParam("comeFrom")String comeFrom){
         if (!dummyDataGeneration.getInitaitedStatus())
             dummyDataGeneration.generate();
-        return "redirect:/admin";
+        if (comeFrom.equals("admin")){
+            return "redirect:/admin";
+        }
+        else if (comeFrom.equals("store")){
+            return "redirect:/store";
+        }
+        return "redirect:/index";
     }
 }

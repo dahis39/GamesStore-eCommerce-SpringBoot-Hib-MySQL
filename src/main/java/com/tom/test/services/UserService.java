@@ -9,4 +9,5 @@ import com.tom.test.domain.User;
 public interface UserService extends CRUDservice<User> {
     User saveOrUpdateUserForm(UserForm userForm);
     UserForm findUserFormById(Integer id);
+    User findByUserName(String userName);
 }

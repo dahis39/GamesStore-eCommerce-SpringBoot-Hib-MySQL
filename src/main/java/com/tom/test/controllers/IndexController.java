@@ -22,6 +22,16 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/access_denied")
+    public String notAuth(){
+        return "access_denied";
+    }
+
+    @RequestMapping("login")
+    public String loginForm(){
+        return "login";
+    }
+
     @RequestMapping({"/","index","home"})
     public String home(Model model){
         model.addAttribute("bundle", bundleService.getById(1));

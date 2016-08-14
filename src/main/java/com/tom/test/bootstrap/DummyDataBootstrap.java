@@ -17,8 +17,15 @@ import java.math.BigDecimal;
  */
 //@Component
 //public class DummyDataBootstrap implements ApplicationListener<ContextRefreshedEvent>{
-//
 //    @Autowired
+//    DummyDataGeneration dummyDataGeneration;
+//
+//    @Override
+//    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+//        dummyDataGeneration.generate();
+//    }
+
+    //    @Autowired
 //    ProductService productService;
 //    @Autowired
 //    DeveloperService developerService;

@@ -60,8 +60,9 @@
             </div>
         </div>
     </div>
-    <div class="top-right-cart">
-        <a href="" class="btn btn-default" th:text="${cart.cartDetails.size()}"></a>
+    <div class="top-right-cart btn-group-vertical">
+        <a href="" class="btn btn-default" th:text="'Added To Cart: ' + ${cart.cartDetails.size()}"></a>
+        <a href="" class="btn btn-success" th:href="@{/cart}">Check Out</a>
     </div>
 </div>
 

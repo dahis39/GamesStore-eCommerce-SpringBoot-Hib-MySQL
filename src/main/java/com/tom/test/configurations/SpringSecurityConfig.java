@@ -58,6 +58,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/console/**").permitAll()
                 .antMatchers("/store").permitAll()
                 .antMatchers("/index").permitAll()
+                .antMatchers("/cart").permitAll()
                 .antMatchers("/generatedummydata").permitAll()
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .antMatchers("/framents/**").permitAll()

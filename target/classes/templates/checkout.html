@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Humble Bundle Bundle Page</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
+
+    <link href="../static/bootstrap/bootstrap.min.css"
+          th:href="@{/bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../static/css/spring-core.css"
+          th:href="@{/css/spring-core.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container" sec:authorize="isAuthenticated()" style="padding-top: 10vh; padding-bottom: 15vh">
+
+    <h1>Checkout</h1>
+    <h3 th:text="'Hello! Dear user: ' + ${user.userName}"></h3>
+    <br/>
+    <h3 th:text="'Your email: ' + ${user.email}"></h3>
+    <hr/>
+    <table class="table table-striped table-hover">
+        <tbody>
+        <tr>
+            <th colspan="2">Item</th>
+            <th>Total Price</th>
+        </tr>
+        <tr th:each="cartDetail : ${user.cart.cartDetails}">
+            <td colspan="2" th:text="${cartDetail.product.name}"> Product Name </td>
+            <td th:text="'$' + ${cartDetail.product.price}"> Price </td>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">VAT x0%</span></th>
+            <th>£x0.00</th>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">Total</span></th>
+            <th th:text="${totalPrice}"> Total Price </th>
+        </tr>
+        <tr>
+            <td><a th:href="@{/store}" class="pull-left btn btn-default"><span class="glyphicon glyphicon-shopping-cart"/> Continue Shopping </a></td>
+            <td><a href="#" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-credit-card"/> Pay with Card </a></td>
+            <td><a href="#" class="pull-right"><img src="http://www.hikashop.com/images/payment/paypalexpress.png" height="34px" width="130px"/></a></td>
+            <td><a href="#" class="pull-right"><img src="https://images-na.ssl-images-amazon.com/images/G/01/Iris3_US/en_US/inca/images/btnPaywAMZN-gld-Desktop-2x.png" height="34px" width="130px"/></a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="container" sec:authorize="isAnonymous()" style="padding-top: 10vh; padding-bottom: 15vh">
+    <h1>Checkout</h1>
+    <hr/>
+    <table class="table table-striped table-hover">
+        <tbody>
+        <tr>
+            <th colspan="2">Item</th>
+            <th>Total Price</th>
+        </tr>
+        <tr th:each="cartDetail : ${user.cart.cartDetails}">
+            <td colspan="2" th:text="${cartDetail.product.name}"> Product Name </td>
+            <td th:text="'$' + ${cartDetail.product.price}"> Price </td>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">VAT x0%</span></th>
+            <th>£x0.00</th>
+        </tr>
+        <tr>
+            <th colspan="3"><span class="pull-right">Total</span></th>
+            <th th:text="${totalPrice}"> Total Price </th>
+        </tr>
+        <tr>
+            <td><a th:href="@{/store}" class="pull-left btn btn-default"><span class="glyphicon glyphicon-shopping-cart"/> Continue Shopping </a></td>
+            <td><a href="#" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-credit-card"/> Pay with Card </a></td>
+            <td><a href="#" class="pull-right"><img src="http://www.hikashop.com/images/payment/paypalexpress.png" height="34px" width="130px"/></a></td>
+            <td><a href="#" class="pull-right"><img src="https://images-na.ssl-images-amazon.com/images/G/01/Iris3_US/en_US/inca/images/btnPaywAMZN-gld-Desktop-2x.png" height="34px" width="130px"/></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

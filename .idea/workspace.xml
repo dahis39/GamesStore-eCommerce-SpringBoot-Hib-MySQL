@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf292273-847b-46b9-96f2-b90a3b1ce197" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/OrderHistory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/thankyou.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tom/test/controllers/IndexController.class" afterPath="$PROJECT_DIR$/target/classes/com/tom/test/controllers/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tom/test/domain/Cart.class" afterPath="$PROJECT_DIR$/target/classes/com/tom/test/domain/Cart.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tom/test/domain/CartDetail.class" afterPath="$PROJECT_DIR$/target/classes/com/tom/test/domain/CartDetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/tom/test/domain/User.class" afterPath="$PROJECT_DIR$/target/classes/com/tom/test/domain/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/Cart.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/Cart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/CartDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/CartDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/domain/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/services/DummyDataGeneration.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/services/DummyDataGeneration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/StoreAndCartController.java" afterPath="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/StoreAndCartController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/checkout.html" afterPath="$PROJECT_DIR$/target/classes/templates/checkout.html" />
     </list>
     <ignored path="RESTexample.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +30,8 @@
       <file leaf-file-name="checkout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/checkout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="80" column="69" selection-start-line="80" selection-start-column="69" selection-end-line="80" selection-end-column="69" />
+            <state relative-caret-position="-275">
+              <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -54,21 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DummyDataGeneration.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/services/DummyDataGeneration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="100" column="48" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StoreAndCartController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/controllers/StoreAndCartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="927">
-              <caret line="109" column="44" selection-start-line="109" selection-start-column="44" selection-end-line="109" selection-end-column="44" />
+            <state relative-caret-position="277">
+              <caret line="106" column="88" selection-start-line="106" selection-start-column="88" selection-end-line="106" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -77,8 +53,8 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            <state relative-caret-position="425">
+              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
               <folding>
                 <element signature="e#1058#1059#0" expanded="true" />
                 <element signature="e#1098#1099#0" expanded="true" />
@@ -93,21 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CartDetail.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CartDetail.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/CartDetail.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="502">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -125,15 +91,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PurchaseCompleteController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PurchaseCompleteController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="627">
+              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1483#1484#0" expanded="true" />
-                <element signature="e#1510#1511#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,22 +106,12 @@
       <file leaf-file-name="Cart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/Cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="350">
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
               <folding>
                 <element signature="e#695#696#0" expanded="true" />
                 <element signature="e#749#750#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CRUDservice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/services/CRUDservice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -229,15 +183,15 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/cart.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/thankyou.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/StoreAndCartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/services/DummyDataGeneration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/domain/User.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/checkout.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/domain/OrderHistory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/domain/CartDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/domain/Cart.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/checkout.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/StoreAndCartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java" />
       </list>
     </option>
@@ -1181,12 +1135,12 @@
       <workItem from="1471320441132" duration="7733000" />
       <workItem from="1471382169011" duration="132000" />
       <workItem from="1471382436129" duration="6619000" />
-      <workItem from="1471471918599" duration="18201000" />
+      <workItem from="1471471918599" duration="22962000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="509116000" />
+    <option name="totallyTimeSpent" value="513877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="2572" height="1410" extended-state="1" />
@@ -1529,14 +1483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/developer/developerform.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="85" column="54" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/Role.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -1561,10 +1507,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/OrderHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/developer/developerform.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="95" column="29" selection-start-line="95" selection-start-column="29" selection-end-line="95" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        <state relative-caret-position="425">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
           <folding>
             <element signature="e#1058#1059#0" expanded="true" />
             <element signature="e#1098#1099#0" expanded="true" />
@@ -1588,8 +1560,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/checkout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="80" column="69" selection-start-line="80" selection-start-column="69" selection-end-line="80" selection-end-column="69" />
+        <state relative-caret-position="-275">
+          <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1599,17 +1571,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/controllers/StoreAndCartController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="927">
-          <caret line="109" column="44" selection-start-line="109" selection-start-column="44" selection-end-line="109" selection-end-column="44" />
+        <state relative-caret-position="277">
+          <caret line="106" column="88" selection-start-line="106" selection-start-column="88" selection-end-line="106" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="627">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/Cart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1618,39 +1603,6 @@
         <state relative-caret-position="502">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/Cart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#695#696#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/domain/OrderHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tom/test/controllers/PurchaseCompleteController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1483#1484#0" expanded="true" />
-            <element signature="e#1510#1511#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

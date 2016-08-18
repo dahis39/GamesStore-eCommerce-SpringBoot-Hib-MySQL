@@ -49,12 +49,7 @@ public class StoreAndCartController {
         newCartDetail.setQuantity(1);
         newCartDetail.setProduct(productService.getById(productId));
         cart.addCartDetail(newCartDetail);
-        if (principal != null){
-            User user = userService.findByUserName(principal.getName());
-            user.setCart(cart);
-            cart.setUser(user);
-            userService.saveOrUpdate(user);
-        }
+        saveOrUpdateCartToUser(principal,cart);
         return "redirect:/store";
     }
 
@@ -92,12 +87,13 @@ public class StoreAndCartController {
     }
 
     @RequestMapping(value = "/cart", params={"removeCartDetail"}, method = RequestMethod.POST)
-    public String removeCartDetail(Cart cart, HttpServletRequest req, Model model){
+    public String removeCartDetail(Cart cart, HttpServletRequest req, Principal principal){
         final Integer cartDetailId = Integer.valueOf(req.getParameter("removeCartDetail"));
         System.out.println(cartDetailId);
         List<CartDetail> tempCartDetails = cart.getCartDetails();
         tempCartDetails.remove(cartDetailId.intValue());
         cart.setCartDetails(tempCartDetails);
+        saveOrUpdateCartToUser(principal,cart);
         return "redirect:/cart";
     }
 
@@ -127,5 +123,13 @@ public class StoreAndCartController {
             totalPrice = totalPrice.add(cartDetail.getProduct().getPrice());
         }
         return totalPrice;
+    }
+    private void saveOrUpdateCartToUser(Principal principal,Cart cart){
+        if (principal != null){
+            User user = userService.findByUserName(principal.getName());
+            user.setCart(cart);
+            cart.setUser(user);
+            userService.saveOrUpdate(user);
+        }
     }
 }

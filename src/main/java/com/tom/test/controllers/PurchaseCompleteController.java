@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -43,7 +44,23 @@ public class PurchaseCompleteController {
     }
 
     @RequestMapping(value = "/thankyou", params = "payAsUser", method = RequestMethod.POST)
-    public String payAsUser(){
-        return null;
+    public String payAsUser(HttpSession session, Principal principal){
+        if (principal != null){
+            User user = userService.findByUserName(principal.getName());
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            OrderHistory orderHistory = new OrderHistory();
+            orderHistory.setCartDetails(cart.getCartDetails());
+            user.addOrderHistory(orderHistory);
+            orderHistory.setUser(user);
+
+            Cart newCart = new Cart();
+            user.setCart(newCart);
+            newCart.setUser(user);
+
+            userService.saveOrUpdate(user);
+            session.removeAttribute("cart");
+        }
+        return "thankyou";
     }
 }

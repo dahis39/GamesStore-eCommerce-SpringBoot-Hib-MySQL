@@ -64,6 +64,10 @@ public class DummyDataGeneration {
         Role admin = new Role();
         admin.setRole("ADMIN");
         roleService.saveOrUpdate(admin);
+
+        Role temporary = new Role();
+        temporary.setRole("TEMPORARY");
+        roleService.saveOrUpdate(temporary);
     }
 
     private void generateUsers(){

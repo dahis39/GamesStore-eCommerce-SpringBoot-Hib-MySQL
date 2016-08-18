@@ -1,9 +1,6 @@
 package com.tom.test.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class Cart extends AbstartDomainClass{
         @OneToOne
         private User user;
 
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart", orphanRemoval = true)
+        @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = true)
         private List<CartDetail> cartDetails = new ArrayList<>();
 
         public User getUser() {
@@ -37,12 +34,12 @@ public class Cart extends AbstartDomainClass{
 
         public void addCartDetail(CartDetail cartDetail){
             cartDetails.add(cartDetail);
-            cartDetail.setCart(this);
+//            cartDetail.setCart(this);
         }
 
         public void removeCartDetail(CartDetail cartDetail){
-            cartDetail.setCart(null);
             this.cartDetails.remove(cartDetail);
+//            cartDetail.setCart(null);
         }
 }
 

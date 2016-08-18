@@ -11,20 +11,17 @@ import javax.persistence.OneToOne;
 public class CartDetail extends AbstartDomainClass {
 
     @ManyToOne
-    private Cart cart;
-
-    @OneToOne
     private Product product;
 
     private Integer quantity;
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
+//    public Cart getCart() {
+//        return cart;
+//    }
+//
+//    public void setCart(Cart cart) {
+//        this.cart = cart;
+//    }
 
     public Product getProduct() {
         return product;

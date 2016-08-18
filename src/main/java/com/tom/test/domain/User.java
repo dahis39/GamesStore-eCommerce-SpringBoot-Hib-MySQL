@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by tom on 6/8/2016.
@@ -27,6 +28,9 @@ public class User extends AbstartDomainClass {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderHistory> orderHistories = new ArrayList<>();
 
     public String getUserName() {
         return userName;
@@ -74,6 +78,18 @@ public class User extends AbstartDomainClass {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<OrderHistory> getOrderHistories() {
+        return orderHistories;
+    }
+
+    public void setOrderHistories(List<OrderHistory> orderHistories) {
+        this.orderHistories = orderHistories;
+    }
+
+    public void addOrderHistory(OrderHistory orderHistory){
+        this.orderHistories.add(orderHistory);
     }
 
     public void addRole(Role role){

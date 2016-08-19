@@ -28,9 +28,15 @@ public class PurchaseCompleteController {
 
     @RequestMapping(value = "/thankyou", method = RequestMethod.POST)
     public String payAsGuest(User user, HttpSession session){
-        Role role = roleService.getById(3);
-        user.addRole(role);
-        user.setUserName(user.getEmail());
+        User dbUser = userService.findByUserName(user.getEmail());
+        if (dbUser != null){
+            user = dbUser;
+        }
+        else {
+            Role role = roleService.getById(3);
+            user.addRole(role);
+            user.setUserName(user.getEmail());
+        }
 
         Cart cart = (Cart) session.getAttribute("cart");
         OrderHistory orderHistory = new OrderHistory();

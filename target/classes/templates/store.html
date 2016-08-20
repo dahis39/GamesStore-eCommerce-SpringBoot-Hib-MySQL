@@ -46,13 +46,16 @@
                             <h3 th:text="${product.name}"></h3>
                             <h4 th:text="${product.description}"></h4>
                             <div class="move-to-bottom-right">
-                                <div class="btn-group" role="group" aria-label="...">
-                                    <a href="" class="btn btn-danger btn-sm" th:text="${product.price} + ' BUY NOW'"></a>
-                                    <form th:action="@{/store}" method="post">
-                                        <button class="btn btn-default btn-sm" type="submit" name="addToCart" th:value="${product.id}" >Add To Cart</button>
-                                    </form>
-                                    <a href="" class="btn btn-warning btn-sm">Wish List</a>
-                                </div>
+                                <form th:action="@{/store}" method="post">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <a th:href="@{thankyou}" class="btn btn-danger btn-sm"
+                                           th:text="${product.price} + ' BUY NOW'"></a>
+                                        <button class="btn btn-default btn-sm" type="submit" name="addToCart"
+                                                th:value="${product.id}">Add To Cart
+                                        </button>
+                                        <a href="" class="btn btn-warning btn-sm">Wish List</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

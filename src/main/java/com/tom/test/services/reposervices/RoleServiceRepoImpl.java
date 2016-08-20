@@ -2,7 +2,9 @@ package com.tom.test.services.reposervices;
 
 import com.tom.test.domain.AbstartDomainClass;
 import com.tom.test.domain.Role;
+import com.tom.test.domain.User;
 import com.tom.test.repositories.RoleRepository;
+import com.tom.test.repositories.UserRepository;
 import com.tom.test.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,4 +42,5 @@ public class RoleServiceRepoImpl implements RoleService {
     public void delete(Integer id) {
         roleRepository.delete(id);
     }
+
 }

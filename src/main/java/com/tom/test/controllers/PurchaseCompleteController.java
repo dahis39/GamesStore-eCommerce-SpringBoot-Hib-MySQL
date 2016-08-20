@@ -26,6 +26,11 @@ public class PurchaseCompleteController {
     @Autowired
     RoleService roleService;
 
+    @RequestMapping(value = "/thankyou", method = RequestMethod.GET)
+    public String singlePurchase(){
+        return "thankyou";
+    }
+
     @RequestMapping(value = "/thankyou", method = RequestMethod.POST)
     public String payAsGuest(User user, HttpSession session){
         User dbUser = userService.findByUserName(user.getEmail());

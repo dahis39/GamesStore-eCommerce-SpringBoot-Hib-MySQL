@@ -6,19 +6,19 @@
 
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
 
-    <link href="../static/bootstrap/bootstrap.min.css"
-          th:href="@{bootstrap/bootstrap.min.css}"
+    <link
+          th:href="@{../bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
 
-    <link href="../static/css/spring-core.css"
-          th:href="@{css/spring-core.css}"
+    <link
+          th:href="@{../css/spring-core.css}"
           rel="stylesheet" media="screen" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script src="../static/js/index.js" th:src="@{js/index.js}"></script>
+    <script  th:src="@{../js/index.js}"></script>
 </head>
 <body class="bg-black">
 
@@ -26,6 +26,20 @@
 
 <div class="jumbotron mainBody">
     <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Change Bundle
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li th:each="bundleItem : ${bundleList}">
+                            <a th:text="${bundleItem.name}" th:href="${'/index/' + bundleItem.id}"> bundle name </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <section class="col-md-offset-1 col-md-6">
                 <img src="https://humblebundle-a.akamaihd.net/misc/files/hashed/a7204f784bac1c366b4736a0e90c7f6dfa956d55.png"/>

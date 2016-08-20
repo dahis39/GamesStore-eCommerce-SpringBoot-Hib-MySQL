@@ -19,12 +19,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan
 public class CommonConfig extends WebMvcAutoConfiguration{
 
-    @Bean
-    ServletRegistrationBean h2servletRegistration(){
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
-        registrationBean.addUrlMappings("/console/*");
-        return registrationBean;
-    }
+//    @Bean
+//    ServletRegistrationBean h2servletRegistration(){
+//        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
+//        registrationBean.addUrlMappings("/console/*");
+//        return registrationBean;
+//    }
 
     @Bean
     public StrongPasswordEncryptor strongEncryptor(){

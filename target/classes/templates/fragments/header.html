@@ -25,7 +25,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Support</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-bold"></span> Blog</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Accout</a></li>
+                <li th:if="${userEmail}"><a href="#"><span class="glyphicon glyphicon-user"></span><p th:text="${userEmail}" th:remove="tag"></p></a></li>
+                <li th:unless="${userEmail}"><a href="#" ><span class="glyphicon glyphicon-user"></span> Accout</a></li>
             </ul>
         </div>
 

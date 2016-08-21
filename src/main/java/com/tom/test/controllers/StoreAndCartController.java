@@ -26,7 +26,7 @@ import java.util.List;
  * Created by tom on 8/4/2016.
  */
 @Controller
-@SessionAttributes({"cart"})
+@SessionAttributes({"cart","userEmail"})
 public class StoreAndCartController {
 
     @Autowired
@@ -41,21 +41,8 @@ public class StoreAndCartController {
         return "store";
     }
 
-
-    @RequestMapping(value = "/store", params={"addToCart"}, method = RequestMethod.POST)
-    public String addProduct(@ModelAttribute("cart") final Cart cart, final HttpServletRequest req, Principal principal){
-        final Integer productId = Integer.valueOf(req.getParameter("addToCart"));
-        CartDetail newCartDetail = new CartDetail();
-        newCartDetail.setQuantity(1);
-        newCartDetail.setProduct(productService.getById(productId));
-        cart.addCartDetail(newCartDetail);
-        saveOrUpdateCartToUser(principal,cart);
-        return "redirect:/store";
-    }
-
-
     @RequestMapping("/store")
-    public String store(Model model, Principal principal){
+    public String store(Model model, Principal principal, HttpSession session){
         boolean dataStatus = dummyDataGeneration.getInitaitedStatus();
         model.addAttribute("initaited",dataStatus);
         model.addAttribute("products",productService.listAll());
@@ -70,7 +57,19 @@ public class StoreAndCartController {
             }
             model.addAttribute("cart", new Cart());
         }
+        setupUserEmail(model,principal,session);
         return "store";
+    }
+
+    @RequestMapping(value = "/store", params={"addToCart"}, method = RequestMethod.POST)
+    public String addProduct(@ModelAttribute("cart") final Cart cart, final HttpServletRequest req, Principal principal){
+        final Integer productId = Integer.valueOf(req.getParameter("addToCart"));
+        CartDetail newCartDetail = new CartDetail();
+        newCartDetail.setQuantity(1);
+        newCartDetail.setProduct(productService.getById(productId));
+        cart.addCartDetail(newCartDetail);
+        saveOrUpdateCartToUser(principal,cart);
+        return "redirect:/store";
     }
 
     @RequestMapping("/cart")
@@ -79,10 +78,12 @@ public class StoreAndCartController {
             Cart cart = (Cart) session.getAttribute("cart");
             if (cart.getCartDetails()!= null){
                 model.addAttribute("totalPrice",totalPriceCalulator(cart.getCartDetails()));
+                setupUserEmail(model,principal,session);
                 return "cart";
             }
         }
         model.addAttribute("totalPrice",0.00);
+        setupUserEmail(model,principal,session);
         return "cart";
     }
 
@@ -131,5 +132,15 @@ public class StoreAndCartController {
             cart.setUser(user);
             userService.saveOrUpdate(user);
         }
+    }
+    private Model setupUserEmail(Model model, Principal principal, HttpSession session){
+        if (principal != null){
+            if (session.getAttribute("userEmail") == null){
+                User user = userService.findByUserName(principal.getName());
+                model.addAttribute("userEmail",user.getEmail());
+                return model;
+            }
+        }
+        return model;
     }
 }

@@ -1,9 +1,6 @@
 package com.tom.test.controllers;
 
-import com.tom.test.domain.Cart;
-import com.tom.test.domain.OrderHistory;
-import com.tom.test.domain.Role;
-import com.tom.test.domain.User;
+import com.tom.test.domain.*;
 import com.tom.test.services.RoleService;
 import com.tom.test.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.List;
 
@@ -46,6 +44,7 @@ public class PurchaseCompleteController {
         Cart cart = (Cart) session.getAttribute("cart");
         OrderHistory orderHistory = new OrderHistory();
         orderHistory.setCartDetails(cart.getCartDetails());
+        orderHistory.setTotalPrice(totalPriceCalulator(orderHistory.getCartDetails()));
         user.addOrderHistory(orderHistory);
         orderHistory.setUser(user);
 
@@ -62,6 +61,7 @@ public class PurchaseCompleteController {
 
             OrderHistory orderHistory = new OrderHistory();
             orderHistory.setCartDetails(cart.getCartDetails());
+            orderHistory.setTotalPrice(totalPriceCalulator(orderHistory.getCartDetails()));
             user.addOrderHistory(orderHistory);
             orderHistory.setUser(user);
 
@@ -73,5 +73,13 @@ public class PurchaseCompleteController {
             session.removeAttribute("cart");
         }
         return "thankyou";
+    }
+
+    private BigDecimal totalPriceCalulator(List<CartDetail> cartDetails){
+        BigDecimal totalPrice = new BigDecimal("0.00");
+        for (CartDetail cartDetail : cartDetails){
+            totalPrice = totalPrice.add(cartDetail.getProduct().getPrice());
+        }
+        return totalPrice;
     }
 }

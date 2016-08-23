@@ -61,6 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/index/**").permitAll()
                 .antMatchers("/cart").permitAll()
                 .antMatchers("/generatedummydata").permitAll()
+                .antMatchers("/customer/**").permitAll()
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .antMatchers("/framents/**").permitAll()
                 .antMatchers("/bundle/**").hasAnyAuthority("ADMIN")
@@ -70,6 +71,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAnyAuthority("ADMIN")
                 .and()
                 .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/store")
                 .and()
                 .exceptionHandling().accessDeniedPage("/access_denied");
 

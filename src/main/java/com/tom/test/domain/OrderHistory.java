@@ -1,6 +1,7 @@
 package com.tom.test.domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import java.util.List;
  */
 @Entity
 public class OrderHistory extends AbstartDomainClass {
+
+    BigDecimal totalPrice;
 
     @ManyToOne
     private User user;
@@ -30,5 +33,13 @@ public class OrderHistory extends AbstartDomainClass {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

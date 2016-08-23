@@ -24,6 +24,7 @@ public class UserFormToUser implements Converter<UserForm , User> {
         user.setVersion(userForm.getUserVersion());
         user.setUserName(userForm.getUserName());
         user.setPassword(encryptionService.encryptString(userForm.getUserPassword()));
+        user.setEmail(userForm.getUserEmail());
         user.setBillingAddress(userForm.getUserBillingAddress());
         user.setRoles(userForm.getRoles());
         return user;

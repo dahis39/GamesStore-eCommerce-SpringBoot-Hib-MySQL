@@ -80,4 +80,8 @@ public class UserForm {
     public void setUserBillingAddress(Address userBillingAddress) {
         this.userBillingAddress = userBillingAddress;
     }
+
+    public void addRole(Role role){
+        this.getRoles().add(role);
+    }
 }

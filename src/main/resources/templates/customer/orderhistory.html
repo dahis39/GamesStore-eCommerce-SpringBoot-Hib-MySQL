@@ -28,12 +28,14 @@
         <h4 th:text="'Email: ' + ${user.email}"></h4>
         <table class="table table-striped">
             <tr>
+                <th> Order Type </th>
                 <th> Date and Time of Order </th>
                 <th> Product Name </th>
                 <th> Product Price </th>
                 <th> Total Price </th>
             </tr>
             <tr th:each="orderHistory : ${user.orderHistories}">
+                <td th:text="${orderHistory.orderType}"></td>
                 <td th:text="${orderHistory.dateCreated}"></td>
                 <td>
                     <ul th:each="cartDetail : ${orderHistory.cartDetails}">

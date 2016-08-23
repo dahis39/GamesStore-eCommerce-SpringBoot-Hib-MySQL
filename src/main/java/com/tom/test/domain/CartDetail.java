@@ -22,6 +22,12 @@ public class CartDetail extends AbstartDomainClass {
 //    public void setCart(Cart cart) {
 //        this.cart = cart;
 //    }
+    public CartDetail (Product product, Integer quantity){
+        this.product = product;
+        this.quantity = quantity;
+    }
+    public CartDetail (){
+    }
 
     public Product getProduct() {
         return product;

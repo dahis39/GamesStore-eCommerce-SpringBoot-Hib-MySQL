@@ -169,6 +169,9 @@ public class DummyDataGeneration {
         bundleBinding(rpgs, productGenerator("Fallout: New Vegas","ARPG",new BigDecimal(20), "http://orig05.deviantart.net/39e2/f/2011/045/7/3/fallout_new_vegas_by_madrapper-d39imeq.png","https://www.youtube.com/embed/cIzOttk6Dv4",obsidian,bethesdaPub));
         bundleBinding(rpgs, productGenerator("The Elder Scrolls V: Skyrim","ARPG",new BigDecimal(30), "http://img06.deviantart.net/5f8f/i/2011/046/4/3/elder_scrolls_v___skyrim_icon_by_bonscha-d39n68b.png","https://www.youtube.com/embed/PjqsYzBrP-M",bethesdaDev,bethesdaPub));
 
+        popluarMulti.setPrice(new BigDecimal(25));
+        rpgs.setPrice(new BigDecimal(75));
+
         bundleService.saveOrUpdate(popluarMulti);
         bundleService.saveOrUpdate(rpgs);
     }

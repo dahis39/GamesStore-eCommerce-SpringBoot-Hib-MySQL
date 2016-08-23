@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 public class OrderHistory extends AbstartDomainClass {
 
-    BigDecimal totalPrice;
+    private String orderType;
+    private BigDecimal totalPrice;
 
     @ManyToOne
     private User user;
@@ -41,5 +42,13 @@ public class OrderHistory extends AbstartDomainClass {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
     }
 }

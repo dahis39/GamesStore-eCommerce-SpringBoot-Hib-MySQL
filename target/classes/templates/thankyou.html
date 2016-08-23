@@ -23,10 +23,12 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-<div class="container" style="padding-top: 35vh; padding-bottom: 50vh;">
-    <h1>Thank you! Your order has been placed.</h1>
-    <hr/>
-    <h2><a th:href="@{/store}"> Back to Store </a></h2>
+<div class="bg-white-color basic-padding">
+    <div class="container" style="padding-top: 35vh; padding-bottom: 50vh;">
+        <h1>Thank you! Your order has been placed.</h1>
+        <hr/>
+        <h2><a th:href="@{/store}"> Back to Store </a></h2>
+    </div>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>

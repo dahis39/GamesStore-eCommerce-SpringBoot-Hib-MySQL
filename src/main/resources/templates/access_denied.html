@@ -16,9 +16,15 @@
 
 </head>
 <body>
-<h1>
-    You are not authorized to visit the page.
-</h1>
-<a th:href="@{store}"> <h3> Back To Store </h3> </a>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="bg-white-color basic-padding">
+    <h1>
+        You are not authorized to visit the page.
+    </h1>
+    <a th:href="@{store}"> <h3> Back To Store </h3> </a>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

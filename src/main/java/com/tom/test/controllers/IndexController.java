@@ -44,6 +44,11 @@ public class IndexController {
         return "access_denied";
     }
 
+    @RequestMapping("/workinprogress")
+    public String workInProgressPages(){
+        return "workinprogress";
+    }
+
     @RequestMapping("login")
     public String loginForm(){
         return "login";
@@ -53,8 +58,10 @@ public class IndexController {
     public String home(Model model, Principal principal, HttpSession session){
         Bundle bundle = bundleService.getById(1);
         model.addAttribute("bundle", bundle);
-        model.addAttribute("products",bundle.getProducts());
-        setupUserEmail(model,principal,session);
+        if (bundle != null) {
+            model.addAttribute("products", bundle.getProducts());
+        }
+        setupUserEmail(model, principal, session);
         return "index";
     }
 
@@ -62,7 +69,9 @@ public class IndexController {
     public String showBundle(@PathVariable Integer id, Model model, Principal principal, HttpSession session){
         Bundle bundle = bundleService.getById(id);
         model.addAttribute("bundle",bundle);
-        model.addAttribute("products",bundle.getProducts());
+        if (bundle != null) {
+            model.addAttribute("products", bundle.getProducts());
+        }
         setupUserEmail(model,principal,session);
         return "index";
     }

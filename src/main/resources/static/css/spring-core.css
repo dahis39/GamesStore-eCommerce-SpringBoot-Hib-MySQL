@@ -30,6 +30,10 @@
 .basic-padding {
     padding: 50px 0;
 }
+.empty-page-spacer {
+    padding-top: 25vh;
+    padding-bottom: 30vh;
+}
 
 /*index page*/
 .mainBody {

@@ -27,8 +27,8 @@
     <div class="container-fluid">
         <div class="col-md-8 col-md-offset-2">
             <div th:unless="${initaited}">
-                <div class="row">
-                    <a class="btn btn-sm btn-danger" href="#" th:href="@{/generatedummydata?comeFrom=store}">Dummy Data Generation</a>
+                <div class="row empty-page-spacer">
+                    <a class="btn btn-sm btn-danger" th:href="@{/generatedummydata?comeFrom=store}">Dummy Data Generation</a>
                 </div>
             </div>
             <div class="row">
@@ -53,7 +53,7 @@
                                         <button class="btn btn-default btn-sm" type="submit" name="addToCart"
                                                 th:value="${product.id}">Add To Cart
                                         </button>
-                                        <a href="" class="btn btn-warning btn-sm">Wish List</a>
+                                        <a th:href="@{workinprogress}" class="btn btn-warning btn-sm">Wish List</a>
                                     </div>
                                 </form>
                             </div>
@@ -64,8 +64,8 @@
         </div>
     </div>
     <div class="top-right-cart btn-group-vertical">
-        <a href="" class="btn btn-default" th:text="'Added To Cart: ' + ${cart.cartDetails.size()}"></a>
-        <a href="" class="btn btn-success" th:href="@{/cart}">Check Out</a>
+        <a class="btn btn-default" th:text="'Added To Cart: ' + ${cart.cartDetails.size()}"></a>
+        <a class="btn btn-success" th:href="@{/cart}">Check Out</a>
     </div>
 </div>
 

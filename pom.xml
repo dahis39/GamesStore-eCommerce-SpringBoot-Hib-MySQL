@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.tom.test</groupId>
-	<artifactId>RESTexample</artifactId>
+	<artifactId>HumbleBundleClone</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>RESTexample</name>
-	<description>RESTservice with MySQL</description>
+	<name>HumbleBundleClone</name>
+	<description>GameStore with MySQL</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -41,10 +41,6 @@
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

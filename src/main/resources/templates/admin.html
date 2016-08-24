@@ -32,8 +32,8 @@
                     <div class="panel-heading">Product</div>
                     <div class="panel-body">CRUD any Game, CD or book as induvidual product.</div>
                     <div class="panel-footer clearfix">
-                        <a class="btn btn-success pull-left" href="#" th:href="@{/product/new}" target="_blank">ADD</a>
-                        <a class="btn btn-primary pull-right" href="#" th:href="@{/product/list}">LIST ALL</a>
+                        <a class="btn btn-success pull-left" th:href="@{/product/new}" target="_blank">ADD</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/product/list}">LIST ALL</a>
                     </div>
                 </div>
             </div>
@@ -44,8 +44,8 @@
                         products to one developer.</mark>
                     </div>
                     <div class="panel-footer clearfix">
-                        <a class="btn btn-success pull-left" href="#" th:href="@{/developer/new}" target="_blank">ADD</a>
-                        <a class="btn btn-primary pull-right" href="#" th:href="@{/developer/list}">LIST ALL</a>
+                        <a class="btn btn-success pull-left" th:href="@{/developer/new}" target="_blank">ADD</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/developer/list}">LIST ALL</a>
                     </div>
                 </div>
             </div>
@@ -63,8 +63,8 @@
                     <div class="panel-body">Key subsets of products. Will be represented directly to the home page.
                     </div>
                     <div class="panel-footer clearfix">
-                        <a class="btn btn-success pull-left" href="#" th:href="@{/bundle/new}" target="_blank">ADD</a>
-                        <a class="btn btn-primary pull-right" href="#" th:href="@{/bundle/list}">LIST ALL</a>
+                        <a class="btn btn-success pull-left" th:href="@{/bundle/new}" target="_blank">ADD</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/bundle/list}">LIST ALL</a>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                     <div class="panel-heading">Publisher</div>
                     <div class="panel-body">Self-explanatory subsets of products.</div>
                     <div class="panel-footer clearfix">
-                        <a class="btn btn-success pull-left" href="#" th:href="@{/publisher/new}" target="_blank">ADD</a>
-                        <a class="btn btn-primary pull-right" href="#" th:href="@{/publisher/list}">LIST ALL</a>
+                        <a class="btn btn-success pull-left" th:href="@{/publisher/new}" target="_blank">ADD</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/publisher/list}">LIST ALL</a>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,8 @@
                     <div class="panel-heading">User and Role</div>
                     <div class="panel-body">Authorization and Authentication</div>
                     <div class="panel-footer clearfix">
-                        <a class="btn btn-success pull-left" href="#" target="_blank">ADD</a>
-                        <a class="btn btn-primary pull-right" href="#">LIST ALL</a>
+                        <a class="btn btn-success pull-left" th:href="@{/user/new}">ADD</a>
+                        <a class="btn btn-primary pull-right" th:href="@{/user/list}">LIST ALL</a>
                     </div>
                 </div>
             </div>
@@ -102,9 +102,9 @@
                     <div class="panel-body">
                         <div class="btn-group-vertical" role="group" aria-label="...">
                             <div th:unless="${initaited}">
-                                <a class="btn btn-sm btn-danger" href="#" th:href="@{/generatedummydata?comeFrom=admin}">Dummy Data Generation</a>
+                                <a class="btn btn-sm btn-danger" th:href="@{/generatedummydata?comeFrom=admin}">Dummy Data Generation</a>
                             </div>
-                            <a class="btn btn-sm btn-info" href="#" th:href="@{/publisher/list}" target="_blank">Find Un-assigned Dev/Pub
+                            <a class="btn btn-sm btn-info" th:href="@{workinprogress}" target="_blank">Find Un-assigned Dev/Pub
                                 Products</a>
                         </div>
                     </div>

@@ -33,13 +33,14 @@ public class DummyDataGeneration {
     private static boolean initiated = false;
 
     public void generate(){
-        generateProductsAndBundles();
-        generateRoles();
-        generateUsers();
-        assignRolesToUsers();
+        if (!databaseInitaited()){
+            generateProductsAndBundles();
+            generateRoles();
+            generateUsers();
+            assignRolesToUsers();
 //        generateCarts();
-
-        initiated = true;
+            initiated = true;
+        }
     }
 
     private void generateCarts() {
@@ -200,7 +201,17 @@ public class DummyDataGeneration {
         product.addBundle(bundle);
     }
 
+    private boolean databaseInitaited(){
+        if (developerService.getById(1).getName()!=null){
+            return true;
+        }
+        return false;
+    }
+
     public boolean getInitaitedStatus(){
-        return initiated;
+        if (!databaseInitaited()){
+            return initiated;
+        }
+        return true;
     }
 }

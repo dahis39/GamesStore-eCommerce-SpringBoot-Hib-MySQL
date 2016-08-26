@@ -54,6 +54,7 @@ public class IndexController {
         return "login";
     }
 
+
     @RequestMapping({"/","index","home"})
     public String home(Model model, Principal principal, HttpSession session){
         Bundle bundle = bundleService.getById(1);

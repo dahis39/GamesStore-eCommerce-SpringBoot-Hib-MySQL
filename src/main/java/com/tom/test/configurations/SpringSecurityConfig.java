@@ -16,6 +16,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
+
 
 /**
  * Created by tom on 8/9/2016.
@@ -71,12 +73,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/store")
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/store").deleteCookies("my-remember-me")
                 .and()
-                .exceptionHandling().accessDeniedPage("/access_denied");
-
-
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
+                .exceptionHandling().accessDeniedPage("/access_denied")
+                .and()
+                .rememberMe().key("rem-me-key")
+                .rememberMeParameter("remember-me")
+                .rememberMeCookieName("my-remember-me")
+                .tokenValiditySeconds(2678400);
     }
+
+
 }

@@ -66,7 +66,7 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/index/{id}")
+    @RequestMapping("/{id}")
     public String showBundle(@PathVariable Integer id, Model model, Principal principal, HttpSession session){
         Bundle bundle = bundleService.getById(id);
         model.addAttribute("bundle",bundle);

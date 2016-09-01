@@ -6,6 +6,7 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -33,29 +34,27 @@ public class DummyDataGeneration {
     private static boolean initiated = false;
 
     public void generate(){
-        if (!databaseInitaited()){
             generateProductsAndBundles();
             generateRoles();
             generateUsers();
             assignRolesToUsers();
 //        generateCarts();
             initiated = true;
-        }
     }
 
-    private void generateCarts() {
-        List<User> users = (List<User>) userService.listAll();
-        List<Product> products = (List<Product>) productService.listAll();
-
-        users.forEach(user -> {
-            user.setCart(new Cart());
-            CartDetail cartDetail = new CartDetail();
-            cartDetail.setProduct(products.get(0));
-            cartDetail.setQuantity(2);
-            user.getCart().addCartDetail(cartDetail);
-            userService.saveOrUpdate(user);
-        });
-    }
+//    private void generateCarts() {
+//        List<User> users = (List<User>) userService.listAll();
+//        List<Product> products = (List<Product>) productService.listAll();
+//
+//        users.forEach(user -> {
+//            user.setCart(new Cart());
+//            CartDetail cartDetail = new CartDetail();
+//            cartDetail.setProduct(products.get(0));
+//            cartDetail.setQuantity(2);
+//            user.getCart().addCartDetail(cartDetail);
+//            userService.saveOrUpdate(user);
+//        });
+//    }
 
     private void generateRoles(){
         Role customer = new Role();
@@ -202,16 +201,20 @@ public class DummyDataGeneration {
     }
 
     private boolean databaseInitaited(){
-        if (developerService.getById(1).getName()!=null){
-            return true;
+        try{
+            if (developerService.getById(1).getName().equals("Default Developer")){
+                return true;
+            }
+        } catch (NullPointerException  e){
+            return false;
         }
         return false;
     }
 
     public boolean getInitaitedStatus(){
-        if (!databaseInitaited()){
-            return initiated;
+        if (databaseInitaited()){
+            return true;
         }
-        return true;
+        return false;
     }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Form</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href="../../static/bootstrap/bootstrap.min.css"
+          th:href="@{/bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{/css/spring-core.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div th:if="${not #lists.isEmpty(bundles)}">
+        <h2>Bundle List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>description</th>
+                <th>List</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="bundle : ${bundles}">
+                <td th:text="${bundle.id}"></td>
+                <td th:text="${bundle.name}"></td>
+                <td th:text="${bundle.price}"></td>
+                <td th:text="${bundle.description}"></td>
+                <td>
+                    <ul th:each="product:${bundle.products}">
+                        <li th:text="${product.name}"></li>
+                    </ul>
+                </td>
+                <td><a th:href="${'/bundle/show/' + bundle.id}">View</a> </td>
+                <td><a th:href="${'/bundle/edit/' + bundle.id}">Edit</a> </td>
+                <td><a class="btn btn-warning btn-sm" th:href="${'/bundle/delete/' + bundle.id}">Delete</a> </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a class="btn btn-info" href="/bundle/new">Create New Bundle</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

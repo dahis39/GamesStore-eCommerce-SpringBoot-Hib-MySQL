@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Form</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href="../../static/bootstrap/bootstrap.min.css"
+          th:href="@{/bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{/css/spring-core.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+
+    <h2>User Details</h2>
+    <div>
+        <form class="form-horizontal" th:object="${userForm}" th:action="@{/customer/post}" method="post">
+
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <h4>Please Correct values in error below:</h4>
+            </div>
+
+            <input type="hidden" th:field="*{userId}"/>
+            <input type="hidden" th:field="*{userVersion}"/>
+            <input type="hidden" th:field="*{roles}"/>
+
+
+            <div class="form-group" th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-laber">Username:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userName}" th:onerror="has-error" />
+                    <span class="help-block">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('userName')}" th:text="${err}"></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" th:class="${#fields.hasErrors('userPassword')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-laber">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" th:field="*{userPassword}" th:onerror="has-error" />
+                    <span class="help-block">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('userPassword')}" th:text="${err}"></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userEmail}"/>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"> <strong> (Optional) </strong> </label>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 1:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.addressLine1}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 2:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.addressLine2}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">City:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.city}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">State:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.state}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ZipCode:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{userBillingAddress.zipCode}"/>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn0default">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

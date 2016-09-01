@@ -50,6 +50,12 @@ public class AdminCnontroller {
         return "redirect:/index";
     }
 
+    @RequestMapping("/generatedummydata")
+    public String directGenerate(){
+        dummyDataGeneration.generate();
+        return "redirect:/index";
+    }
+
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response){
         CookieClearingLogoutHandler cookieClearingLogoutHandler = new CookieClearingLogoutHandler(AbstractRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY);

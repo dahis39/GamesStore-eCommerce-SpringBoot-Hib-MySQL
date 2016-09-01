@@ -1,0 +1,174 @@
+/*primary pages and general css*/
+.bg-black {
+    background-color: #222;
+}
+.lobster-font {
+    color: #d43f3a;
+    font-family: 'Lobster', cursive;
+}
+.color-grey {
+    color: #9298a3;
+}
+.color-white {
+    color: #f7f7f7;
+}
+
+.bg-white-color {
+    padding: 15px 0;
+    width: 100%;
+    background-color: #e4e7ed;
+}
+.display-inline {
+    display: inline;
+}
+.header-bg-color {
+    background-color: #d5d9e1;
+}
+.relative {
+    position: relative;
+}
+.basic-padding {
+    padding: 50px 0;
+}
+.empty-page-spacer {
+    padding-top: 25vh;
+    padding-bottom: 30vh;
+}
+
+/*index page*/
+.mainBody {
+    background-color: black;
+    margin-bottom: 0;
+}
+.thumnail {
+    text-align: center;
+}
+.videoCarousel-wrapper {
+    width: 100%;
+    background-color: black;
+}
+
+.carousel-inner h4, p, iframe {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.carousel-indicators {
+    display: none;
+}
+
+.close-button {
+    color: red;
+    display:table;
+    margin:0 auto;
+    text-align: center;
+}
+
+.subscribt h4 {
+    color: whitesmoke;
+}
+
+.bundle-description {
+    padding: 18px 0;
+}
+.bundle-description p {
+    text-align: left;
+    padding: 7px;
+}
+
+.first-row, .second-row, .third-row, .forth-row {
+    padding: 7px;
+}
+.first-row p {
+    text-align: left;
+    padding: 10px 0 10px 0;
+}
+
+.second-row {
+    padding: 20px 0 27px 0;
+}
+.second-row img, h3, input, form{
+    display: inline;
+    padding-left: 10px;
+}
+.third-row p{
+    text-align: left;
+    margin: 10px 0;
+}
+.fifth-row p {
+    text-align: justify;
+}
+
+.bordered {
+    border: 1px solid #b7becc;
+}
+/*admin page*/
+.panel {
+    margin: 20px 0;
+}
+.panel-body {
+    height: 150px;
+}
+.well {
+    height: 80px;
+    position: relative;
+    bottom: -50px;
+}
+
+/*store page*/
+.product-container-outer {
+    height: 150px;
+}
+.product-container-padding {
+    height: 140px;
+    padding: 5px;
+}
+.product-container-inner {
+    height: 140px;
+}
+.move-to-bottom-right {
+    position: relative;
+    left: 100px;
+    top: 35px;
+}
+.top-right-cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/*Header and Footer*/
+.navbar-inverse{
+    margin-bottom: 0px;
+}
+
+@media (min-width: 768px){
+    .twoRow .secondRow {
+        margin: 0 0 0 40%;
+    }
+}
+.twoRow .secondRow {
+    clear: left;
+}
+
+footer {
+    background: #333;
+    color: #eee;
+    font-size: 11px;
+    padding: 20px;
+}
+footer a {
+    color: #eee;
+    font-size: 11px;
+}
+ul.unstyle {
+    list-style: none;
+    padding: 0;
+}
+.admin-link, .admin-link:visited, .admin-link:active {
+    color: #B31B1B !important;
+}
+.admin-link:hover {
+    color: red !important;
+}

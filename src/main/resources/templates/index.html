@@ -7,18 +7,18 @@
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
 
     <link
-          th:href="@{../bootstrap/bootstrap.min.css}"
+          th:href="@{/bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
 
     <link
-          th:href="@{../css/spring-core.css}"
+          th:href="@{/css/spring-core.css}"
           rel="stylesheet" media="screen" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script  th:src="@{../js/index.js}"></script>
+    <script  th:src="@{/js/index.js}"></script>
 </head>
 <body class="bg-black">
 
@@ -35,7 +35,7 @@
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li th:each="bundleItem : ${bundleList}">
-                                <a th:text="${bundleItem.name}" th:href="${'/index/' + bundleItem.id}"> bundle name </a>
+                                <a th:text="${bundleItem.name}" th:href="@{'/' + ${bundleItem.id}}"> bundle name </a>
                             </li>
                         </ul>
                     </div>
@@ -239,8 +239,13 @@
 
 <div th:unless="${bundle}" class="bg-white-color basic-padding">
     <div class="container empty-page-spacer">
-        <h1> Database is not ready, go to store and generate initial data. </h1>
+        <h1> Database is not ready. </h1>
         <a class="btn btn-primary" th:href="@{store}"> Store </a>
+    </div>
+    <div th:unless="${initaited}">
+        <div class="row empty-page-spacer">
+            <a class="btn btn-sm btn-danger" th:href="@{/generatedummydata?comeFrom=store}">Dummy Data Generation</a>
+        </div>
     </div>
 </div>
 

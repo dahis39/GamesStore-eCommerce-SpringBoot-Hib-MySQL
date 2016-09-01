@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Form</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href="../../static/bootstrap/bootstrap.min.css"
+          th:href="@{/bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{/css/spring-core.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="../../static/js/index.js" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div th:if="${not #lists.isEmpty(publishers)}">
+        <h2>Publisher List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>description</th>
+                <th>List</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="publisher : ${publishers}">
+                <td th:text="${publisher.id}"></td>
+                <td th:text="${publisher.name}"></td>
+                <td th:text="${publisher.description}"></td>
+                <td><a th:href="${'/publisher/show/' + publisher.id}">View</a> </td>
+                <td><a th:href="${'/publisher/edit/' + publisher.id}">Edit</a> </td>
+                <td><a class="btn btn-danger btn-sm" th:href="${'/publisher/delete/' + publisher.id}">Delete</a> </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a class="btn btn-info" href="/publisher/new">Create New Publisher</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

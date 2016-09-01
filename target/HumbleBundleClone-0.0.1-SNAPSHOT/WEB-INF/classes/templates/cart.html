@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Humble Bundle Bundle Page</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
+
+    <link href="../static/bootstrap/bootstrap.min.css"
+          th:href="@{/bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../static/css/spring-core.css"
+          th:href="@{/css/spring-core.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<!--  Credit to kubo0212 http://bootsnipp.com/snippets/40m0Q  -->
+
+<div class="bg-white-color basic-padding">
+    <div class="container">
+        <div class="row" th:if="${cart} != null">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <h1 class="text-left">My Cart</h1>
+            </div>
+            <form th:object="${cart}" th:action="@{/cart}" method="post">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th></th>
+                            <th class="text-center">Price</th>
+                            <th> </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cartDetail,i : *{cartDetails}">
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                                                                  th:src="@{${cartDetail.product.imageUrl}}"
+                                                                                  style="width: 72px; height: 72px;"/>
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#" th:text="${cartDetail.product.name}">Product
+                                            name</a></h4>
+                                        <h5 class="media-heading"> by <a href="#"
+                                                                         th:text="${cartDetail.product.developer.name}">Developer
+                                            name</a></h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong
+                                    th:text="'$' + ${cartDetail.product.price}">Price</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                <button class="btn btn-danger" type="submit" name="removeCartDetail"
+                                        th:value="${i.index}">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>  </td>
+                            <td>  </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>  </td>
+                            <td>  </td>
+                            <td><h3>Total</h3></td>
+                            <td class="text-right"><h3><strong th:text="'$' + ${totalPrice}">Total Price</strong></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="btn btn-default" th:href="@{/store}">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                </a>
+                            </td>
+                            <td>  </td>
+                            <td>
+                                <button type="submit" name="checkoutAsGuest" class="btn btn-info" sec:authorize="isAnonymous()">
+                                    Checkout As Guess <span class="glyphicon glyphicon-play"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success" sec:authorize="isAuthenticated()">
+                                    Checkout As User <span class="glyphicon glyphicon-play"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <div class="row" th:if="${cart == null}">
+            <div class="col-sm-12 col-md-10 col-md-offset-1" style="padding-top: 24vh; padding-bottom: 34vh">
+                <h1><strong> You have a empty cart. </strong></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

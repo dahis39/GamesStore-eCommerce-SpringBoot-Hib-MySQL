@@ -14,11 +14,9 @@
           th:href="@{/css/spring-core.css}"
           rel="stylesheet" media="screen" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-    <script  th:src="@{/js/index.js}"></script>
+    <script th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script th:src="@{/bootstrap/bootstrap.min.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
 </head>
 <body class="bg-black">
 
@@ -30,12 +28,11 @@
             <div class="row">
                 <div class="col-md-3 col-md-offset-1">
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Change
-                            Bundle
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Pick Your Bundle!
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li th:each="bundleItem : ${bundleList}">
-                                <a th:text="${bundleItem.name}" th:href="@{'/' + ${bundleItem.id}}"> bundle name </a>
+                                <a th:text="${bundleItem.name}" th:href="@{'/' + ${bundleItem.id}}"> Bundle Name </a>
                             </li>
                         </ul>
                     </div>

@@ -138,6 +138,12 @@
     right: 0;
 }
 
+/*About page*/
+.bosom-none {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 /*Header and Footer*/
 .navbar-inverse{
     margin-bottom: 0px;

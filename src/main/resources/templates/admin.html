@@ -4,8 +4,6 @@
     <title>Spring Core Online Test - List Products</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
-    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
-
     <link href="../static/bootstrap/bootstrap.min.css"
           th:href="@{bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
@@ -14,9 +12,9 @@
           th:href="@{css/spring-core.css}"
           rel="stylesheet" media="screen" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script th:src="@{/js/jquery-2.2.4.min.js}"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script th:src="@{/bootstrap/bootstrap.min.js}"></script>
 
     <script src="../static/js/index.js" th:src="@{js/index.js}"></script>
 </head>

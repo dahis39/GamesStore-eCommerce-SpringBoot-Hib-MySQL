@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Access Denied Page</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <link href="../static/bootstrap/bootstrap.min.css"
+          th:href="@{bootstrap/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}"
+          rel="stylesheet" media="screen" />
+
+    <script th:src="@{/js/jquery-2.2.4.min.js}"></script>
+
+    <script th:src="@{/bootstrap/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 bosom-none">
+            <img class="img-responsive" src="http://demo.accesspressthemes.com/accesspresslite-pro/wp-content/uploads/2014/06/banner1.png"/>
+        </div>
+    </div>
+</div>
+<div class="bg-white-color basic-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h2>Hello there, this is an experimental e-store built by <a href="mailto:smon_lucia@hotmail.com">Tom Huang</a>.</h2>
+                <br/>
+                <h4>
+                    Have fun tinkering around as an <a th:href="@{/admin}"><strong>Admin</strong></a>.
+                    You can put in some of your favour games. Name your price, write your description, provide a YouTube trailer link, and find a good logo picture.
+                    Your added games will show up in the <a th:href="@{/store}"><strong>Game Store</strong></a> ready for sale.
+                    Not only that, you also can pack them all up into one bundle in <a th:href="@{/index}"><strong>Humble Bundle</strong></a> with your custom background image!
+                    All Through an easy to understand CMS, no code needed.
+                </h4>
+                <br/>
+                <br/>
+                <h3>Tech Stack:</h3>
+                <h4> </h4>
+                <ul class="list-unstyled">
+                    <li><strong>Front-End:</strong></li>
+                    <li>Thymeleaf</li>
+                    <li>Bootstrap</li>
+                    <li>jQuery</li>
+                </ul>
+                <br/>
+                <ul class="list-unstyled">
+                    <li><strong>Back-End:</strong></li>
+                    <li>Sring Boot</li>
+                    <li>Spring Data</li>
+                    <li>Spring Security</li>
+                    <li>Hibernate</li>
+                    <li>MySQL</li>
+                </ul>
+                <br/>
+                <h5>Contact, comment and feedback are all welcome at my email: <a href="mailto:smon_lucia@hotmail.com">smon_lucia@hotmail.com</a></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

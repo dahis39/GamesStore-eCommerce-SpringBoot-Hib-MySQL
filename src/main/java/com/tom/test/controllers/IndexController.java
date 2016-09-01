@@ -39,22 +39,6 @@ public class IndexController {
         return bundleService.listAll();
     }
 
-    @RequestMapping("/access_denied")
-    public String notAuth(){
-        return "access_denied";
-    }
-
-    @RequestMapping("/workinprogress")
-    public String workInProgressPages(){
-        return "workinprogress";
-    }
-
-    @RequestMapping("login")
-    public String loginForm(){
-        return "login";
-    }
-
-
     @RequestMapping({"/","index","home"})
     public String home(Model model, Principal principal, HttpSession session){
         Bundle bundle = bundleService.getById(1);

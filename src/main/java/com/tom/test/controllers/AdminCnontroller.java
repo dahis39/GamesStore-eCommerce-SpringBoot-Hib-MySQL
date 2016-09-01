@@ -30,6 +30,21 @@ public class AdminCnontroller {
         return "admin";
     }
 
+    @RequestMapping("/access_denied")
+    public String notAuth(){
+        return "access_denied";
+    }
+
+    @RequestMapping("/workinprogress")
+    public String workInProgressPages(){
+        return "workinprogress";
+    }
+
+    @RequestMapping("login")
+    public String loginForm(){
+        return "login";
+    }
+
     @RequestMapping("/admin")
     public String admin(Model model){
         boolean dataStatus = dummyDataGeneration.getInitaitedStatus();

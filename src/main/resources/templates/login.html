@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login Form</title>
+    <title>Login</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
-    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
-
-    <link href="../static/bootstrap/bootstrap.min.css"
-          th:href="@{bootstrap/bootstrap.min.css}"
+    <link th:href="@{/bootstrap/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link th:href="@{/css/spring-core.css}"
+          rel="stylesheet" media="screen" />
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script th:src="@{/bootstrap/bootstrap.min.js}"></script>
 
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+
 <div class="bg-white-color basic-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-3">
                 <h2>Login</h2>
                 <div>
                     <form class="form-horizontal" th:object="${loginForm}" th:action="@{/login}" method="post">
@@ -56,15 +56,17 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-5 col-md-offset-4">
+        <div class="row basic-padding">
+            <div class="col-md-6 col-md-offset-3">
+                <hr/>
                 <h3> Tips </h3>
-                <div class="well well-sm">
+                <h1> </h1>
+                <div class="jumbotron">
                     <h4> Login as a showcase Admin account. </h4>
                     <h5><strong>Username:</strong> admin </h5>
                     <h5><strong>Password:</strong> password </h5>
                 </div>
-                <div class="well well-sm">
+                <div class="jumbotron">
                     <h4> Create your own, or login as a showcase Customer account. </h4>
                     <h5><strong>Username:</strong> customer1 </h5>
                     <h5><strong>Password:</strong> 123 </h5>
@@ -74,5 +76,6 @@
     </div>
 </div>
 
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

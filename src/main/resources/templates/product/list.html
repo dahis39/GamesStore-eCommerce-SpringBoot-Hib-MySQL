@@ -41,15 +41,15 @@
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.developer.name}"></td>
-                <td><a th:href="${'/product/show/' + product.id}">View</a> </td>
-                <td><a th:href="${'/product/edit/' + product.id}">Edit</a> </td>
-                <td><a class="btn btn-warning btn-sm" th:href="${'/product/delete/' + product.id}">Delete</a> </td>
+                <td><a th:href="@{/product/show/__${product.id}__}">View</a> </td>
+                <td><a th:href="@{/product/edit/__${product.id}__}">Edit</a> </td>
+                <td><a class="btn btn-warning btn-sm" th:href="@{/product/delete/__${product.id}__}">Delete</a> </td>
             </tr>
         </table>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <a class="btn btn-info" href="/product/new">Create New Product</a>
+            <a class="btn btn-info" th:href="@{/product/new}">Create New Product</a>
         </div>
     </div>
 </div>

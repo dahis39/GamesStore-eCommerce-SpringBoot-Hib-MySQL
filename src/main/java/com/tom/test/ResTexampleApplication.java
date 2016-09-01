@@ -17,6 +17,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 //		SpringApplication.run(ResTexampleApplication.class, args);
 //	}
 //}
+
 public class ResTexampleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ResTexampleApplication.class, args);

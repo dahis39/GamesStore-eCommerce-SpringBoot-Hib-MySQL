@@ -139,6 +139,12 @@ public class StoreAndCartController {
                 User user = userService.findByUserName(principal.getName());
                 model.addAttribute("userEmail",user.getEmail());
                 return model;
+            } else {
+                User user = userService.findByUserName(principal.getName());
+                if (!user.getEmail().equals(session.getAttribute("userEmail"))){
+                    model.addAttribute("userEmail",user.getEmail());
+                    return model;
+                }
             }
         }
         return model;

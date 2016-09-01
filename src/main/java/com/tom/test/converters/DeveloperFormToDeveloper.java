@@ -40,6 +40,7 @@ public class DeveloperFormToDeveloper implements Converter<DeveloperForm,Develop
         developer.setProducts(productList);
 
         for (Product product:productList){
+            product.setImageUrl(product.getYoutubeUrl().replace("watch?v=", "embed/"));
             product.setDeveloper(developer);
             product.setPublisher(publisherService.getById(product.getPublisher().getId()));
         }

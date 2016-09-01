@@ -37,15 +37,15 @@
                 <td th:text="${publisher.id}"></td>
                 <td th:text="${publisher.name}"></td>
                 <td th:text="${publisher.description}"></td>
-                <td><a th:href="${'/publisher/show/' + publisher.id}">View</a> </td>
-                <td><a th:href="${'/publisher/edit/' + publisher.id}">Edit</a> </td>
-                <td><a class="btn btn-danger btn-sm" th:href="${'/publisher/delete/' + publisher.id}">Delete</a> </td>
+                <td><a th:href="@{/publisher/show/__${publisher.id}__}">View</a> </td>
+                <td><a th:href="@{/publisher/edit/__${publisher.id}__}">Edit</a> </td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/publisher/delete/__${publisher.id}__}">Delete</a> </td>
             </tr>
         </table>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a class="btn btn-info" href="/publisher/new">Create New Publisher</a>
+            <a class="btn btn-info" th:href="@{/publisher/new}">Create New Publisher</a>
         </div>
     </div>
 </div>

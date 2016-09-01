@@ -39,15 +39,15 @@
                 <td th:text="${developer.name}"></td>
                 <td th:text="${developer.description}"></td>
                 <td th:text="${developer.dateCreated}"></td>
-                <td><a th:href="${'/developer/show/' + developer.id}">View</a> </td>
-                <td><a th:href="${'/developer/edit/' + developer.id}">Edit</a> </td>
-                <td><a class="btn btn-danger btn-sm" th:href="${'/developer/delete/' + developer.id}">Delete</a> </td>
+                <td><a th:href="@{/developer/show/__${developer.id}__}">View</a> </td>
+                <td><a th:href="@{/developer/edit/__${developer.id}__}">Edit</a> </td>
+                <td><a class="btn btn-danger btn-sm" th:href="@{/developer/delete/__${developer.id}__}">Delete</a> </td>
             </tr>
         </table>
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a class="btn btn-info" href="/developer/new">Create New Developer</a>
+            <a class="btn btn-info" th:href="@{/developer/new}">Create New Developer</a>
         </div>
     </div>
 </div>

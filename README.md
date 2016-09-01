@@ -6,10 +6,14 @@ Front-end: Thymeleaf + Bootstrap
 Back-end: Spring Boot + Spring Data + Spring Security + Hibernate + MySQL
 
 Features:
-Basic pages for CRUD of every main entities. 
-A bundle page wity dynamic fields. 
-A Functional Ebay payment button. 
-Validation and Errors handling.
-authentication and authorization.
+CRUD admin pages for every main entities.
+A dynamic bundle page.
+A dynamic store page.
+User Registration.
+Remember me.
+Shopping cart.
+Order history.
+Validation.
+Authentication and authorization.
 
-Status: In Progress. local development with H2 database.
+Status: Finished.

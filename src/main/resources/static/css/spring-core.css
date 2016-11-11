@@ -133,8 +133,8 @@
     top: 35px;
 }
 .top-right-cart {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 250px;
     right: 0;
 }
 

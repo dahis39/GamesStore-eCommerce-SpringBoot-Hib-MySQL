@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 public class Bundle extends CommonGoodDetails{
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(
             name = "BUNDLE_PRODUCT",
             joinColumns = @JoinColumn(name = "BUNDLE_ID"),

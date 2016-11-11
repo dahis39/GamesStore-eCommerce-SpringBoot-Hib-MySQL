@@ -13,6 +13,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.jpa.HibernateEntityManagerFactory;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -40,6 +44,7 @@ public class ProductServiceRepoImpl implements ProductService {
     private ProductToProductForm productToProductForm;
 
     @Override
+    @Cacheable(cacheNames = "products")
     public List<?> listAll() {
         List<Product> products = new ArrayList<>();
         productRepository.findAll().forEach(products::add);
@@ -47,16 +52,20 @@ public class ProductServiceRepoImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(cacheNames = "product", key = "#id")
     public Product getById(Integer id) {
         return productRepository.findOne(id);
     }
 
     @Override
+    @CachePut(cacheNames = "product", key = "#result.getId()")
+    @CacheEvict(cacheNames = "products", allEntries = true)
     public Product saveOrUpdate(Product domainObject) {
         return productRepository.save(domainObject);
     }
 
     @Override
+    @Caching(evict = {@CacheEvict(cacheNames = "products", allEntries = true), @CacheEvict(cacheNames = "product", key = "#id")})
     public void delete(Integer id) {
         Product product = productRepository.findOne(id);
         product.getBundles().forEach(bundle -> {
@@ -67,6 +76,8 @@ public class ProductServiceRepoImpl implements ProductService {
     }
 
     @Override
+    @CachePut(cacheNames = "product", key = "#result.getId()")
+    @CacheEvict(cacheNames = "products", allEntries = true)
     public Product saveOrUpdateProductForm(ProductForm productForm) {
         return productRepository.save(productFormToProduct.convert(productForm));
     }

@@ -48,16 +48,4 @@ public class UserController {
         model.addAttribute("user",userService.getById(id));
         return "user/show";
     }
-
-//    @RequestMapping("/edit/{id}")
-//    public String editUser(@PathVariable Integer id,Model model){
-//        model.addAttribute("userForm",userService.findUserFormById(id));
-//        return "user/userform";
-//    }
-
-//    @RequestMapping("/delete/{id}")
-//    public String deleteUser(@PathVariable Integer id){
-//        userService.delete(id);
-//        return "redirect:/user/list";
-//    }
 }

@@ -4,6 +4,7 @@ import com.tom.test.services.DeveloperService;
 import com.tom.test.services.DummyDataGeneration;
 import com.tom.test.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
@@ -69,6 +70,12 @@ public class AdminCnontroller {
     public String directGenerate(){
         dummyDataGeneration.generate();
         return "redirect:/index";
+    }
+
+    @RequestMapping("/evictcache")
+    @CacheEvict(cacheNames = {"bundles","products","bundle","product"}, allEntries = true)
+    public String evictcache(){
+        return "redirect:/admin";
     }
 
     @RequestMapping("/logout")

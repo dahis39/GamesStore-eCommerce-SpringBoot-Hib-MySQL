@@ -4,10 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 
-//production environment
 
 @SpringBootApplication
+@EnableCaching
+
 //public class ResTexampleApplication extends SpringBootServletInitializer{
 //
 //	@Override

@@ -1,9 +1,6 @@
 package com.tom.test.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +12,12 @@ public class Role extends AbstartDomainClass{
 
     private String role;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable
-    // ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "role_id"),
-    //     inverseJoinColumns = @joinColumn(name = "user_id"))
+    @ManyToMany
+    @JoinTable(
+            name = "ROLE_USER",
+            joinColumns = @JoinColumn(name = "ROLE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID")
+    )
     private List<User> users = new ArrayList<>();
 
     public String getRole() {

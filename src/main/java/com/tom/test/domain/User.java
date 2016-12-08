@@ -20,10 +20,7 @@ public class User extends AbstartDomainClass {
     @Embedded
     private Address billingAddress;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable
-    // ~ defaults to @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "user_id"),
-    //     inverseJoinColumns = @joinColumn(name = "role_id"))
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private List<Role> roles = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

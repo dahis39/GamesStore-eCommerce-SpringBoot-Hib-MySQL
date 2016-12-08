@@ -46,8 +46,9 @@
                             <div class="move-to-bottom-right">
                                 <form th:action="@{/store}" method="post">
                                     <div class="btn-group" role="group" aria-label="...">
-                                        <a th:href="@{thankyou}" class="btn btn-danger btn-sm"
-                                           th:text="${product.price} + ' BUY NOW'"></a>
+                                        <button th:href="@{thankyou}" class="btn btn-danger btn-sm"
+                                           th:text="${product.price} + ' BUY NOW'" type="submit" name="buyNow"
+                                                th:value="${product.id}"></button>
                                         <button class="btn btn-default btn-sm" type="submit" name="addToCart"
                                                 th:value="${product.id}">Add To Cart
                                         </button>

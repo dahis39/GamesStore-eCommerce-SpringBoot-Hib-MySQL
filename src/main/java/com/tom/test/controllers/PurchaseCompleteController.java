@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,18 +67,22 @@ public class PurchaseCompleteController {
     public String payAsUser(HttpSession session, Principal principal){
         if (principal != null){
             User user = userService.findByUserName(principal.getName());
-            Cart cart = (Cart) session.getAttribute("cart");
+            Cart sessionCart = (Cart) session.getAttribute("cart");
 
             OrderHistory orderHistory = new OrderHistory();
-            orderHistory.setCartDetails(cart.getCartDetails());
+            orderHistory.setCartDetails(sessionCart.getCartDetails());
             orderHistory.setTotalPrice(totalPriceCalulator(orderHistory.getCartDetails()));
             orderHistory.setOrderType("Store Cart Purchase");
             user.addOrderHistory(orderHistory);
             orderHistory.setUser(user);
 
-            Cart newCart = new Cart();
-            user.setCart(newCart);
-            newCart.setUser(user);
+            if (user.getCart() == null){
+                user.setCart(new Cart());
+            }
+            Cart dbCart = user.getCart();
+            dbCart.setCartDetails(new ArrayList<>());
+            user.setCart(dbCart);
+            dbCart.setUser(user);
 
             userService.saveOrUpdate(user);
             session.removeAttribute("cart");

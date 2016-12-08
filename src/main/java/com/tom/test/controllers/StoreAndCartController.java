@@ -68,8 +68,18 @@ public class StoreAndCartController {
         newCartDetail.setQuantity(1);
         newCartDetail.setProduct(productService.getById(productId));
         cart.addCartDetail(newCartDetail);
-        saveOrUpdateCartToUser(principal,cart);
+//        saveOrUpdateCartToUser(principal,cart);
         return "redirect:/store";
+    }
+
+    @RequestMapping(value = "/store", params={"buyNow"}, method = RequestMethod.POST)
+    public String buyNowProduct(@ModelAttribute("cart") final Cart cart, final HttpServletRequest req, Principal principal){
+        final Integer productId = Integer.valueOf(req.getParameter("buyNow"));
+        CartDetail newCartDetail = new CartDetail();
+        newCartDetail.setQuantity(1);
+        newCartDetail.setProduct(productService.getById(productId));
+        cart.addCartDetail(newCartDetail);
+        return "redirect:/cart";
     }
 
     @RequestMapping("/cart")
@@ -94,7 +104,7 @@ public class StoreAndCartController {
         List<CartDetail> tempCartDetails = cart.getCartDetails();
         tempCartDetails.remove(cartDetailId.intValue());
         cart.setCartDetails(tempCartDetails);
-        saveOrUpdateCartToUser(principal,cart);
+//        saveOrUpdateCartToUser(principal,cart);
         return "redirect:/cart";
     }
 
@@ -125,11 +135,18 @@ public class StoreAndCartController {
         }
         return totalPrice;
     }
-    private void saveOrUpdateCartToUser(Principal principal,Cart cart){
+    private void saveOrUpdateCartToUser(Principal principal,Cart sessionCart){
         if (principal != null){
             User user = userService.findByUserName(principal.getName());
-            user.setCart(cart);
-            cart.setUser(user);
+
+            if (user.getCart() == null){
+                user.setCart(new Cart());
+            }
+            Cart dbCart = user.getCart();
+            dbCart.setCartDetails(sessionCart.getCartDetails());
+
+            user.setCart(dbCart);
+            dbCart.setUser(user);
             userService.saveOrUpdate(user);
         }
     }

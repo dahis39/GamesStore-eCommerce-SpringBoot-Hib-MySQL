@@ -24,9 +24,9 @@ Authentication and authorization.
 PayPal Express Checkout. (Apr, 2017)  
 
 
-#### Projecet State: Finished/Continuously Improving.
+### Projecet State: Finished/Continuously Improving.
 
-#### Live site: http://www.saturnringstation.com/humblebundle
+### Live site: http://www.saturnringstation.com/humblebundle
 
 
 ##### Credits

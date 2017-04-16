@@ -2,8 +2,10 @@
 A [HumbleBundle](https://www.humblebundle.com) clone. This educational cloning project started at 2016 end of 2Q. Now they have a total refreshed site. However, core features and functions of an eCommerce remains the same.
 
 ## Tech Stack:
-Front-end: Thymeleaf + Bootstrap
-Back-end: Spring Boot + Spring Data + Spring Security + Hibernate + MySQL
+
+#### Front-end: Thymeleaf + Bootstrap
+
+#### Back-end: Spring Boot + Spring Data + Spring Security + Hibernate + MySQL
 
 ## Features:
 CRUD admin pages for all entities.

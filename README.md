@@ -8,16 +8,17 @@ A [HumbleBundle](https://www.humblebundle.com) clone. This educational cloning p
 #### Back-end: Spring Boot + Spring Data + Spring Security + Hibernate + MySQL
 
 ## Features:
-CRUD admin pages for all entities.
-Cache for main entities.
-A dynamic bundle page.
-A dynamic store page.
-User Registration.
-Remember me.
-Shopping cart.
-Order history.
-Validations.
-Authentication and authorization.
+
+CRUD admin pages for all entities.  
+Cache for main entities.  
+A dynamic bundle page.  
+A dynamic store page.  
+User Registration.  
+Remember me.  
+Shopping cart.  
+Order history.  
+Validations.  
+Authentication and authorization.  
 
 ### Projecet State: Finished/Continuously Improving.
 
@@ -25,4 +26,4 @@ Authentication and authorization.
 PayPal Express Checkout         on Apr, 2017
 
 
-## Live site: http://www.saturnringstation.com/humblebundle
+#### Live site: http://www.saturnringstation.com/humblebundle

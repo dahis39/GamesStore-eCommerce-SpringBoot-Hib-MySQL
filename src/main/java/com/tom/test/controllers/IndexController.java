@@ -50,14 +50,22 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping("index/{id}")
     public String showBundle(@PathVariable Integer id, Model model, Principal principal, HttpSession session){
-        Bundle bundle = bundleService.getById(id);
-        model.addAttribute("bundle",bundle);
-        if (bundle != null) {
-            model.addAttribute("products", bundle.getProducts());
+        long bundleCount = bundleService.count();
+        if (id > bundleCount) {
+            return "access_denied";
         }
-        setupUserEmail(model,principal,session);
+        if (bundleCount == 0) {
+            return "index";
+        } else {
+            Bundle bundle = bundleService.getById(id);
+            model.addAttribute("bundle",bundle);
+            if (bundle != null) {
+                model.addAttribute("products", bundle.getProducts());
+            }
+            setupUserEmail(model,principal,session);
+        }
         return "index";
     }
 

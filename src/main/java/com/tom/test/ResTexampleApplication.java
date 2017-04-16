@@ -7,8 +7,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 
 
-@SpringBootApplication
-@EnableCaching
+
 
 //public class ResTexampleApplication extends SpringBootServletInitializer{
 //
@@ -22,8 +21,8 @@ import org.springframework.cache.annotation.EnableCaching;
 //	}
 //}
 
-
-
+@SpringBootApplication
+@EnableCaching
 public class ResTexampleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ResTexampleApplication.class, args);

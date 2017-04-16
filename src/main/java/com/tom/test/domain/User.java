@@ -13,7 +13,9 @@ import java.util.Set;
  */
 @Entity
 public class User extends AbstartDomainClass {
+    @Column(unique = true)
     private String userName;
+    @Column(unique = true)
     private String email;
     private String password;
 

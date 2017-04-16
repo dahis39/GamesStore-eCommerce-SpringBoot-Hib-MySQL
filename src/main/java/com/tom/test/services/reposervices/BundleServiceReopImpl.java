@@ -50,4 +50,9 @@ public class BundleServiceReopImpl implements BundleService {
     public void delete(Integer id) {
         bundleRepository.delete(id);
     }
+
+    @Override
+    public long count() {
+        return bundleRepository.count();
+    }
 }

@@ -78,7 +78,7 @@
     <div class="container" sec:authorize="isAnonymous()" style="padding-top: 10vh; padding-bottom: 25vh">
         <h1>Checkout as Guest</h1>
         <hr/>
-        <form th:object="${user}" th:action="@{/thankyou}" method="post">
+        <form th:object="${user}" th:action="@{/payments}" method="post">
             <input type="text" th:field="*{email}"/>
             <table class="table table-striped table-hover">
                 <tbody>
@@ -92,7 +92,7 @@
                 </tr>
                 <tr>
                     <th colspan="3"><span class="pull-right">VAT x0%</span></th>
-                    <th>£x0.00</th>
+                    <th>$ 0.00</th>
                 </tr>
                 <tr>
                     <th colspan="3"><span class="pull-right">Total</span></th>
@@ -101,21 +101,19 @@
                 <tr>
                     <td><a th:href="@{/store}" class="pull-left btn btn-default"><span
                             class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping </a></td>
+                    <!--<td>-->
+                        <!--<button class="pull-right btn btn-primary" type="submit">-->
+                            <!--<span class="glyphicon glyphicon-credit-card"></span> Pay with Card-->
+                        <!--</button>-->
+                    <!--</td>-->
                     <td>
-                        <button class="pull-right btn btn-primary" type="submit">
-                            <span class="glyphicon glyphicon-credit-card"></span> Pay with Card
-                        </button>
-                    </td>
-                    <td>
-                        <button class="pull-right" type="submit">
-                            <img src="http://www.hikashop.com/images/payment/paypalexpress.png" height="38px"
-                                 width="150px"/>
-                        </button>
+                        <div id="paypal-button"></div>
                     </td>
                     <td>
                         <button class="pull-right" type="submit">
                             <img src="https://images-na.ssl-images-amazon.com/images/G/01/Iris3_US/en_US/inca/images/btnPaywAMZN-gld-Desktop-2x.png"
                                  height="34px" width="150px"/>
+                            Not implemented.
                         </button>
                     </td>
                 </tr>
@@ -126,5 +124,45 @@
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    paypal.Button.render({
+
+        env: 'sandbox', // Optional: specify 'sandbox' environment
+
+        client: {
+            sandbox:    'AQTJ-QmLQObNCPluUWYXH5bUgarpiT2lQinbAPJkc425gLrrYu-LDwpI0q3aPwGHCJ2Y2MCHyNmecPlI',
+            production: 'xxxxxxxxx'
+        },
+
+        payment: function() {
+            var env    = this.props.env;
+            var client = this.props.client;
+
+            return paypal.rest.payment.create(env, client, {
+                transactions: [
+                    {
+                        amount: { total: '[[${totalPrice}]]', currency: 'USD' }
+                    }
+                ]
+            });
+        },
+
+        commit: true, // Optional: show a 'Pay Now' button in the checkout flow
+
+        onAuthorize: function(data, actions) {
+
+            // Optional: display a confirmation page here
+
+            return actions.payment.execute().then(function() {
+                window.location.replace(/*[[@{/thankyou}]]*/);
+            });
+        }
+
+    }, '#paypal-button');
+    /*]]>*/
+</script>
 </body>
 </html>

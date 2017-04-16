@@ -32,7 +32,7 @@
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li th:each="bundleItem : ${bundleList}">
-                                <a th:text="${bundleItem.name}" th:href="@{'/' + ${bundleItem.id}}"> Bundle Name </a>
+                                <a th:text="${bundleItem.name}" th:href="@{'/index/' + ${bundleItem.id}}"> Bundle Name </a>
                             </li>
                         </ul>
                     </div>
@@ -45,7 +45,7 @@
                 </section>
                 <section class="col-md-offset-1 col-md-4">
                     <a id="index-page-scroll-down-button" class="btn btn-lg btn-success" style="margin-top: 40px"
-                       href="#" role="button">Pay What You Want!</a>
+                       href="#paypal-button" role="button">Check Bundle Price</a>
                 </section>
             </div>
             <div class="row" style="margin: 40px">
@@ -183,22 +183,8 @@
                 </div>
 
                 <div class="second-row bordered">
-                    <h3>Pay What You Want! </h3>
-                    <form th:object="${bundle}" th:action="@{../thankyou}" method="post">
-                        <input type="hidden" th:field="*{id}" th:value="${bundle.id}"/>
-                        <button class="btn btn-info pull-right" type="submit" name="bundleCheckout">
-                            <span class=""></span> Quick Play
-                        </button>
-                    </form>
-                    <form id="index-page-paypal-button" class="pull-right"
-                          action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick"/>
-                        <input type="hidden" name="hosted_button_id" value="EYRZMP2TUXZ6Q"/>
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
-                               border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1"
-                             height="1"/>
-                    </form>
+                    <h3 th:text="'Bundle Price:   $'+ ${bundle.price}"></h3>
+                    <div class="pull-right" id="paypal-button"></div>
                 </div>
 
                 <div class="third-row bordered header-bg-color">
@@ -249,6 +235,45 @@
 
 <div th:replace="fragments/footer :: footer"></div>
 
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    paypal.Button.render({
+
+        env: 'sandbox', // Optional: specify 'production' environment
+
+        client: {
+            sandbox:    'AQTJ-QmLQObNCPluUWYXH5bUgarpiT2lQinbAPJkc425gLrrYu-LDwpI0q3aPwGHCJ2Y2MCHyNmecPlI',
+            production: 'xxxxxxxxx'
+        },
+
+        payment: function() {
+            var env    = this.props.env;
+            var client = this.props.client;
+
+            return paypal.rest.payment.create(env, client, {
+                transactions: [
+                    {
+                        amount: { total: '[[${bundle.price}]]', currency: 'USD' }
+                    }
+                ]
+            });
+        },
+
+        commit: true, // Optional: show a 'Pay Now' button in the checkout flow
+
+        onAuthorize: function(data, actions) {
+
+            // Optional: display a confirmation page here
+            return actions.payment.execute().then(function() {
+                window.location.replace(/*[[@{/thankyou}]]*/);
+            });
+        }
+
+    }, '#paypal-button');
+    /*]]>*/
+</script>
 </body>
 </html>
 

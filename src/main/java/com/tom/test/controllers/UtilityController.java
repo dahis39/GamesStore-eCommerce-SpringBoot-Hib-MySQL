@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @Controller
 @SessionAttributes({"userEmail"})
-public class AboutController {
+public class UtilityController {
 
     @ModelAttribute("page")
     public String module() {
         return "about";
+    }
+
+    @RequestMapping({"/workinprogress", "/privacy-policy", "/user-agreement"})
+    public String underConstruction() {
+        return "workinprogress";
     }
 
     @RequestMapping("/about")

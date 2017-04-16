@@ -20,9 +20,17 @@ Order history.
 Validations.  
 Authentication and authorization.  
 
-### Projecet State: Finished/Continuously Improving.
-
 ### New Features added:
 PayPal Express Checkout. (Apr, 2017)  
 
+
+#### Projecet State: Finished/Continuously Improving.
+
 #### Live site: http://www.saturnringstation.com/humblebundle
+
+
+##### Credits
+[Tom H](http://www.saturnringstation.com/portfolio)
+
+##### License
+The MIT License
